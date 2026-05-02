@@ -12,7 +12,7 @@ const OrbitalCore = dynamic(() => import('./OrbitalCore'), {
         style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: 14,
-          color: '#5e5d59',
+          color: '#687078',
         }}
       >
         Initializing...

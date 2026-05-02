@@ -41,7 +41,7 @@ const partners = [
     description:
       "We're actively onboarding 10+ more platforms. The network grows as you do.",
     badge: "Q2 2025",
-    color: "#87867f",
+    color: "#9ea5ad",
     isDashed: true,
   },
 ] as const;
@@ -70,8 +70,8 @@ function PartnerCard({
           boxShadow: "0 12px 40px rgba(0,0,0,0.08)",
         }}
         style={{
-          background: isDashed ? "#f5f4ed" : "#faf9f5",
-          border: isDashed ? "1px dashed #e8e6dc" : "1px solid #f0eee6",
+          background: isDashed ? "#f8f9fa" : "#faf9f5",
+          border: isDashed ? "1px dashed #e6e9ed" : "1px solid #f0eee6",
           borderRadius: 16,
           padding: 32,
           display: "flex",
@@ -94,14 +94,14 @@ function PartnerCard({
               width: 44,
               height: 44,
               borderRadius: "50%",
-              background: isDashed ? "#e8e6dc" : `${partner.color}1A`,
+              background: isDashed ? "#e6e9ed" : `${partner.color}1A`,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 20,
               fontWeight: 600,
-              color: isDashed ? "#87867f" : partner.color,
+              color: isDashed ? "#9ea5ad" : partner.color,
               flexShrink: 0,
             }}
           >
@@ -112,8 +112,8 @@ function PartnerCard({
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 12,
-              color: "#5e5d59",
-              background: "#e8e6dc",
+              color: "#687078",
+              background: "#e6e9ed",
               borderRadius: 20,
               padding: "4px 12px",
               whiteSpace: "nowrap",
@@ -130,7 +130,7 @@ function PartnerCard({
             fontSize: 28,
             fontWeight: 500,
             lineHeight: 1.2,
-            color: "#141413",
+            color: "#111418",
           }}
         >
           {partner.name}
@@ -142,7 +142,7 @@ function PartnerCard({
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 15,
             lineHeight: 1.6,
-            color: "#5e5d59",
+            color: "#687078",
             flex: 1,
           }}
         >
@@ -154,9 +154,9 @@ function PartnerCard({
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 12,
-              color: "#87867f",
-              background: "#f5f4ed",
-              border: "1px solid #e8e6dc",
+              color: "#9ea5ad",
+              background: "#f8f9fa",
+              border: "1px solid #e6e9ed",
               borderRadius: 999,
               padding: "6px 12px",
               display: "inline-flex",
@@ -176,7 +176,7 @@ export default function Partners() {
     <section
       className="partners-section"
       style={{
-        background: "#f5f4ed",
+        background: "#f8f9fa",
         padding: "110px 0 90px",
       }}
     >
@@ -193,7 +193,7 @@ export default function Partners() {
               style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 11,
-                color: "#87867f",
+                color: "#9ea5ad",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
               }}
@@ -208,7 +208,7 @@ export default function Partners() {
                 fontSize: "clamp(36px, 4.7vw, 48px)",
                 fontWeight: 500,
                 lineHeight: 1.15,
-                color: "#141413",
+                color: "#111418",
               }}
             >
               Your path to real opportunities
@@ -220,7 +220,7 @@ export default function Partners() {
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 18,
                 lineHeight: 1.6,
-                color: "#5e5d59",
+                color: "#687078",
                 maxWidth: 560,
                 marginLeft: "auto",
                 marginRight: "auto",
@@ -248,14 +248,14 @@ export default function Partners() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 custom={index}
-                stroke="rgba(201, 100, 66, 0.2)"
+                stroke="rgba(212,175,55, 0.2)"
                 strokeWidth="1"
                 strokeDasharray="8 8"
                 fill="none"
               />
             ))}
 
-            <circle cx="550" cy="60" r="16" fill="#141413" />
+            <circle cx="550" cy="60" r="16" fill="#111418" />
             <text
               x="550"
               y="64"
@@ -293,7 +293,7 @@ export default function Partners() {
               textAlign: "center",
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 15,
-              color: "#87867f",
+              color: "#9ea5ad",
             }}
           >
             Already connected with <CountUp end={400} suffix="+" /> students across Bangalore, Hyderabad, and Chennai.

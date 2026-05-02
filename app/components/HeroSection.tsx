@@ -49,7 +49,7 @@ function StatItem({ value, suffix, label, isActive, duration }: StatProps) {
           fontFamily: "'Cormorant Garamond', serif",
           fontSize: 28,
           fontWeight: 500,
-          color: "#1c1b18",
+          color: "#1a1c1e",
           lineHeight: 1.1,
           letterSpacing: "-0.01em",
         }}
@@ -61,7 +61,7 @@ function StatItem({ value, suffix, label, isActive, duration }: StatProps) {
         style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: 13,
-          color: "#87867f",
+          color: "#9ea5ad",
           marginTop: 4,
           letterSpacing: "0.01em",
         }}
@@ -83,7 +83,7 @@ function PlatformStat({ label }: { label: string }) {
           fontFamily: "'Cormorant Garamond', serif",
           fontSize: 24,
           fontWeight: 500,
-          color: "#1c1b18",
+          color: "#1a1c1e",
           lineHeight: 1.2,
           letterSpacing: "-0.01em",
         }}
@@ -94,7 +94,7 @@ function PlatformStat({ label }: { label: string }) {
         style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: 13,
-          color: "#87867f",
+          color: "#9ea5ad",
           marginTop: 4,
         }}
       >
@@ -114,14 +114,14 @@ function AgentCard() {
       name: "Resume Analyzer",
       status: "Analyzing your profile...",
       statusType: "pulsing" as const,
-      dotColor: "#22c55e",
+      dotColor: "#b87333",
     },
     {
       icon: "✦",
       name: "Skill Gap Agent",
       status: "8 gaps identified",
       statusType: "badge" as const,
-      dotColor: "#22c55e",
+      dotColor: "#b87333",
       badgeColor: "#f59e0b",
     },
     {
@@ -129,7 +129,7 @@ function AgentCard() {
       name: "Interview AI",
       status: "Ready to simulate",
       statusType: "ready" as const,
-      dotColor: "#22c55e",
+      dotColor: "#b87333",
     },
   ];
 
@@ -137,8 +137,8 @@ function AgentCard() {
     <div
       className="agent-card-float"
       style={{
-        background: "#141413",
-        border: "1px solid #30302e",
+        background: "#111418",
+        border: "1px solid #2a3038",
         borderRadius: 24,
         padding: 32,
         width: "100%",
@@ -176,7 +176,7 @@ function AgentCard() {
               fontFamily: "'Cormorant Garamond', serif",
               fontSize: 18,
               fontWeight: 500,
-              color: "#e8e6dc",
+              color: "#e6e9ed",
             }}
           >
             Active Pipeline
@@ -188,8 +188,8 @@ function AgentCard() {
             display: "flex",
             alignItems: "center",
             gap: 6,
-            background: "rgba(34,197,94,0.08)",
-            border: "1px solid rgba(34,197,94,0.2)",
+            background: "rgba(184,115,51,0.08)",
+            border: "1px solid rgba(184,115,51,0.2)",
             borderRadius: 20,
             padding: "5px 12px",
           }}
@@ -200,14 +200,14 @@ function AgentCard() {
               width: 6,
               height: 6,
               borderRadius: "50%",
-              background: "#22c55e",
+              background: "#b87333",
             }}
           />
           <span
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 11,
-              color: "#22c55e",
+              color: "#b87333",
               fontWeight: 500,
             }}
           >
@@ -267,7 +267,7 @@ function AgentCard() {
                     gap: 6,
                   }}
                 >
-                  <span style={{ color: "#c96442", fontSize: 10 }}>
+                  <span style={{ color: "#d4af37", fontSize: 10 }}>
                     {agent.icon}
                   </span>
                   {agent.name}
@@ -282,7 +282,7 @@ function AgentCard() {
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: 11,
-                  color: "#87867f",
+                  color: "#9ea5ad",
                   fontWeight: 400,
                 }}
               >
@@ -311,9 +311,9 @@ function AgentCard() {
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: 11,
                   fontWeight: 500,
-                  color: "#22c55e",
-                  background: "rgba(34,197,94,0.08)",
-                  border: "1px solid rgba(34,197,94,0.2)",
+                  color: "#b87333",
+                  background: "rgba(184,115,51,0.08)",
+                  border: "1px solid rgba(184,115,51,0.2)",
                   borderRadius: 8,
                   padding: "3px 8px",
                 }}
@@ -353,7 +353,7 @@ function AgentCard() {
                 width: 24,
                 height: 4,
                 borderRadius: 2,
-                background: i === 0 ? "#c96442" : i === 1 ? "#f59e0b" : "#22c55e",
+                background: i === 0 ? "#d4af37" : i === 1 ? "#f59e0b" : "#b87333",
                 opacity: 0.7,
               }}
             />
@@ -386,7 +386,7 @@ export default function HeroSection() {
       id="hero"
       style={{
         minHeight: "100vh",
-        background: "#f5f4ed",
+        background: "#f8f9fa",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -427,15 +427,14 @@ export default function HeroSection() {
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 22,
             fontWeight: 500,
-            color: "#1c1b18",
+            color: "#1a1c1e",
             letterSpacing: "-0.01em",
             display: "flex",
             alignItems: "center",
             gap: 8,
           }}
         >
-          <span style={{ color: "#c96442", fontSize: 14 }}>✦</span>
-          SuperPlaced AI
+          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 120, filter: "invert(1) brightness(0)" }} />
         </div>
         <div
           style={{
@@ -443,7 +442,7 @@ export default function HeroSection() {
             gap: 36,
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 14,
-            color: "#87867f",
+            color: "#9ea5ad",
           }}
         >
           {["Product", "Careers", "Blog", "Sign in"].map((item) => (
@@ -456,20 +455,20 @@ export default function HeroSection() {
                   ? "#agents"
                   : item === "Product"
                   ? "#how"
-                  : "#"
+                  : "/signin"
               }
               style={{
-                color: item === "Sign in" ? "#1c1b18" : "#87867f",
+                color: item === "Sign in" ? "#1a1c1e" : "#9ea5ad",
                 textDecoration: "none",
                 fontWeight: item === "Sign in" ? 500 : 400,
                 transition: "color 0.2s",
               }}
               onMouseEnter={(e) =>
-                ((e.target as HTMLElement).style.color = "#1c1b18")
+                ((e.target as HTMLElement).style.color = "#1a1c1e")
               }
               onMouseLeave={(e) =>
                 ((e.target as HTMLElement).style.color =
-                  item === "Sign in" ? "#1c1b18" : "#87867f")
+                  item === "Sign in" ? "#1a1c1e" : "#9ea5ad")
               }
             >
               {item}
@@ -503,7 +502,7 @@ export default function HeroSection() {
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 11,
                 fontWeight: 500,
-                color: "#87867f",
+                color: "#9ea5ad",
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
                 marginBottom: 32,
@@ -516,7 +515,7 @@ export default function HeroSection() {
                 style={{
                   width: 20,
                   height: 1,
-                  background: "#87867f",
+                  background: "#9ea5ad",
                   opacity: 0.6,
                 }}
               />
@@ -531,7 +530,7 @@ export default function HeroSection() {
               fontWeight: 500,
               fontSize: "clamp(40px, 5.5vw, 64px)",
               lineHeight: 1.1,
-              color: "#1c1b18",
+              color: "#1a1c1e",
               letterSpacing: "-0.02em",
               marginBottom: 28,
             }}
@@ -573,7 +572,7 @@ export default function HeroSection() {
                     ...(word === "job-ready"
                       ? {
                           textDecoration: "underline",
-                          textDecorationColor: "#c96442",
+                          textDecorationColor: "#d4af37",
                           textDecorationThickness: 2,
                           textUnderlineOffset: 6,
                         }
@@ -594,7 +593,7 @@ export default function HeroSection() {
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 20,
-              color: "#5e5d59",
+              color: "#687078",
               lineHeight: 1.6,
               maxWidth: 520,
               marginBottom: 44,
@@ -614,7 +613,7 @@ export default function HeroSection() {
             style={{ display: "flex", gap: 12, marginBottom: 56, flexWrap: "wrap" }}
           >
             <CTAButton
-              href="#"
+              href="/signin"
               variant="primary"
               id="cta-start-journey"
             >
@@ -686,7 +685,7 @@ export default function HeroSection() {
           right: 48,
           height: 1,
           background:
-            "linear-gradient(90deg, transparent 0%, #dddbd0 30%, #dddbd0 70%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, #d3d7dc 30%, #d3d7dc 70%, transparent 100%)",
         }}
       />
 
@@ -750,17 +749,17 @@ function CTAButton({
   };
 
   const primaryStyle: React.CSSProperties = {
-    background: hovered ? "#b3563a" : "#c96442",
-    color: "#f5f4ed",
+    background: hovered ? "#b8860b" : "#d4af37",
+    color: "#f8f9fa",
     boxShadow: hovered
-      ? "0 8px 24px rgba(201,100,66,0.4)"
-      : "0 4px 12px rgba(201,100,66,0.25)",
+      ? "0 8px 24px rgba(212,175,55,0.4)"
+      : "0 4px 12px rgba(212,175,55,0.25)",
     transform: hovered ? "translateY(-1px)" : "translateY(0)",
   };
 
   const secondaryStyle: React.CSSProperties = {
-    background: hovered ? "#dddbd0" : "#e8e6dc",
-    color: "#1c1b18",
+    background: hovered ? "#d3d7dc" : "#e6e9ed",
+    color: "#1a1c1e",
     boxShadow: hovered
       ? "0 4px 12px rgba(0,0,0,0.08)"
       : "0 2px 6px rgba(0,0,0,0.05)",
@@ -805,7 +804,7 @@ function WarmDivider() {
     <div
       style={{
         width: 1,
-        background: "#dddbd0",
+        background: "#d3d7dc",
         alignSelf: "stretch",
         margin: "0 28px",
       }}

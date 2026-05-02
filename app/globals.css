@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --parchment: #f5f4ed;
-  --near-black: #141413;
-  --bg-parchment: #f5f4ed;
-  --text-dark: #1c1b18;
-  --text-muted: #5e5d59;
-  --text-faint: #87867f;
-  --accent: #c96442;
-  --accent-hover: #b3563a;
-  --sand: #e8e6dc;
-  --border-warm: #dddbd0;
-  --card-dark: #141413;
-  --card-border: #30302e;
+  --parchment: #f8f9fa;
+  --near-black: #111418;
+  --bg-parchment: #f0f2f5;
+  --text-dark: #1a1c1e;
+  --text-muted: #687078;
+  --text-faint: #9ea5ad;
+  --accent: #d4af37;
+  --accent-hover: #b87333;
+  --sand: #e6e9ed;
+  --border-warm: #d3d7dc;
+  --card-dark: #1e2227;
+  --card-border: #2a3038;
 }
 
 html {
@@ -39,7 +39,7 @@ body {
 }
 
 ::selection {
-  background: #c96442;
+  background: #d4af37;
   color: #faf9f5;
 }
 
@@ -89,11 +89,11 @@ body {
 
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    box-shadow: 0 0 0 0 rgba(184,115,51, 0.4);
   }
 
   50% {
-    box-shadow: 0 0 0 5px rgba(34, 197, 94, 0);
+    box-shadow: 0 0 0 5px rgba(184,115,51, 0);
   }
 }
 

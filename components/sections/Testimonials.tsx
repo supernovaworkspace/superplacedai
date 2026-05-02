@@ -38,11 +38,11 @@ function TestimonialCard({
   return (
     <AnimateOnScroll variant="fadeInUp" delay={index * 0.15}>
       <motion.article
-        whileHover={{ borderColor: "rgba(201, 100, 66, 0.4)" }}
+        whileHover={{ borderColor: "rgba(212,175,55, 0.4)" }}
         style={{
           position: "relative",
           background: "#1a1a18",
-          border: "1px solid #30302e",
+          border: "1px solid #2a3038",
           borderRadius: 16,
           padding: 32,
           minHeight: 320,
@@ -64,7 +64,7 @@ function TestimonialCard({
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 80,
             lineHeight: 0.8,
-            color: "rgba(201, 100, 66, 0.2)",
+            color: "rgba(212,175,55, 0.2)",
             zIndex: 0,
             pointerEvents: "none",
             userSelect: "none",
@@ -81,7 +81,7 @@ function TestimonialCard({
                 width: 6,
                 height: 6,
                 borderRadius: "50%",
-                background: "#c96442",
+                background: "#d4af37",
                 display: "inline-block",
               }}
             />
@@ -118,13 +118,13 @@ function TestimonialCard({
               width: 40,
               height: 40,
               borderRadius: "50%",
-              background: "#30302e",
+              background: "#2a3038",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 13,
-              color: "#b0aea5",
+              color: "#b4bac0",
             }}
           >
             {testimonial.initials}
@@ -136,7 +136,7 @@ function TestimonialCard({
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 14,
                 fontWeight: 500,
-                color: "#b0aea5",
+                color: "#b4bac0",
                 lineHeight: 1.35,
               }}
             >
@@ -146,7 +146,7 @@ function TestimonialCard({
               style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 13,
-                color: "#5e5d59",
+                color: "#687078",
                 lineHeight: 1.35,
                 marginTop: 2,
               }}
@@ -165,7 +165,7 @@ export default function Testimonials() {
     <section
       className="testimonials-section"
       style={{
-        background: "#141413",
+        background: "#111418",
         padding: "108px 0 92px",
       }}
     >
@@ -182,7 +182,7 @@ export default function Testimonials() {
               style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 11,
-                color: "#5e5d59",
+                color: "#687078",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
               }}

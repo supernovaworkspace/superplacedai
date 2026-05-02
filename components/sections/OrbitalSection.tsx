@@ -18,7 +18,7 @@ export default function OrbitalSection() {
   return (
     <section
       style={{
-        background: '#141413',
+        background: '#111418',
         padding: '96px 0 88px',
       }}
     >
@@ -48,7 +48,7 @@ export default function OrbitalSection() {
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 18,
               lineHeight: 1.5,
-              color: '#87867f',
+              color: '#9ea5ad',
             }}
           >
             Five agents. One system. Infinite readiness.
@@ -78,13 +78,13 @@ export default function OrbitalSection() {
                 onMouseLeave={() => setActivePill(null)}
                 style={{
                   background: '#1a1a18',
-                  border: `1px solid ${isActive ? '#c96442' : '#30302e'}`,
+                  border: `1px solid ${isActive ? '#d4af37' : '#2a3038'}`,
                   borderRadius: 24,
                   padding: '9px 16px',
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: 13,
                   fontWeight: 500,
-                  color: isActive ? '#faf9f5' : '#b0aea5',
+                  color: isActive ? '#faf9f5' : '#b4bac0',
                   lineHeight: 1.2,
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',

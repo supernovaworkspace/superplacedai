@@ -4,10 +4,12 @@ import AgentBreakdown from "./components/AgentBreakdown";
 import HowItWorks from "./components/HowItWorks";
 import Testimonials from "../components/sections/Testimonials";
 import CTAAndFooter from "../components/sections/CTAAndFooter";
+import IntroVideo from "./components/IntroVideo";
 
 export default function Home() {
   return (
     <main>
+      <IntroVideo />
       <HeroSection />
       <IntelligenceCore />
       <AgentBreakdown />

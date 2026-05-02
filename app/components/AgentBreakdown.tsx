@@ -25,7 +25,7 @@ const AGENTS = [
       { label: "Keywords Missing", value: "Python, CI/CD", highlight: false },
       { label: "Status", value: "Improvement Ready", highlight: false },
     ],
-    dotColor: "#c96442",
+    dotColor: "#d4af37",
   },
   {
     id: "skillgap",
@@ -65,7 +65,7 @@ const AGENTS = [
       { label: "Best Answer", value: "Q3 — Leadership", highlight: false },
       { label: "Next Session", value: "Technical Mock", highlight: false },
     ],
-    dotColor: "#22c55e",
+    dotColor: "#b87333",
   },
   {
     id: "jobmatch",
@@ -105,7 +105,7 @@ const AGENTS = [
       { label: "Streak", value: "12 days active", highlight: false },
       { label: "Next Milestone", value: "First Application", highlight: false },
     ],
-    dotColor: "#c96442",
+    dotColor: "#d4af37",
   },
 ];
 
@@ -116,7 +116,7 @@ function MockOutputCard({ agent }: { agent: (typeof AGENTS)[0] }) {
   return (
     <div
       style={{
-        background: "#141413",
+        background: "#111418",
         border: "1px solid #2a2a28",
         borderRadius: 16,
         padding: "20px 24px",
@@ -162,9 +162,9 @@ function MockOutputCard({ agent }: { agent: (typeof AGENTS)[0] }) {
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 10,
             fontWeight: 500,
-            color: "#c96442",
-            background: "rgba(201,100,66,0.1)",
-            border: "1px solid rgba(201,100,66,0.2)",
+            color: "#d4af37",
+            background: "rgba(212,175,55,0.1)",
+            border: "1px solid rgba(212,175,55,0.2)",
             borderRadius: 8,
             padding: "2px 9px",
             letterSpacing: "0.04em",
@@ -184,10 +184,10 @@ function MockOutputCard({ agent }: { agent: (typeof AGENTS)[0] }) {
               alignItems: "center",
               justifyContent: "space-between",
               background: line.highlight
-                ? "rgba(201,100,66,0.07)"
+                ? "rgba(212,175,55,0.07)"
                 : "rgba(255,255,255,0.02)",
               border: line.highlight
-                ? "1px solid rgba(201,100,66,0.15)"
+                ? "1px solid rgba(212,175,55,0.15)"
                 : "1px solid rgba(255,255,255,0.04)",
               borderRadius: 8,
               padding: "9px 14px",
@@ -207,7 +207,7 @@ function MockOutputCard({ agent }: { agent: (typeof AGENTS)[0] }) {
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 13,
                 fontWeight: 500,
-                color: line.highlight ? "#c96442" : "#b0aea5",
+                color: line.highlight ? "#d4af37" : "#b4bac0",
               }}
             >
               {line.value}
@@ -260,7 +260,7 @@ function ContentPanel({ agent }: { agent: (typeof AGENTS)[0] }) {
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: "clamp(28px, 3vw, 38px)",
             fontWeight: 500,
-            color: "#1c1b18",
+            color: "#1a1c1e",
             lineHeight: 1.15,
             letterSpacing: "-0.02em",
             marginBottom: 16,
@@ -275,7 +275,7 @@ function ContentPanel({ agent }: { agent: (typeof AGENTS)[0] }) {
           style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 17,
-            color: "#5e5d59",
+            color: "#687078",
             lineHeight: 1.65,
             maxWidth: 520,
             marginBottom: 32,
@@ -289,7 +289,7 @@ function ContentPanel({ agent }: { agent: (typeof AGENTS)[0] }) {
         <div
           style={{
             background: "#faf9f5",
-            border: "1px solid #e8e6dc",
+            border: "1px solid #e6e9ed",
             borderRadius: 14,
             padding: "20px 24px",
             marginBottom: 28,
@@ -303,7 +303,7 @@ function ContentPanel({ agent }: { agent: (typeof AGENTS)[0] }) {
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 11,
               fontWeight: 500,
-              color: "#87867f",
+              color: "#9ea5ad",
               letterSpacing: "0.08em",
               textTransform: "uppercase",
               marginBottom: 4,
@@ -318,7 +318,7 @@ function ContentPanel({ agent }: { agent: (typeof AGENTS)[0] }) {
                   width: 6,
                   height: 6,
                   borderRadius: "50%",
-                  background: "#c96442",
+                  background: "#d4af37",
                   flexShrink: 0,
                   marginTop: 6,
                 }}
@@ -352,7 +352,7 @@ function ContentPanel({ agent }: { agent: (typeof AGENTS)[0] }) {
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 13,
               fontWeight: 500,
-              color: "#87867f",
+              color: "#9ea5ad",
             }}
           >
             {agent.outputLabel}
@@ -363,7 +363,7 @@ function ContentPanel({ agent }: { agent: (typeof AGENTS)[0] }) {
               fontSize: 11,
               fontWeight: 600,
               color: "#3a3936",
-              background: "#e8e6dc",
+              background: "#e6e9ed",
               borderRadius: 6,
               padding: "3px 10px",
               letterSpacing: "0.04em",
@@ -395,7 +395,7 @@ function MobileCard({ agent, index }: { agent: (typeof AGENTS)[0]; index: number
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       style={{
-        border: "1px solid #e8e6dc",
+        border: "1px solid #e6e9ed",
         borderRadius: 16,
         overflow: "hidden",
         background: "#fff",
@@ -414,7 +414,7 @@ function MobileCard({ agent, index }: { agent: (typeof AGENTS)[0]; index: number
           border: "none",
           cursor: "pointer",
           textAlign: "left",
-          borderLeft: open ? "3px solid #c96442" : "3px solid transparent",
+          borderLeft: open ? "3px solid #d4af37" : "3px solid transparent",
           transition: "border-color 0.2s",
         }}
       >
@@ -423,7 +423,7 @@ function MobileCard({ agent, index }: { agent: (typeof AGENTS)[0]; index: number
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 10,
-              color: "#87867f",
+              color: "#9ea5ad",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               marginBottom: 4,
@@ -436,7 +436,7 @@ function MobileCard({ agent, index }: { agent: (typeof AGENTS)[0]; index: number
               fontFamily: open ? "'Cormorant Garamond', serif" : "'DM Sans', sans-serif",
               fontSize: open ? 20 : 16,
               fontWeight: 500,
-              color: open ? "#1c1b18" : "#87867f",
+              color: open ? "#1a1c1e" : "#9ea5ad",
               transition: "all 0.2s",
             }}
           >
@@ -448,7 +448,7 @@ function MobileCard({ agent, index }: { agent: (typeof AGENTS)[0]; index: number
           height="16"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#87867f"
+          stroke="#9ea5ad"
           strokeWidth="2"
           strokeLinecap="round"
           style={{
@@ -476,7 +476,7 @@ function MobileCard({ agent, index }: { agent: (typeof AGENTS)[0]; index: number
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: 15,
-                  color: "#5e5d59",
+                  color: "#687078",
                   lineHeight: 1.65,
                   marginBottom: 20,
                   fontWeight: 300,
@@ -487,7 +487,7 @@ function MobileCard({ agent, index }: { agent: (typeof AGENTS)[0]; index: number
               <div
                 style={{
                   background: "#faf9f5",
-                  border: "1px solid #e8e6dc",
+                  border: "1px solid #e6e9ed",
                   borderRadius: 12,
                   padding: "16px 18px",
                   marginBottom: 16,
@@ -503,7 +503,7 @@ function MobileCard({ agent, index }: { agent: (typeof AGENTS)[0]; index: number
                         width: 5,
                         height: 5,
                         borderRadius: "50%",
-                        background: "#c96442",
+                        background: "#d4af37",
                         flexShrink: 0,
                         marginTop: 6,
                       }}
@@ -538,7 +538,7 @@ export default function AgentBreakdown() {
       id="agents"
       ref={sectionRef}
       style={{
-        background: "#f5f4ed",
+        background: "#f8f9fa",
         padding: "100px 0",
         position: "relative",
         overflow: "hidden",
@@ -564,12 +564,12 @@ export default function AgentBreakdown() {
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 11,
             fontWeight: 500,
-            color: "#87867f",
+            color: "#9ea5ad",
             letterSpacing: "0.08em",
             textTransform: "uppercase",
           }}
         >
-          <div style={{ width: 20, height: 1, background: "#87867f", opacity: 0.6 }} />
+          <div style={{ width: 20, height: 1, background: "#9ea5ad", opacity: 0.6 }} />
           The Agent Suite
         </div>
         <h2
@@ -577,7 +577,7 @@ export default function AgentBreakdown() {
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: "clamp(36px, 4vw, 52px)",
             fontWeight: 500,
-            color: "#1c1b18",
+            color: "#1a1c1e",
             lineHeight: 1.1,
             letterSpacing: "-0.02em",
             maxWidth: 560,
@@ -622,7 +622,7 @@ export default function AgentBreakdown() {
                     background: "none",
                     border: "none",
                     borderLeft: isActive
-                      ? "3px solid #c96442"
+                      ? "3px solid #d4af37"
                       : "3px solid transparent",
                     cursor: "pointer",
                     textAlign: "left",
@@ -632,14 +632,14 @@ export default function AgentBreakdown() {
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) {
-                      (e.currentTarget as HTMLElement).style.borderLeftColor = "rgba(201,100,66,0.35)";
-                      (e.currentTarget as HTMLElement).querySelector<HTMLElement>(".nav-name")!.style.color = "#1c1b18";
+                      (e.currentTarget as HTMLElement).style.borderLeftColor = "rgba(212,175,55,0.35)";
+                      (e.currentTarget as HTMLElement).querySelector<HTMLElement>(".nav-name")!.style.color = "#1a1c1e";
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
                       (e.currentTarget as HTMLElement).style.borderLeftColor = "transparent";
-                      (e.currentTarget as HTMLElement).querySelector<HTMLElement>(".nav-name")!.style.color = "#87867f";
+                      (e.currentTarget as HTMLElement).querySelector<HTMLElement>(".nav-name")!.style.color = "#9ea5ad";
                     }
                   }}
                 >
@@ -648,7 +648,7 @@ export default function AgentBreakdown() {
                       fontFamily: "'DM Sans', sans-serif",
                       fontSize: 10,
                       fontWeight: 500,
-                      color: "#87867f",
+                      color: "#9ea5ad",
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                       marginBottom: 5,
@@ -663,7 +663,7 @@ export default function AgentBreakdown() {
                       fontFamily: isActive ? "'Cormorant Garamond', serif" : "'DM Sans', sans-serif",
                       fontSize: isActive ? 20 : 15,
                       fontWeight: isActive ? 500 : 400,
-                      color: isActive ? "#1c1b18" : "#87867f",
+                      color: isActive ? "#1a1c1e" : "#9ea5ad",
                       lineHeight: 1.2,
                       transition: "all 0.22s ease",
                     }}
@@ -692,7 +692,7 @@ export default function AgentBreakdown() {
                   height: 3,
                   flex: 1,
                   borderRadius: 2,
-                  background: i === activeIndex ? "#c96442" : "#dddbd0",
+                  background: i === activeIndex ? "#d4af37" : "#d3d7dc",
                   cursor: "pointer",
                   transition: "background 0.3s",
                 }}
@@ -751,7 +751,7 @@ export default function AgentBreakdown() {
           right: 48,
           height: 1,
           background:
-            "linear-gradient(90deg, transparent 0%, #dddbd0 30%, #dddbd0 70%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, #d3d7dc 30%, #d3d7dc 70%, transparent 100%)",
         }}
       />
     </section>

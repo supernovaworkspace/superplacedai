@@ -6,6 +6,7 @@ import { useRef } from "react";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import Button from "@/components/ui/Button";
 import CountUp from "@/components/ui/CountUp";
+import CTABackground3D from "@/components/canvas/CTABackground3D";
 
 const headlineWords = ["Your", "career", "doesn't", "wait."];
 
@@ -19,15 +20,15 @@ function FooterLink({ href, label }: { href: string; label: string }) {
       style={{
         fontFamily: "'DM Sans', sans-serif",
         fontSize: 14,
-        color: "#5e5d59",
+        color: "#687078",
         textDecoration: "none",
         transition: "color 0.2s ease",
       }}
       onMouseEnter={(event) => {
-        (event.currentTarget as HTMLAnchorElement).style.color = "#b0aea5";
+        (event.currentTarget as HTMLAnchorElement).style.color = "#b4bac0";
       }}
       onMouseLeave={(event) => {
-        (event.currentTarget as HTMLAnchorElement).style.color = "#5e5d59";
+        (event.currentTarget as HTMLAnchorElement).style.color = "#687078";
       }}
     >
       {label}
@@ -44,12 +45,12 @@ function SocialIcon({ label, href }: { label: string; href: string }) {
         width: 36,
         height: 36,
         borderRadius: "50%",
-        background: "#1e1e1c",
-        border: "1px solid #30302e",
+        background: "#202428",
+        border: "1px solid #2a3038",
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        color: "#5e5d59",
+        color: "#687078",
         fontFamily: "'DM Sans', sans-serif",
         fontSize: 12,
         fontWeight: 500,
@@ -58,13 +59,13 @@ function SocialIcon({ label, href }: { label: string; href: string }) {
       }}
       onMouseEnter={(event) => {
         const target = event.currentTarget as HTMLAnchorElement;
-        target.style.borderColor = "#c96442";
-        target.style.color = "#c96442";
+        target.style.borderColor = "#d4af37";
+        target.style.color = "#d4af37";
       }}
       onMouseLeave={(event) => {
         const target = event.currentTarget as HTMLAnchorElement;
-        target.style.borderColor = "#30302e";
-        target.style.color = "#5e5d59";
+        target.style.borderColor = "#2a3038";
+        target.style.color = "#687078";
       }}
     >
       {label}
@@ -86,13 +87,15 @@ export default function CTAAndFooter() {
       <motion.div
         style={{
           y: bgY,
-          background: "#c96442",
+          background: "#d4af37",
           position: "absolute",
           inset: 0,
           zIndex: 0,
           pointerEvents: "none",
         }}
-      />
+      >
+        <CTABackground3D />
+      </motion.div>
 
       <div style={{ position: "relative", zIndex: 1 }}>
         <section
@@ -169,7 +172,7 @@ export default function CTAAndFooter() {
                   style={{
                     flex: 1,
                     background: "#faf9f5",
-                    color: "#141413",
+                    color: "#111418",
                     border: "none",
                     borderRadius: 10,
                     padding: "14px 20px",
@@ -201,8 +204,8 @@ export default function CTAAndFooter() {
 
         <footer
           style={{
-            background: "#141413",
-            borderTop: "1px solid #30302e",
+            background: "#111418",
+            borderTop: "1px solid #2a3038",
           }}
         >
           <div
@@ -233,13 +236,13 @@ export default function CTAAndFooter() {
                       lineHeight: 1.1,
                     }}
                   >
-                    SuperPlaced AI
+                    <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 160 }} />
                   </div>
                   <p
                     style={{
                       fontFamily: "'DM Sans', sans-serif",
                       fontSize: 14,
-                      color: "#5e5d59",
+                      color: "#687078",
                       marginTop: 6,
                       lineHeight: 1.5,
                     }}
@@ -304,7 +307,7 @@ export default function CTAAndFooter() {
             <div
               style={{
                 height: 1,
-                background: "#30302e",
+                background: "#2a3038",
                 margin: "48px 0",
               }}
             />
@@ -343,17 +346,17 @@ export default function CTAAndFooter() {
 
       <style>{`
         .cta-section input::placeholder {
-          color: #87867f;
+          color: #9ea5ad;
           opacity: 1;
         }
 
         .cta-submit-button {
-          background: #141413 !important;
+          background: #111418 !important;
           border: none !important;
         }
 
         .cta-submit-button:hover {
-          background: #30302e !important;
+          background: #2a3038 !important;
         }
 
         @media (max-width: 900px) {

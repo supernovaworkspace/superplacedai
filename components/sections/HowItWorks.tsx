@@ -41,8 +41,8 @@ function StepVisual({ index }: { index: number }) {
     return (
       <div
         style={{
-          background: "#141413",
-          border: "1px solid #30302e",
+          background: "#111418",
+          border: "1px solid #2a3038",
           borderRadius: 10,
           padding: 12,
           display: "flex",
@@ -52,7 +52,7 @@ function StepVisual({ index }: { index: number }) {
       >
         <div
           style={{
-            border: "1px dashed rgba(201, 100, 66, 0.55)",
+            border: "1px dashed rgba(212,175,55, 0.55)",
             borderRadius: 8,
             height: 44,
             display: "flex",
@@ -60,7 +60,7 @@ function StepVisual({ index }: { index: number }) {
             justifyContent: "center",
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 11,
-            color: "#c96442",
+            color: "#d4af37",
           }}
         >
           Upload resume
@@ -77,7 +77,7 @@ function StepVisual({ index }: { index: number }) {
             style={{
               width: "72%",
               height: "100%",
-              background: "#c96442",
+              background: "#d4af37",
             }}
           />
         </div>
@@ -89,8 +89,8 @@ function StepVisual({ index }: { index: number }) {
     return (
       <div
         style={{
-          background: "#141413",
-          border: "1px solid #30302e",
+          background: "#111418",
+          border: "1px solid #2a3038",
           borderRadius: 10,
           padding: 12,
           display: "flex",
@@ -115,8 +115,8 @@ function StepVisual({ index }: { index: number }) {
               width: 12,
               height: 12,
               borderRadius: "50%",
-              background: "#c96442",
-              boxShadow: "0 0 10px rgba(201,100,66,0.45)",
+              background: "#d4af37",
+              boxShadow: "0 0 10px rgba(212,175,55,0.45)",
             }}
           />
         ))}
@@ -128,8 +128,8 @@ function StepVisual({ index }: { index: number }) {
     return (
       <div
         style={{
-          background: "#141413",
-          border: "1px solid #30302e",
+          background: "#111418",
+          border: "1px solid #2a3038",
           borderRadius: 10,
           padding: 12,
         }}
@@ -141,11 +141,11 @@ function StepVisual({ index }: { index: number }) {
             marginBottom: 8,
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 11,
-            color: "#87867f",
+            color: "#9ea5ad",
           }}
         >
           <span>Training Progress</span>
-          <span style={{ color: "#c96442" }}><CountUp end={73} suffix="%" /></span>
+          <span style={{ color: "#d4af37" }}><CountUp end={73} suffix="%" /></span>
         </div>
         <div
           style={{
@@ -162,7 +162,7 @@ function StepVisual({ index }: { index: number }) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             style={{
               height: "100%",
-              background: "#c96442",
+              background: "#d4af37",
             }}
           />
         </div>
@@ -173,8 +173,8 @@ function StepVisual({ index }: { index: number }) {
   return (
     <div
       style={{
-        background: "#141413",
-        border: "1px solid #30302e",
+        background: "#111418",
+        border: "1px solid #2a3038",
         borderRadius: 10,
         padding: 12,
         minHeight: 80,
@@ -193,10 +193,10 @@ function StepVisual({ index }: { index: number }) {
             padding: "6px 8px",
             borderRadius: 7,
             background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(201,100,66,0.16)",
+            border: "1px solid rgba(212,175,55,0.16)",
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 10,
-            color: "#87867f",
+            color: "#9ea5ad",
             whiteSpace: "nowrap",
           }}
         >
@@ -205,7 +205,7 @@ function StepVisual({ index }: { index: number }) {
               width: 6,
               height: 6,
               borderRadius: "50%",
-              background: "#c96442",
+              background: "#d4af37",
               flexShrink: 0,
             }}
           />
@@ -231,7 +231,7 @@ function StepCard({
         style={{
           position: "relative",
           background: "#1a1a18",
-          border: "1px solid #30302e",
+          border: "1px solid #2a3038",
           borderRadius: 16,
           padding: 32,
           minHeight: 380,
@@ -248,7 +248,7 @@ function StepCard({
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 72,
             lineHeight: 1,
-            color: "#30302e",
+            color: "#2a3038",
             fontWeight: 500,
             pointerEvents: "none",
             userSelect: "none",
@@ -263,8 +263,8 @@ function StepCard({
               width: 40,
               height: 40,
               borderRadius: "50%",
-              background: isActive ? "#c96442" : "rgba(201, 100, 66, 0.2)",
-              border: isActive ? "1px solid #c96442" : "1px solid rgba(201, 100, 66, 0.35)",
+              background: isActive ? "#d4af37" : "rgba(212,175,55, 0.2)",
+              border: isActive ? "1px solid #d4af37" : "1px solid rgba(212,175,55, 0.35)",
               color: "#faf9f5",
               display: "flex",
               alignItems: "center",
@@ -296,7 +296,7 @@ function StepCard({
           style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 15,
-            color: "#87867f",
+            color: "#9ea5ad",
             lineHeight: 1.65,
             marginTop: 10,
             textAlign: "center",
@@ -371,7 +371,7 @@ export default function HowItWorks() {
       ref={sectionRef}
       className="how-it-works-section"
       style={{
-        background: "#141413",
+        background: "#111418",
         padding: "112px 0 92px",
       }}
     >
@@ -406,7 +406,7 @@ export default function HowItWorks() {
               style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 18,
-                color: "#87867f",
+                color: "#9ea5ad",
                 marginTop: 12,
               }}
             >
@@ -433,7 +433,7 @@ export default function HowItWorks() {
             <motion.path
               ref={timelineRef}
               d="M 90 18 L 1110 18"
-              stroke="#c96442"
+              stroke="#d4af37"
               strokeWidth="1"
               strokeDasharray="8 8"
               strokeLinecap="round"
@@ -490,7 +490,7 @@ export default function HowItWorks() {
               fontFamily: "'Cormorant Garamond', serif",
               fontStyle: "italic",
               fontSize: 26,
-              color: "#87867f",
+              color: "#9ea5ad",
               lineHeight: 1.35,
             }}
           >

@@ -15,7 +15,7 @@ type Agent = {
 };
 
 const agents: Agent[] = [
-  { name: 'Resume Analyzer', orbitRadius: 3.8, speed: 0.4, startAngle: 0, color: '#c96442' },
+  { name: 'Resume Analyzer', orbitRadius: 3.8, speed: 0.4, startAngle: 0, color: '#d4af37' },
   {
     name: 'Skill Gap Agent',
     orbitRadius: 4.5,
@@ -28,7 +28,7 @@ const agents: Agent[] = [
     orbitRadius: 4.0,
     speed: 0.35,
     startAngle: Math.PI * 0.8,
-    color: '#c96442',
+    color: '#d4af37',
   },
   {
     name: 'Job Matching',
@@ -42,7 +42,7 @@ const agents: Agent[] = [
     orbitRadius: 4.2,
     speed: 0.31,
     startAngle: Math.PI * 1.7,
-    color: '#c96442',
+    color: '#d4af37',
   },
 ];
 
@@ -68,8 +68,8 @@ function CoreSphere() {
       <mesh ref={sphereRef}>
         <sphereGeometry args={[1.2, 64, 64]} />
         <meshStandardMaterial
-          color="#c96442"
-          emissive="#c96442"
+          color="#d4af37"
+          emissive="#d4af37"
           emissiveIntensity={0.4}
           roughness={0.3}
           metalness={0.6}
@@ -78,12 +78,12 @@ function CoreSphere() {
 
       <mesh ref={ringARef} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[1.5, 0.015, 16, 200]} />
-        <meshBasicMaterial color="#c96442" transparent opacity={0.4} />
+        <meshBasicMaterial color="#d4af37" transparent opacity={0.4} />
       </mesh>
 
       <mesh ref={ringBRef} rotation={[Math.PI / 3, 0, 0]}>
         <torusGeometry args={[1.8, 0.008, 16, 200]} />
-        <meshBasicMaterial color="#c96442" transparent opacity={0.2} />
+        <meshBasicMaterial color="#d4af37" transparent opacity={0.2} />
       </mesh>
     </group>
   );
@@ -140,7 +140,7 @@ function SatellitesAndLines() {
                 />
               </bufferGeometry>
               <lineDashedMaterial
-                color="#c96442"
+                color="#d4af37"
                 transparent
                 opacity={0.2}
                 dashSize={0.15}
@@ -155,7 +155,7 @@ function SatellitesAndLines() {
               position={[startX, 0, startZ]}
             >
               <RoundedBox args={[0.8, 0.45, 0.12]} radius={0.08} smoothness={4}>
-                <meshStandardMaterial color="#1a1a18" emissive="#30302e" emissiveIntensity={0.3} />
+                <meshStandardMaterial color="#1a1a18" emissive="#2a3038" emissiveIntensity={0.3} />
               </RoundedBox>
 
               <mesh position={[0, 0.28, 0]}>
@@ -164,7 +164,7 @@ function SatellitesAndLines() {
               </mesh>
 
               <Billboard position={[0, -0.45, 0]}>
-                <Text fontSize={0.18} color="#b0aea5" anchorX="center" anchorY="middle" maxWidth={2.6}>
+                <Text fontSize={0.18} color="#b4bac0" anchorX="center" anchorY="middle" maxWidth={2.6}>
                   {agent.name}
                 </Text>
               </Billboard>
@@ -240,7 +240,7 @@ function ParticleField() {
   return (
     <instancedMesh ref={instancedRef} args={[undefined, undefined, particleCount]}>
       <sphereGeometry args={[0.025, 8, 8]} />
-      <meshBasicMaterial color="#30302e" transparent opacity={0.6} />
+      <meshBasicMaterial color="#2a3038" transparent opacity={0.6} />
     </instancedMesh>
   );
 }
@@ -259,7 +259,7 @@ export default function OrbitalCore() {
   return (
     <>
       <ambientLight intensity={0.3} />
-      <pointLight position={[0, 0, 0]} color="#c96442" intensity={2} distance={8} />
+      <pointLight position={[0, 0, 0]} color="#d4af37" intensity={2} distance={8} />
       <pointLight position={[5, 5, 5]} color="#ffffff" intensity={0.4} />
 
       <CoreSphere />

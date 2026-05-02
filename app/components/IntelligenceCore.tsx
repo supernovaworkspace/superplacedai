@@ -14,8 +14,8 @@ const AGENTS = [
     radius: 220,
     speed: 12,
     startAngle: -90,
-    dotColor: "#c96442",
-    statusColor: "#c96442",
+    dotColor: "#d4af37",
+    statusColor: "#d4af37",
   },
   {
     id: "skillgap",
@@ -34,8 +34,8 @@ const AGENTS = [
     radius: 232,
     speed: 14,
     startAngle: 130,
-    dotColor: "#22c55e",
-    statusColor: "#22c55e",
+    dotColor: "#b87333",
+    statusColor: "#b87333",
   },
   {
     id: "jobmatch",
@@ -44,8 +44,8 @@ const AGENTS = [
     radius: 252,
     speed: 19,
     startAngle: -160,
-    dotColor: "#87867f",
-    statusColor: "#87867f",
+    dotColor: "#9ea5ad",
+    statusColor: "#9ea5ad",
   },
   {
     id: "career",
@@ -54,8 +54,8 @@ const AGENTS = [
     radius: 242,
     speed: 15,
     startAngle: -45,
-    dotColor: "#c96442",
-    statusColor: "#c96442",
+    dotColor: "#d4af37",
+    statusColor: "#d4af37",
   },
 ];
 
@@ -90,8 +90,8 @@ function buildKeyframes() {
     @keyframes ring-cw  { from { transform: rotate(0deg); }    to { transform: rotate(360deg); } }
     @keyframes ring-ccw { from { transform: rotate(0deg); }    to { transform: rotate(-360deg); } }
     @keyframes core-pulse {
-      0%,100% { box-shadow: 0 0 0 1px rgba(201,100,66,0.3), 0 0 40px rgba(201,100,66,0.15), 0 0 80px rgba(201,100,66,0.08); }
-      50%     { box-shadow: 0 0 0 1px rgba(201,100,66,0.5), 0 0 60px rgba(201,100,66,0.25), 0 0 120px rgba(201,100,66,0.12); }
+      0%,100% { box-shadow: 0 0 0 1px rgba(212,175,55,0.3), 0 0 40px rgba(212,175,55,0.15), 0 0 80px rgba(212,175,55,0.08); }
+      50%     { box-shadow: 0 0 0 1px rgba(212,175,55,0.5), 0 0 60px rgba(212,175,55,0.25), 0 0 120px rgba(212,175,55,0.12); }
     }
     @keyframes dash-draw {
       from { stroke-dashoffset: 600; }
@@ -119,7 +119,7 @@ function AgentPill({
       onMouseEnter={() => onHover(agent.id)}
       onMouseLeave={() => onHover(null)}
       style={{
-        background: "#1e1e1c",
+        background: "#202428",
         border: `1px solid rgba(240,238,230,${isHovered ? 0.35 : 0.18})`,
         borderRadius: 24,
         padding: "10px 18px",
@@ -131,7 +131,7 @@ function AgentPill({
         transition: "all 0.25s ease",
         transform: isHovered ? "scale(1.06)" : "scale(1)",
         boxShadow: isHovered
-          ? `0 0 24px rgba(201,100,66,0.22), 0 4px 20px rgba(0,0,0,0.4)`
+          ? `0 0 24px rgba(212,175,55,0.22), 0 4px 20px rgba(0,0,0,0.4)`
           : `0 2px 12px rgba(0,0,0,0.3)`,
       }}
     >
@@ -151,7 +151,7 @@ function AgentPill({
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 13,
             fontWeight: 500,
-            color: "#b0aea5",
+            color: "#b4bac0",
           }}
         >
           {agent.name}
@@ -161,7 +161,7 @@ function AgentPill({
         style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: 11,
-          color: "#5e5d59",
+          color: "#687078",
           paddingLeft: 13,
         }}
       >
@@ -201,7 +201,7 @@ export default function IntelligenceCore() {
     <section
       ref={sectionRef}
       style={{
-        background: "#141413",
+        background: "#111418",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -220,7 +220,7 @@ export default function IntelligenceCore() {
           position: "absolute",
           inset: 0,
           backgroundImage:
-            "radial-gradient(circle at 50% 50%, rgba(201,100,66,0.04) 0%, transparent 70%), " +
+            "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 70%), " +
             "linear-gradient(rgba(48,48,46,0.3) 1px, transparent 1px), " +
             "linear-gradient(90deg, rgba(48,48,46,0.3) 1px, transparent 1px)",
           backgroundSize: "100% 100%, 60px 60px, 60px 60px",
@@ -240,7 +240,7 @@ export default function IntelligenceCore() {
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 11,
             fontWeight: 500,
-            color: "#5e5d59",
+            color: "#687078",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
             marginBottom: 16,
@@ -250,9 +250,9 @@ export default function IntelligenceCore() {
             gap: 10,
           }}
         >
-          <span style={{ display: "inline-block", width: 20, height: 1, background: "#5e5d59" }} />
+          <span style={{ display: "inline-block", width: 20, height: 1, background: "#687078" }} />
           Core Architecture
-          <span style={{ display: "inline-block", width: 20, height: 1, background: "#5e5d59" }} />
+          <span style={{ display: "inline-block", width: 20, height: 1, background: "#687078" }} />
         </div>
         <h2
           style={{
@@ -271,7 +271,7 @@ export default function IntelligenceCore() {
           style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 18,
-            color: "#87867f",
+            color: "#9ea5ad",
             fontWeight: 300,
           }}
         >
@@ -333,7 +333,7 @@ export default function IntelligenceCore() {
                 y1={0}
                 x2={a.radius - 90}
                 y2={0}
-                stroke="#c96442"
+                stroke="#d4af37"
                 strokeOpacity={0.18}
                 strokeWidth="1"
                 strokeDasharray="4 8"
@@ -369,7 +369,7 @@ export default function IntelligenceCore() {
             cy="0"
             r={88}
             fill="none"
-            stroke="rgba(201,100,66,0.18)"
+            stroke="rgba(212,175,55,0.18)"
             strokeWidth="1"
             strokeDasharray="6 10"
             style={{ animation: "ring-cw 20s linear infinite" }}
@@ -379,7 +379,7 @@ export default function IntelligenceCore() {
             cy="0"
             r={104}
             fill="none"
-            stroke="rgba(201,100,66,0.09)"
+            stroke="rgba(212,175,55,0.09)"
             strokeWidth="1"
             strokeDasharray="3 14"
             style={{ animation: "ring-ccw 28s linear infinite" }}
@@ -405,7 +405,7 @@ export default function IntelligenceCore() {
               width: 160,
               height: 160,
               borderRadius: "50%",
-              background: "radial-gradient(circle at 40% 35%, #e07254 0%, #c96442 35%, #30302e 100%)",
+              background: "radial-gradient(circle at 40% 35%, #b87333 0%, #d4af37 35%, #2a3038 100%)",
               animation: "core-pulse 3s ease-in-out infinite",
               display: "flex",
               alignItems: "center",
@@ -419,22 +419,20 @@ export default function IntelligenceCore() {
                 position: "absolute",
                 inset: -8,
                 borderRadius: "50%",
-                border: "1px solid rgba(201,100,66,0.25)",
+                border: "1px solid rgba(212,175,55,0.25)",
                 pointerEvents: "none",
               }}
             />
-            <span
+            <img 
+              src="/core-logo.png" 
+              alt="Core Logo" 
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 48,
-                fontWeight: 500,
-                color: "#f5f4ed",
-                lineHeight: 1,
-                userSelect: "none",
+                width: 140,
+                height: 140,
+                objectFit: "contain",
+                userSelect: "none"
               }}
-            >
-              S
-            </span>
+            />
           </motion.div>
         </div>
 
@@ -528,7 +526,7 @@ export default function IntelligenceCore() {
                       fontFamily: "'DM Sans', sans-serif",
                       fontSize: 12,
                       fontWeight: 500,
-                      color: "#87867f",
+                      color: "#9ea5ad",
                     }}
                   >
                     {company.name}
@@ -548,7 +546,7 @@ export default function IntelligenceCore() {
         style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: 12,
-          color: "#3a3a38",
+          color: "#333940",
           letterSpacing: "0.06em",
           textTransform: "uppercase",
           marginTop: 32,
@@ -568,7 +566,7 @@ export default function IntelligenceCore() {
           right: 0,
           height: 1,
           background:
-            "linear-gradient(90deg, transparent 0%, #30302e 30%, #30302e 70%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, #2a3038 30%, #2a3038 70%, transparent 100%)",
         }}
       />
     </section>

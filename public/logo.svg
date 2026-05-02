@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60" width="300" height="60">
+  <defs>
+    <style>
+      .text { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; fill: #ffffff; }
+      .icon { fill: #ffffff; }
+    </style>
+  </defs>
+  <path class="icon" d="M10,30 L20,15 L30,30 L20,45 Z" />
+  <text class="text" x="40" y="40">SuperPlaced AI</text>
+</svg>

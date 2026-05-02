@@ -40,7 +40,7 @@ const sizeStyles: Record<ButtonSize, CSSProperties> = {
 const variantStyles: Record<ButtonVariant, { normal: CSSProperties; hover: CSSProperties }> = {
   primary: {
     normal: {
-      background: '#c96442',
+      background: '#d4af37',
       color: '#faf9f5',
     },
     hover: {
@@ -50,7 +50,7 @@ const variantStyles: Record<ButtonVariant, { normal: CSSProperties; hover: CSSPr
   },
   secondary: {
     normal: {
-      background: '#e8e6dc',
+      background: '#e6e9ed',
       color: '#4d4c48',
     },
     hover: {
@@ -60,24 +60,24 @@ const variantStyles: Record<ButtonVariant, { normal: CSSProperties; hover: CSSPr
   },
   dark: {
     normal: {
-      background: '#141413',
+      background: '#111418',
       color: '#faf9f5',
-      border: '1px solid #30302e',
+      border: '1px solid #2a3038',
     },
     hover: {
-      background: '#30302e',
+      background: '#2a3038',
       color: '#faf9f5',
-      border: '1px solid #30302e',
+      border: '1px solid #2a3038',
     },
   },
   ghost: {
     normal: {
       background: 'transparent',
-      color: '#5e5d59',
+      color: '#687078',
     },
     hover: {
       background: 'transparent',
-      color: '#141413',
+      color: '#111418',
     },
   },
 };

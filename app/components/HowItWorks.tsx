@@ -11,7 +11,7 @@ function UploadMock() {
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <div
         style={{
-          border: "1px dashed rgba(201,100,66,0.4)",
+          border: "1px dashed rgba(212,175,55,0.4)",
           borderRadius: 10,
           padding: "14px 16px",
           display: "flex",
@@ -19,15 +19,15 @@ function UploadMock() {
           justifyContent: "center",
           flexDirection: "column",
           gap: 6,
-          background: "rgba(201,100,66,0.04)",
+          background: "rgba(212,175,55,0.04)",
         }}
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c96442" strokeWidth="1.5" strokeLinecap="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4af37" strokeWidth="1.5" strokeLinecap="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
           <polyline points="17 8 12 3 7 8" />
           <line x1="12" y1="3" x2="12" y2="15" />
         </svg>
-        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#c96442" }}>Drop resume here</span>
+        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#d4af37" }}>Drop resume here</span>
       </div>
       {["resume_final_v3.pdf", "linkedin_profile.pdf"].map((f, i) => (
         <div
@@ -42,12 +42,12 @@ function UploadMock() {
             borderRadius: 7,
           }}
         >
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#87867f" strokeWidth="2">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9ea5ad" strokeWidth="2">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
             <polyline points="14 2 14 8 20 8" />
           </svg>
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#87867f", flex: 1 }}>{f}</span>
-          <div style={{ width: 6, height: 6, borderRadius: "50%", background: i === 0 ? "#22c55e" : "#c96442" }} />
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#9ea5ad", flex: 1 }}>{f}</span>
+          <div style={{ width: 6, height: 6, borderRadius: "50%", background: i === 0 ? "#b87333" : "#d4af37" }} />
         </div>
       ))}
     </div>
@@ -56,11 +56,11 @@ function UploadMock() {
 
 function AgentsMock() {
   const agents = [
-    { name: "Resume Analyzer", color: "#c96442" },
+    { name: "Resume Analyzer", color: "#d4af37" },
     { name: "Skill Gap", color: "#f59e0b" },
-    { name: "Interview AI", color: "#22c55e" },
+    { name: "Interview AI", color: "#b87333" },
     { name: "Job Match", color: "#3b82f6" },
-    { name: "Career Intel", color: "#c96442" },
+    { name: "Career Intel", color: "#d4af37" },
   ];
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -91,9 +91,9 @@ function AgentsMock() {
 
 function ProgressMock() {
   const bars = [
-    { label: "Resume Score", pct: 87, color: "#c96442" },
+    { label: "Resume Score", pct: 87, color: "#d4af37" },
     { label: "Interview Readiness", pct: 64, color: "#f59e0b" },
-    { label: "Skill Coverage", pct: 72, color: "#22c55e" },
+    { label: "Skill Coverage", pct: 72, color: "#b87333" },
   ];
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -113,8 +113,8 @@ function ProgressMock() {
           </div>
         </div>
       ))}
-      <div style={{ padding: "7px 10px", background: "rgba(201,100,66,0.07)", border: "1px solid rgba(201,100,66,0.15)", borderRadius: 8 }}>
-        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#c96442" }}>↑ 34% improvement this month</span>
+      <div style={{ padding: "7px 10px", background: "rgba(212,175,55,0.07)", border: "1px solid rgba(212,175,55,0.15)", borderRadius: 8 }}>
+        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#d4af37" }}>↑ 34% improvement this month</span>
       </div>
     </div>
   );
@@ -124,13 +124,13 @@ function ConnectMock() {
   const companies = [
     { name: "Mercor",   color: "#3b82f6" },
     { name: "Scale AI", color: "#8b5cf6" },
-    { name: "Outlier",  color: "#22c55e" },
-    { name: "Remox",    color: "#c96442" },
+    { name: "Outlier",  color: "#b87333" },
+    { name: "Remox",    color: "#d4af37" },
   ];
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
       <div style={{ display: "flex", justifyContent: "center", marginBottom: 4 }}>
-        <div style={{ padding: "4px 12px", background: "rgba(201,100,66,0.1)", border: "1px solid rgba(201,100,66,0.25)", borderRadius: 20, fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#c96442", fontWeight: 500 }}>
+        <div style={{ padding: "4px 12px", background: "rgba(212,175,55,0.1)", border: "1px solid rgba(212,175,55,0.25)", borderRadius: 20, fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#d4af37", fontWeight: 500 }}>
           Your Profile · 91% Ready
         </div>
       </div>
@@ -143,7 +143,7 @@ function ConnectMock() {
           style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 10px", background: "rgba(255,255,255,0.03)", border: `1px solid ${c.color}22`, borderRadius: 7 }}
         >
           <div style={{ width: 6, height: 6, borderRadius: "50%", background: c.color, boxShadow: `0 0 6px ${c.color}` }} />
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#87867f", flex: 1 }}>{c.name}</span>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#9ea5ad", flex: 1 }}>{c.name}</span>
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: c.color }}>Connected →</span>
         </motion.div>
       ))}
@@ -238,9 +238,9 @@ function StepCard({
             active
               ? {
                   boxShadow: [
-                    "0 0 0px rgba(201,100,66,0)",
-                    "0 0 20px rgba(201,100,66,0.45)",
-                    "0 0 10px rgba(201,100,66,0.2)",
+                    "0 0 0px rgba(212,175,55,0)",
+                    "0 0 20px rgba(212,175,55,0.45)",
+                    "0 0 10px rgba(212,175,55,0.2)",
                   ],
                 }
               : {}
@@ -250,12 +250,12 @@ function StepCard({
             width: 56,
             height: 56,
             borderRadius: "50%",
-            background: active ? "#c96442" : "#232320",
-            border: active ? "2px solid #c96442" : "2px solid #3a3a38",
+            background: active ? "#d4af37" : "#22262a",
+            border: active ? "2px solid #d4af37" : "2px solid #333940",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: active ? "#f5f4ed" : "#5e5d59",
+            color: active ? "#f8f9fa" : "#687078",
             transition: "all 0.5s cubic-bezier(0.22,1,0.36,1)",
           }}
         >
@@ -272,7 +272,7 @@ function StepCard({
             fontWeight: 500,
             letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: active ? "#c96442" : "#5e5d59",
+            color: active ? "#d4af37" : "#687078",
             transition: "color 0.4s",
           }}
         >
@@ -299,7 +299,7 @@ function StepCard({
         style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: 14,
-          color: "#87867f",
+          color: "#9ea5ad",
           textAlign: "center",
           lineHeight: 1.65,
           marginBottom: 20,
@@ -314,7 +314,7 @@ function StepCard({
       <div
         style={{
           background: "#1a1a18",
-          border: `1px solid ${active ? "rgba(201,100,66,0.22)" : "#252523"}`,
+          border: `1px solid ${active ? "rgba(212,175,55,0.22)" : "#262b30"}`,
           borderRadius: 14,
           padding: "16px",
           transition: "border-color 0.4s",
@@ -359,7 +359,7 @@ export default function HowItWorks() {
       ref={sectionRef}
       id="how"
       style={{
-        background: "#141413",
+        background: "#111418",
         padding: "100px 0 80px",
         position: "relative",
         overflow: "hidden",
@@ -375,7 +375,7 @@ export default function HowItWorks() {
           width: 700,
           height: 280,
           background:
-            "radial-gradient(ellipse at top, rgba(201,100,66,0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse at top, rgba(212,175,55,0.06) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
@@ -398,14 +398,14 @@ export default function HowItWorks() {
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 11,
               fontWeight: 500,
-              color: "#5e5d59",
+              color: "#687078",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
             }}
           >
-            <span style={{ display: "inline-block", width: 20, height: 1, background: "#5e5d59" }} />
+            <span style={{ display: "inline-block", width: 20, height: 1, background: "#687078" }} />
             The Process
-            <span style={{ display: "inline-block", width: 20, height: 1, background: "#5e5d59" }} />
+            <span style={{ display: "inline-block", width: 20, height: 1, background: "#687078" }} />
           </div>
 
           <h2
@@ -425,7 +425,7 @@ export default function HowItWorks() {
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 20,
-              color: "#87867f",
+              color: "#9ea5ad",
               fontWeight: 300,
             }}
           >
@@ -456,9 +456,9 @@ export default function HowItWorks() {
                 left: "calc(12.5% + 28px)",
                 height: 1,
                 width: `calc((75% - 56px) * ${lineWidth / 100})`,
-                background: "linear-gradient(90deg, #c96442, #e07254)",
+                background: "linear-gradient(90deg, #d4af37, #b87333)",
                 zIndex: 2,
-                boxShadow: lineWidth > 5 ? "0 0 8px rgba(201,100,66,0.5)" : "none",
+                boxShadow: lineWidth > 5 ? "0 0 8px rgba(212,175,55,0.5)" : "none",
                 transition: "box-shadow 0.3s",
               }}
             />
@@ -510,12 +510,12 @@ export default function HowItWorks() {
                     width: 44,
                     height: 44,
                     borderRadius: "50%",
-                    background: activeStep >= i ? "#c96442" : "#232320",
-                    border: `2px solid ${activeStep >= i ? "#c96442" : "#3a3a38"}`,
+                    background: activeStep >= i ? "#d4af37" : "#22262a",
+                    border: `2px solid ${activeStep >= i ? "#d4af37" : "#333940"}`,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: activeStep >= i ? "#f5f4ed" : "#5e5d59",
+                    color: activeStep >= i ? "#f8f9fa" : "#687078",
                     transition: "all 0.5s ease",
                     flexShrink: 0,
                   }}
@@ -531,7 +531,7 @@ export default function HowItWorks() {
                       marginTop: 8,
                       background:
                         activeStep > i
-                          ? "linear-gradient(180deg, #c96442, #2a2a28)"
+                          ? "linear-gradient(180deg, #d4af37, #2a2a28)"
                           : "#2a2a28",
                       transition: "background 0.5s",
                     }}
@@ -551,7 +551,7 @@ export default function HowItWorks() {
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: 10,
                     fontWeight: 500,
-                    color: "#5e5d59",
+                    color: "#687078",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                     display: "block",
@@ -576,7 +576,7 @@ export default function HowItWorks() {
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: 14,
-                    color: "#87867f",
+                    color: "#9ea5ad",
                     lineHeight: 1.65,
                     marginBottom: 16,
                     fontWeight: 300,
@@ -587,7 +587,7 @@ export default function HowItWorks() {
                 <div
                   style={{
                     background: "#1a1a18",
-                    border: "1px solid #252523",
+                    border: "1px solid #262b30",
                     borderRadius: 12,
                     padding: "14px",
                   }}
@@ -610,7 +610,7 @@ export default function HowItWorks() {
             style={{
               width: 40,
               height: 1,
-              background: "#3a3a38",
+              background: "#333940",
               margin: "0 auto 32px",
             }}
           />
@@ -630,7 +630,7 @@ export default function HowItWorks() {
             &ldquo;Most platforms give you information.
             <br />
             SuperPlaced AI gives you{" "}
-            <em style={{ color: "#c96442" }}>transformation.</em>&rdquo;
+            <em style={{ color: "#d4af37" }}>transformation.</em>&rdquo;
           </blockquote>
         </motion.div>
       </div>
@@ -656,7 +656,7 @@ export default function HowItWorks() {
           right: 0,
           height: 1,
           background:
-            "linear-gradient(90deg, transparent 0%, #30302e 30%, #30302e 70%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, #2a3038 30%, #2a3038 70%, transparent 100%)",
         }}
       />
     </section>
