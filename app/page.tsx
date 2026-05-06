@@ -60,17 +60,17 @@ export default function Home() {
           left: "24px",
           right: "24px",
           height: "64px",
-          background: "rgba(255, 255, 255, 0.4)",
-          backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
+          background: "rgba(255, 255, 255, 0.05)",
+          backdropFilter: "blur(40px)",
+          WebkitBackdropFilter: "blur(40px)",
           borderRadius: "100px",
-          border: "1px solid rgba(255, 255, 255, 0.8)",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           padding: "0 32px",
           zIndex: 100,
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.05)"
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
         }}>
           <div style={{ display: "flex", alignItems: "center" }}>
             <img 
