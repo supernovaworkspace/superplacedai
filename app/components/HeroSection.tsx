@@ -110,27 +110,41 @@ function PlatformStat({ label }: { label: string }) {
 function AgentCard() {
   const agents = [
     {
-      icon: "✦",
+      icon: "01",
       name: "Resume Analyzer",
       status: "Analyzing your profile...",
       statusType: "pulsing" as const,
       dotColor: "#b87333",
     },
     {
-      icon: "✦",
-      name: "Skill Gap Agent",
+      icon: "02",
+      name: "Skill Gap Analyzer",
       status: "8 gaps identified",
       statusType: "badge" as const,
       dotColor: "#b87333",
       badgeColor: "#f59e0b",
     },
     {
-      icon: "✦",
-      name: "Interview AI",
+      icon: "03",
+      name: "Interview AI Agent",
       status: "Ready to simulate",
       statusType: "ready" as const,
       dotColor: "#b87333",
     },
+    {
+      icon: "04",
+      name: "Job Matching Agent",
+      status: "Scanning platforms...",
+      statusType: "pulsing" as const,
+      dotColor: "#b87333",
+    },
+    {
+      icon: "05",
+      name: "Career Intelligence",
+      status: "Tracking progress",
+      statusType: "ready" as const,
+      dotColor: "#b87333",
+    }
   ];
 
   return (
