@@ -11,7 +11,9 @@ export default function IntelligenceCore() {
     <section
       ref={sectionRef}
       style={{
-        background: "transparent",
+        backgroundColor: "#0a0a0a",
+        backgroundImage: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.05) 0%, transparent 60%), linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+        backgroundSize: "100% 100%, 40px 40px, 40px 40px",
         padding: "120px 24px",
         position: "relative",
         display: "flex",
@@ -33,16 +35,16 @@ export default function IntelligenceCore() {
             fontFamily: "'Inter', sans-serif",
             fontSize: "clamp(32px, 5vw, 64px)",
             fontWeight: 900,
-            color: "#111",
+            color: "#fff",
             letterSpacing: "-0.04em",
             textTransform: "uppercase",
             lineHeight: 1.1,
-            textShadow: "0 4px 24px rgba(255,255,255,0.5)",
+            textShadow: "0 4px 24px rgba(0,0,0,0.5)",
           }}
         >
           Get Started With
           <br />
-          <span style={{ color: "transparent", WebkitTextStroke: "1.5px #111" }}>
+          <span style={{ color: "transparent", WebkitTextStroke: "1.5px #fff" }}>
             Superplaced AI
           </span>
         </h2>
@@ -58,11 +60,11 @@ export default function IntelligenceCore() {
           maxWidth: "1000px",
           aspectRatio: "16/9",
           borderRadius: "24px",
-          background: "rgba(255,255,255,0.3)",
+          background: "rgba(255,255,255,0.03)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(255,255,255,0.5)",
-          boxShadow: "0 32px 64px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,255,0.2)",
+          border: "1px solid rgba(255,255,255,0.1)",
+          boxShadow: "0 32px 64px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -73,13 +75,13 @@ export default function IntelligenceCore() {
         }}
         onMouseEnter={(e) => {
           (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.transform = "scale(1.1)";
-          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.background = "#111";
-          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.color = "#fff";
+          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.background = "#fff";
+          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.color = "#000";
         }}
         onMouseLeave={(e) => {
           (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.transform = "scale(1)";
-          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.background = "rgba(255,255,255,0.8)";
-          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.color = "#111";
+          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.background = "rgba(255,255,255,0.1)";
+          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.color = "#fff";
         }}
       >
         {/* Play Button */}
@@ -89,8 +91,8 @@ export default function IntelligenceCore() {
             width: "80px",
             height: "80px",
             borderRadius: "50%",
-            background: "rgba(255,255,255,0.8)",
-            color: "#111",
+            background: "rgba(255,255,255,0.1)",
+            color: "#fff",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -117,7 +119,7 @@ export default function IntelligenceCore() {
             fontFamily: "'Inter', sans-serif",
             fontSize: "14px",
             fontWeight: 600,
-            color: "#111",
+            color: "#fff",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
             zIndex: 2,
@@ -131,7 +133,7 @@ export default function IntelligenceCore() {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
+            backgroundImage: "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
             backgroundSize: "40px 40px",
             opacity: 0.5,
             zIndex: 1,
