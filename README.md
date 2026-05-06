@@ -1,6 +1,7 @@
 # SuperPlaced AI
 
-Frontend built by Claude Code + Antigravity.
+Multi-Agent AI Career Acceleration SaaS Platform
+
 
 ---
 
