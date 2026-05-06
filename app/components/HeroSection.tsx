@@ -193,7 +193,7 @@ function AgentCard() {
               color: "#e6e9ed",
             }}
           >
-            Active Pipeline
+            Active Agents
           </div>
         </div>
         {/* Live indicator */}
