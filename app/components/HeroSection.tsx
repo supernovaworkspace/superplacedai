@@ -656,7 +656,7 @@ export default function HeroSection() {
               duration={1.2}
             />
             <WarmDivider />
-            <PlatformStat label="Mercor · Scale AI · Outlier" />
+            <PlatformStat label="Direct Access with 1000+ remote jobs in 100+ companies like Mercor · Scale AI · Outlier" />
           </motion.div>
         </div>
 
