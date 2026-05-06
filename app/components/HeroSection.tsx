@@ -495,33 +495,7 @@ export default function HeroSection() {
       >
         {/* ─── LEFT COLUMN ─── */}
         <div>
-          {/* Eyebrow */}
-          <motion.div {...fadeUp(0)}>
-            <div
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: 11,
-                fontWeight: 500,
-                color: "#9ea5ad",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                marginBottom: 32,
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-              }}
-            >
-              <div
-                style={{
-                  width: 20,
-                  height: 1,
-                  background: "#9ea5ad",
-                  opacity: 0.6,
-                }}
-              />
-              AI-Powered Career Acceleration
-            </div>
-          </motion.div>
+
 
           {/* Headline */}
           <h1
