@@ -12,6 +12,7 @@ export default function SignInPage() {
   const [hoveredGithub, setHoveredGithub] = useState(false);
   const [hoveredEmail, setHoveredEmail] = useState(false);
   const [loading, setLoading] = useState<string | null>(null);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   const supabase = createClient();
 
@@ -91,13 +92,19 @@ export default function SignInPage() {
         style={{ position: "relative", zIndex: 1, background: "#ffffff", border: "1px solid #d3d7dc", borderRadius: 24, padding: "48px 44px", width: "100%", maxWidth: 440, boxShadow: "0 4px 24px rgba(28,27,24,0.06), 0 1px 4px rgba(28,27,24,0.04)" }}
       >
         {/* Logo */}
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 32 }}>
-          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 240, filter: "invert(1) brightness(0)" }} />
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
+          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 80, objectFit: "contain", filter: "invert(1) brightness(0)" }} />
         </div>
 
         {/* Heading */}
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 500, color: "#1a1c1e", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 8 }}>Welcome back</h1>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#9ea5ad", marginBottom: 32, lineHeight: 1.5 }}>Sign in to continue your career journey.</p>
+        <div style={{ textAlign: "center", marginBottom: 32 }}>
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 600, color: "#1a1c1e", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 8 }}>
+            {isSignUp ? "Create an account" : "Welcome back"}
+          </h1>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#687078", lineHeight: 1.5, margin: 0 }}>
+            {isSignUp ? "Sign up to start your career journey." : "Sign in to continue your career journey."}
+          </p>
+        </div>
 
         {/* OAuth buttons */}
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -167,6 +174,17 @@ export default function SignInPage() {
 
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#b3b1a8", textAlign: "center", marginTop: 12, lineHeight: 1.5 }}>
           Guest mode gives full access without an account.<br />Progress won&apos;t be saved.
+        </p>
+
+        {/* Sign In / Sign Up Toggle */}
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#687078", textAlign: "center", marginTop: 24, fontWeight: 500 }}>
+          {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+          <button 
+            onClick={() => setIsSignUp(!isSignUp)}
+            style={{ background: "none", border: "none", color: "#1a1c1e", fontWeight: 700, cursor: "pointer", padding: 0, textDecoration: "underline", textUnderlineOffset: "4px" }}
+          >
+            {isSignUp ? "Sign In" : "Sign Up"}
+          </button>
         </p>
 
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#b3b1a8", textAlign: "center", marginTop: 24 }}>
