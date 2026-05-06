@@ -13,6 +13,13 @@ export default function Home() {
         #hero nav { display: none !important; }
         /* Add some padding to hero to clear new header */
         #hero { padding-top: 80px !important; }
+        
+        .rave-link { transition: opacity 0.2s; }
+        .rave-link:hover { opacity: 0.5; }
+        .rave-btn-icon { transition: background 0.2s; }
+        .rave-btn-icon:hover { background: rgba(0,0,0,0.05) !important; }
+        .rave-btn-solid { transition: transform 0.2s; display: inline-block; }
+        .rave-btn-solid:hover { transform: scale(1.05); }
       `}} />
       
       {/* Rave inspired outer wrapper */}
@@ -52,16 +59,16 @@ export default function Home() {
           </div>
           
           <div style={{ display: "flex", gap: "40px", fontSize: "11px", fontWeight: 700, color: "#111", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-            <a href="#hero" style={{ textDecoration: "none", color: "inherit", transition: "opacity 0.2s" }} onMouseEnter={e=>e.currentTarget.style.opacity="0.5"} onMouseLeave={e=>e.currentTarget.style.opacity="1"}>New Arrivals</a>
-            <a href="#agents" style={{ textDecoration: "none", color: "inherit", transition: "opacity 0.2s" }} onMouseEnter={e=>e.currentTarget.style.opacity="0.5"} onMouseLeave={e=>e.currentTarget.style.opacity="1"}>Agents</a>
-            <a href="#how" style={{ textDecoration: "none", color: "inherit", transition: "opacity 0.2s" }} onMouseEnter={e=>e.currentTarget.style.opacity="0.5"} onMouseLeave={e=>e.currentTarget.style.opacity="1"}>Platform</a>
+            <a href="#hero" className="rave-link" style={{ textDecoration: "none", color: "inherit" }}>New Arrivals</a>
+            <a href="#agents" className="rave-link" style={{ textDecoration: "none", color: "inherit" }}>Agents</a>
+            <a href="#how" className="rave-link" style={{ textDecoration: "none", color: "inherit" }}>Platform</a>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <a href="/signin" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "36px", height: "36px", borderRadius: "50%", border: "1px solid rgba(0,0,0,0.1)", color: "#111", textDecoration: "none", transition: "background 0.2s" }} onMouseEnter={e=>e.currentTarget.style.background="rgba(0,0,0,0.05)"} onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
+            <a href="/signin" className="rave-btn-icon" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "36px", height: "36px", borderRadius: "50%", border: "1px solid rgba(0,0,0,0.1)", color: "#111", textDecoration: "none" }}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </a>
-            <a href="/signin" style={{ fontSize: "11px", fontWeight: 700, background: "#111", color: "#fff", padding: "12px 24px", borderRadius: "100px", textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.05em", transition: "transform 0.2s" }} onMouseEnter={e=>e.currentTarget.style.transform="scale(1.05)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}>
+            <a href="/signin" className="rave-btn-solid" style={{ fontSize: "11px", fontWeight: 700, background: "#111", color: "#fff", padding: "12px 24px", borderRadius: "100px", textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Sign In
             </a>
           </div>
