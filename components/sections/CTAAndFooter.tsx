@@ -87,7 +87,9 @@ export default function CTAAndFooter() {
       <motion.div
         style={{
           y: bgY,
-          background: "#d4af37",
+          background: "#0a0a0a",
+          borderTop: "1px solid rgba(255, 255, 255, 0.15)",
+          borderBottom: "1px solid rgba(255, 255, 255, 0.15)",
           position: "absolute",
           inset: 0,
           zIndex: 0,
