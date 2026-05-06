@@ -7,7 +7,7 @@ import CTAAndFooter from "../components/sections/CTAAndFooter";
 
 export default function Home() {
   return (
-    <div className="mesh-bg" style={{ minHeight: "100vh", padding: "24px", fontFamily: "'Inter', sans-serif" }}>
+    <div className="mesh-bg" style={{ minHeight: "100vh", padding: "0px", fontFamily: "'Inter', sans-serif" }}>
       <style dangerouslySetInnerHTML={{ __html: `
         /* Hide original hero nav to replace with Rave glass header */
         #hero nav { display: none !important; }
@@ -47,10 +47,10 @@ export default function Home() {
         background: "rgba(248, 249, 250, 0.65)",
         backdropFilter: "blur(40px)",
         WebkitBackdropFilter: "blur(40px)",
-        borderRadius: "32px",
+        borderRadius: "0px",
         overflow: "hidden",
-        boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.6), 0 24px 48px rgba(0,0,0,0.5)",
-        minHeight: "calc(100vh - 48px)"
+        boxShadow: "none",
+        minHeight: "100vh"
       }}>
         
         {/* Rave Glassmorphic Floating Header */}
