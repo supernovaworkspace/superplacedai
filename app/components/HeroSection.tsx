@@ -590,7 +590,7 @@ export default function HeroSection() {
           >
             SuperPlaced AI is an AI agent system that analyzes your resume, fills
             your skill gaps, simulates interviews, and connects you directly to
-            real hiring pipelines.
+            real hiring jobs.
           </motion.p>
 
           {/* CTAs */}
