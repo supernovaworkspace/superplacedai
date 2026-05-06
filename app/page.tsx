@@ -55,7 +55,7 @@ export default function Home() {
         
         {/* Rave Glassmorphic Floating Header */}
         <header style={{
-          position: "absolute",
+          position: "fixed",
           top: "24px",
           left: "24px",
           right: "24px",
