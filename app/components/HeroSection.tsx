@@ -372,8 +372,8 @@ export default function HeroSection() {
   const statsInView = useInView(statsRef, { once: true, margin: "-80px" });
 
   // Headline words for stagger animation
-  const line1Words = ["Raw", "potential,"];
-  const line2Words = ["job-ready", "talent."];
+  const line1Words = ["Looking", "For", "a", "Job", "—"];
+  const line2Words = ["Superplaced", "AI", "can", "help."];
 
   const fadeUp = (delay: number) => ({
     initial: { opacity: 0, y: 20 },
