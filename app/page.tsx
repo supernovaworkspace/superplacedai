@@ -76,7 +76,7 @@ export default function Home() {
             <img 
               src="/logo.png" 
               alt="Superplaced AI Logo" 
-              style={{ height: "40px", objectFit: "contain", filter: "invert(1) brightness(0)", marginLeft: "-8px" }} 
+              style={{ height: "200px", objectFit: "contain", filter: "invert(1) brightness(0)", marginLeft: "-8px" }} 
             />
           </div>
           
