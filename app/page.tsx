@@ -72,11 +72,12 @@ export default function Home() {
           zIndex: 100,
           boxShadow: "0 8px 32px rgba(0, 0, 0, 0.05)"
         }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-            </svg>
-            <div style={{ fontSize: "15px", fontWeight: 900, letterSpacing: "-0.04em", color: "#111" }}>SUPERPLACED</div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <img 
+              src="/logo.png" 
+              alt="Superplaced AI Logo" 
+              style={{ height: "40px", objectFit: "contain", filter: "invert(1) brightness(0)", marginLeft: "-8px" }} 
+            />
           </div>
           
           <div style={{ display: "flex", gap: "40px", fontSize: "11px", fontWeight: 700, color: "#111", textTransform: "uppercase", letterSpacing: "0.1em" }}>
