@@ -57,6 +57,19 @@ const agents = [
     accentColor: "#ea580c",
     glowColor: "rgba(234,88,12,0.15)",
   },
+  {
+    name: "Career Intelligence",
+    description: "Real-time insights on market trends, salary data, and emerging career paths.",
+    status: "Beta",
+    statusColor: "#7c3aed",
+    statusBg: "rgba(124,58,237,0.1)",
+    statusBorder: "rgba(124,58,237,0.2)",
+    tag: "Insights",
+    href: "/agents/career-intelligence",
+    tagColor: "#8b5cf6",
+    accentColor: "#8b5cf6",
+    glowColor: "rgba(139,92,246,0.15)",
+  },
 ];
 
 
@@ -238,14 +251,14 @@ export default function DashboardPage() {
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} style={{ marginBottom: 48 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 16px", borderRadius: 20, background: "rgba(212,175,55,0.08)", border: "1px solid rgba(212,175,55,0.15)", marginBottom: 20 }}>
-            <span style={{ fontSize: 10, color: "#d4af37", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Superplace gets u placed superfast</span>
+            <span style={{ fontSize: 10, color: "#d4af37", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Superplaced gets u a job superfast</span>
           </div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(36px,5vw,52px)", fontWeight: 600, color: "#1a1c1e", letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 16 }}>
-            Your AI Career{" "}
-            <span style={{ color: "#d4af37", textDecoration: "underline", textDecorationThickness: "2px", textUnderlineOffset: "6px" }}>Dashboard</span>
+            Super{" "}
+            <span style={{ color: "#d4af37", textDecoration: "underline", textDecorationThickness: "2px", textUnderlineOffset: "6px" }}>Agents</span>
           </h1>
           <p style={{ fontSize: 16, color: "#687078", fontWeight: 400, maxWidth: 500, lineHeight: 1.6 }}>
-            Four intelligent agents, one goal — getting you hired faster than ever.
+            Five intelligent agents, one goal — getting you hired faster than ever.
           </p>
         </motion.div>
 

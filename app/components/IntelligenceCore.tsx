@@ -59,85 +59,28 @@ export default function IntelligenceCore() {
           width: "100%",
           maxWidth: "1000px",
           aspectRatio: "16/9",
-          borderRadius: "24px",
-          background: "rgba(255,255,255,0.03)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(255,255,255,0.1)",
-          boxShadow: "0 32px 64px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
           position: "relative",
-          overflow: "hidden",
-          cursor: "pointer",
-        }}
-        onMouseEnter={(e) => {
-          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.transform = "scale(1.1)";
-          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.background = "#fff";
-          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.color = "#000";
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.transform = "scale(1)";
-          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.background = "rgba(255,255,255,0.1)";
-          (e.currentTarget.querySelector(".play-btn") as HTMLElement).style.color = "#fff";
+          zIndex: 1,
         }}
       >
-        {/* Play Button */}
-        <div
-          className="play-btn"
-          style={{
-            width: "80px",
-            height: "80px",
-            borderRadius: "50%",
-            background: "rgba(255,255,255,0.1)",
-            color: "#fff",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
-            transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
-            zIndex: 2,
-          }}
-        >
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            style={{ marginLeft: "4px" }}
-          >
-            <path d="M5 3l14 9-14 9V3z" />
-          </svg>
-        </div>
-
-        {/* Placeholder Text */}
-        <p
-          style={{
-            marginTop: "24px",
-            fontFamily: "'Inter', sans-serif",
-            fontSize: "14px",
-            fontWeight: 600,
-            color: "#fff",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            zIndex: 2,
-          }}
-        >
-          Video Placeholder
-        </p>
-
-        {/* Decorative Grid inside placeholder */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-            opacity: 0.5,
-            zIndex: 1,
-            pointerEvents: "none",
+        {/* Local Video Embed */}
+        <video 
+          src="/Video Project 1 (4).mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls
+          style={{ 
+            width: "100%", 
+            height: "100%", 
+            position: "absolute", 
+            top: 0, 
+            left: 0, 
+            borderRadius: "24px",
+            border: "1px solid rgba(255,255,255,0.1)",
+            boxShadow: "0 32px 64px rgba(0,0,0,0.5)",
+            backgroundColor: "#000"
           }}
         />
       </motion.div>

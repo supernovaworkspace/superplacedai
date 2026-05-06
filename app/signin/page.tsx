@@ -7,22 +7,14 @@ import { createClient } from "@/lib/supabase/client";
 
 export default function SignInPage() {
   const router = useRouter();
-  const [hoveredGuest, setHoveredGuest] = useState(false);
   const [hoveredGoogle, setHoveredGoogle] = useState(false);
-  const [hoveredGithub, setHoveredGithub] = useState(false);
-  const [hoveredEmail, setHoveredEmail] = useState(false);
+  const [hoveredLinkedin, setHoveredLinkedin] = useState(false);
+  const [hoveredLogin, setHoveredLogin] = useState(false);
   const [loading, setLoading] = useState<string | null>(null);
-  const [isSignUp, setIsSignUp] = useState(false);
 
   const supabase = createClient();
 
-  const handleGuest = () => {
-    setLoading("guest");
-    sessionStorage.setItem("superplaced_guest", "true");
-    setTimeout(() => router.push("/dashboard"), 600);
-  };
-
-  const handleOAuth = async (provider: "google" | "github") => {
+  const handleOAuth = async (provider: "google" | "linkedin_oidc") => {
     setLoading(provider);
     try {
       const { error } = await supabase.auth.signInWithOAuth({
@@ -32,7 +24,6 @@ export default function SignInPage() {
       if (error) {
         console.error("OAuth error:", error);
         setLoading(null);
-        // Fallback: go to dashboard anyway for demo
         setTimeout(() => router.push("/dashboard"), 800);
       }
     } catch {
@@ -41,163 +32,399 @@ export default function SignInPage() {
     }
   };
 
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading("email");
+    setTimeout(() => {
+      setLoading(null);
+      router.push("/dashboard");
+    }, 1500);
+  };
+
   return (
     <div
       style={{
-        minHeight: "100vh",
-        background: "#f8f9fa",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "24px",
+        minHeight: "100vh",
+        width: "100vw",
         position: "relative",
         overflow: "hidden",
+        background: "#000",
       }}
     >
-      {/* Noise texture */}
+      {/* Background Image */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E")`,
-          pointerEvents: "none",
+          background: "#0d0d0d",
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
           zIndex: 0,
         }}
       />
-
-      {/* Decorative warm orb */}
-      <div style={{ position: "absolute", top: "-120px", right: "-80px", width: "480px", height: "480px", borderRadius: "50%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
-      <div style={{ position: "absolute", bottom: "-100px", left: "-60px", width: "360px", height: "360px", borderRadius: "50%", background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
-
-      {/* Back to home */}
-      <motion.a
-        href="/"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        style={{ position: "absolute", top: 28, left: 40, display: "flex", alignItems: "center", gap: 8, fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#9ea5ad", textDecoration: "none", zIndex: 10, transition: "color 0.2s" }}
-        onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#1a1c1e")}
-        onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#9ea5ad")}
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
-        Back
-      </motion.a>
-
-      {/* Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        style={{ position: "relative", zIndex: 1, background: "#ffffff", border: "1px solid #d3d7dc", borderRadius: 24, padding: "48px 44px", width: "100%", maxWidth: 440, boxShadow: "0 4px 24px rgba(28,27,24,0.06), 0 1px 4px rgba(28,27,24,0.04)" }}
+      {/* Centered Content Container */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 3,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+          padding: "40px",
+        }}
       >
         {/* Logo */}
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
-          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 200, objectFit: "contain", filter: "invert(1) brightness(0)" }} />
-        </div>
-
-        {/* Heading */}
-        <div style={{ textAlign: "center", marginBottom: 32 }}>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 600, color: "#1a1c1e", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 8 }}>
-            {isSignUp ? "Create an account" : "Welcome back"}
-          </h1>
-          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#687078", lineHeight: 1.5, margin: 0 }}>
-            {isSignUp ? "Sign up to start your career journey." : "Sign in to continue your career journey."}
-          </p>
-        </div>
-
-        {/* OAuth buttons */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          {/* Google */}
-          <button
-            id="btn-signin-google"
-            onClick={() => handleOAuth("google")}
-            disabled={!!loading}
-            onMouseEnter={() => setHoveredGoogle(true)}
-            onMouseLeave={() => setHoveredGoogle(false)}
-            style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "13px 20px", borderRadius: 12, border: "1px solid #d3d7dc", background: hoveredGoogle ? "#f8f9fa" : "#ffffff", cursor: loading ? "not-allowed" : "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500, color: "#1a1c1e", transition: "all 0.2s ease", opacity: loading && loading !== "google" ? 0.5 : 1 }}
-          >
-            {loading === "google" ? <Spinner /> : <GoogleIcon />}
-            Continue with Google
-          </button>
-
-          {/* GitHub */}
-          <button
-            id="btn-signin-github"
-            onClick={() => handleOAuth("github")}
-            disabled={!!loading}
-            onMouseEnter={() => setHoveredGithub(true)}
-            onMouseLeave={() => setHoveredGithub(false)}
-            style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "13px 20px", borderRadius: 12, border: "1px solid #d3d7dc", background: hoveredGithub ? "#f8f9fa" : "#ffffff", cursor: loading ? "not-allowed" : "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500, color: "#1a1c1e", transition: "all 0.2s ease", opacity: loading && loading !== "github" ? 0.5 : 1 }}
-          >
-            {loading === "github" ? <Spinner /> : <GitHubIcon />}
-            Continue with GitHub
-          </button>
-
-          {/* Email */}
-          <button
-            id="btn-signin-email"
-            onClick={() => {
-              setLoading("email");
-              alert("Email login component integration required.");
-              setLoading(null);
-            }}
-            disabled={!!loading}
-            onMouseEnter={() => setHoveredEmail(true)}
-            onMouseLeave={() => setHoveredEmail(false)}
-            style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "13px 20px", borderRadius: 12, border: "1px solid #d3d7dc", background: hoveredEmail ? "#f8f9fa" : "#ffffff", cursor: loading ? "not-allowed" : "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500, color: "#1a1c1e", transition: "all 0.2s ease", opacity: loading && loading !== "email" ? 0.5 : 1 }}
-          >
-            {loading === "email" ? <Spinner /> : <MailIcon />}
-            Continue with Email
-          </button>
-        </div>
-
-        {/* Divider */}
-        <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "24px 0" }}>
-          <div style={{ flex: 1, height: 1, background: "#e6e9ed" }} />
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#b3b1a8", flexShrink: 0 }}>or</span>
-          <div style={{ flex: 1, height: 1, background: "#e6e9ed" }} />
-        </div>
-
-        {/* Guest login */}
-        <button
-          id="btn-signin-guest"
-          onClick={handleGuest}
-          disabled={!!loading}
-          onMouseEnter={() => setHoveredGuest(true)}
-          onMouseLeave={() => setHoveredGuest(false)}
-          style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "14px 20px", borderRadius: 12, border: "1.5px dashed #d4af37", background: hoveredGuest ? "rgba(212,175,55,0.06)" : "rgba(212,175,55,0.03)", cursor: loading ? "not-allowed" : "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500, color: "#d4af37", transition: "all 0.22s ease", transform: hoveredGuest ? "translateY(-1px)" : "translateY(0)", boxShadow: hoveredGuest ? "0 6px 18px rgba(212,175,55,0.15)" : "none", opacity: loading && loading !== "guest" ? 0.5 : 1 }}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          style={{ marginBottom: "16px" }}
         >
-          {loading === "guest" ? <Spinner color="#d4af37" /> : <GuestIcon />}
-          Continue as Guest
-        </button>
+          <img
+            src="/logo.png"
+            alt="SuperPlaced AI"
+            style={{ height: "225px", filter: "brightness(0) invert(1)" }}
+          />
+        </motion.div>
 
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#b3b1a8", textAlign: "center", marginTop: 12, lineHeight: 1.5 }}>
-          Guest mode gives full access without an account.<br />Progress won&apos;t be saved.
-        </p>
+        {/* Login Card */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          transition={{
+            duration: 0.4,
+            ease: "easeOut",
+          }}
+          style={{
+            background: "linear-gradient(145deg, #ffffff, #f3f4f6)",
+            borderRadius: "20px",
+            padding: "48px 40px",
+            width: "100%",
+            maxWidth: "420px",
+            border: "1px solid rgba(255, 255, 255, 0.8)",
+            boxShadow: "0 20px 40px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.05)",
+          }}
+        >
+          <div style={{ textAlign: "center", marginBottom: "32px" }}>
+            <h2
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "26px",
+                fontWeight: 600,
+                color: "#1a1c1e",
+                marginBottom: "8px",
+              }}
+            >
+              Welcome Back!
+            </h2>
+            <p
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "14px",
+                color: "#687078",
+              }}
+            >
+              Please login to your account
+            </p>
+          </div>
 
-        {/* Sign In / Sign Up Toggle */}
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#687078", textAlign: "center", marginTop: 24, fontWeight: 500 }}>
-          {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
-          <button 
-            onClick={() => setIsSignUp(!isSignUp)}
-            style={{ background: "none", border: "none", color: "#1a1c1e", fontWeight: 700, cursor: "pointer", padding: 0, textDecoration: "underline", textUnderlineOffset: "4px" }}
-          >
-            {isSignUp ? "Sign In" : "Sign Up"}
-          </button>
-        </p>
+          <form onSubmit={handleLogin}>
+            <div style={{ marginBottom: "20px" }}>
+              <label
+                style={{
+                  display: "block",
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  color: "#1a1c1e",
+                  marginBottom: "8px",
+                }}
+              >
+                Email
+              </label>
+              <div style={{ position: "relative" }}>
+                <div style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", color: "#9ea5ad" }}>
+                  <MailIcon />
+                </div>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px 14px 12px 42px",
+                    borderRadius: "8px",
+                    border: "1px solid #d3d7dc",
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "14px",
+                    outline: "none",
+                    transition: "border-color 0.2s",
+                  }}
+                  onFocus={(e) => (e.target.style.borderColor = "#1a1c1e")}
+                  onBlur={(e) => (e.target.style.borderColor = "#d3d7dc")}
+                />
+              </div>
+            </div>
 
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#b3b1a8", textAlign: "center", marginTop: 24 }}>
-          By continuing, you agree to our{" "}
-          <a href="#" style={{ color: "#9ea5ad", textDecoration: "underline" }}>Terms</a>{" "}&amp;{" "}
-          <a href="#" style={{ color: "#9ea5ad", textDecoration: "underline" }}>Privacy Policy</a>.
-        </p>
-      </motion.div>
+            <div style={{ marginBottom: "20px" }}>
+              <label
+                style={{
+                  display: "block",
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  color: "#1a1c1e",
+                  marginBottom: "8px",
+                }}
+              >
+                Password
+              </label>
+              <div style={{ position: "relative" }}>
+                <div style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", color: "#9ea5ad" }}>
+                  <LockIcon />
+                </div>
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px 42px 12px 42px",
+                    borderRadius: "8px",
+                    border: "1px solid #d3d7dc",
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "14px",
+                    outline: "none",
+                    transition: "border-color 0.2s",
+                  }}
+                  onFocus={(e) => (e.target.style.borderColor = "#1a1c1e")}
+                  onBlur={(e) => (e.target.style.borderColor = "#d3d7dc")}
+                />
+                <button
+                  type="button"
+                  style={{
+                    position: "absolute",
+                    right: "14px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "none",
+                    border: "none",
+                    color: "#9ea5ad",
+                    cursor: "pointer",
+                    padding: 0,
+                  }}
+                >
+                  <EyeIcon />
+                </button>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "24px" }}>
+              <a
+                href="#"
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "13px",
+                  color: "#687078",
+                  textDecoration: "none",
+                  fontWeight: 500,
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#1a1c1e")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#687078")}
+              >
+                Forgot Password?
+              </a>
+            </div>
+
+            <button
+              type="submit"
+              disabled={!!loading}
+              onMouseEnter={() => setHoveredLogin(true)}
+              onMouseLeave={() => setHoveredLogin(false)}
+              style={{
+                width: "100%",
+                padding: "14px",
+                background: hoveredLogin ? "#333" : "#111418",
+                color: "#fff",
+                border: "none",
+                borderRadius: "8px",
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "15px",
+                fontWeight: 500,
+                cursor: loading ? "not-allowed" : "pointer",
+                transition: "background 0.2s",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              {loading === "email" ? <Spinner color="#fff" /> : null}
+              Log In
+            </button>
+          </form>
+
+          {/* Divider */}
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", margin: "24px 0" }}>
+            <div style={{ flex: 1, height: "1px", background: "#e6e9ed" }} />
+            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "12px", color: "#9ea5ad" }}>
+              or continue with
+            </span>
+            <div style={{ flex: 1, height: "1px", background: "#e6e9ed" }} />
+          </div>
+
+          {/* OAuth Buttons */}
+          <div style={{ display: "flex", gap: "12px" }}>
+            <button
+              onClick={() => handleOAuth("google")}
+              disabled={!!loading}
+              onMouseEnter={() => setHoveredGoogle(true)}
+              onMouseLeave={() => setHoveredGoogle(false)}
+              style={{
+                flex: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                padding: "12px",
+                background: "#fff",
+                border: `1px solid ${hoveredGoogle ? "#1a1c1e" : "#d3d7dc"}`,
+                borderRadius: "8px",
+                cursor: loading ? "not-allowed" : "pointer",
+                transition: "border-color 0.2s",
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "14px",
+                fontWeight: 500,
+                color: "#1a1c1e",
+              }}
+            >
+              {loading === "google" ? <Spinner /> : <GoogleIcon />}
+              Google
+            </button>
+            <button
+              onClick={() => handleOAuth("linkedin_oidc")}
+              disabled={!!loading}
+              onMouseEnter={() => setHoveredLinkedin(true)}
+              onMouseLeave={() => setHoveredLinkedin(false)}
+              style={{
+                flex: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                padding: "12px",
+                background: "#fff",
+                border: `1px solid ${hoveredLinkedin ? "#1a1c1e" : "#d3d7dc"}`,
+                borderRadius: "8px",
+                cursor: loading ? "not-allowed" : "pointer",
+                transition: "border-color 0.2s",
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "14px",
+                fontWeight: 500,
+                color: "#1a1c1e",
+              }}
+            >
+              {loading === "linkedin_oidc" ? <Spinner /> : <LinkedInIcon />}
+              LinkedIn
+            </button>
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: "24px" }}>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "14px", color: "#687078" }}>
+              Don't have an account?{" "}
+              <a href="#" style={{ color: "#1a1c1e", fontWeight: 700, textDecoration: "none" }}>
+                Register now
+              </a>
+            </p>
+          </div>
+        </motion.div>
+      </div>
+
+
+    </div>
+  );
+}
+
+/* ── Components ── */
+
+function FeatureItem({ icon, text }: { icon: React.ReactNode; text: string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+      <div style={{ color: "#d4af37", display: "flex" }}>{icon}</div>
+      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "13px", fontWeight: 500, color: "#fff" }}>
+        {text}
+      </span>
     </div>
   );
 }
 
 /* ── Icons ── */
+
+function UsersIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  );
+}
+
+function BriefcaseIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+    </svg>
+  );
+}
+
+function TargetIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+      <polyline points="22,6 12,13 2,6" />
+    </svg>
+  );
+}
+
+function LockIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </svg>
+  );
+}
+
+function EyeIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}
+
 function GoogleIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -209,28 +436,21 @@ function GoogleIcon() {
   );
 }
 
-function GitHubIcon() {
+function LinkedInIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="#1a1c1e">
-      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#0077b5">
+      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
     </svg>
   );
 }
 
-function MailIcon() {
+function Dots({ fill = "#d1d5db" }: { fill?: string }) {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-      <polyline points="22,6 12,13 2,6" />
-    </svg>
-  );
-}
-
-function GuestIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-      <circle cx="12" cy="7" r="4" />
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+      <pattern id={`dots-${fill}`} x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+        <circle fill={fill} cx="3" cy="3" r="3" />
+      </pattern>
+      <rect x="0" y="0" width="80" height="80" fill={`url(#dots-${fill})`} />
     </svg>
   );
 }

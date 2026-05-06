@@ -357,17 +357,17 @@ function AgentCard() {
             color: "#4a4a46",
           }}
         >
-          3 agents active
+          5 super agents for super placements
         </span>
         <div style={{ display: "flex", gap: 4 }}>
-          {[0, 1, 2].map((i) => (
+          {[0, 1, 2, 3, 4].map((i) => (
             <div
               key={i}
               style={{
                 width: 24,
                 height: 4,
                 borderRadius: 2,
-                background: i === 0 ? "#d4af37" : i === 1 ? "#f59e0b" : "#b87333",
+                background: i === 0 ? "#d4af37" : i === 1 ? "#f59e0b" : i === 2 ? "#b87333" : i === 3 ? "#d4af37" : "#b87333",
                 opacity: 0.7,
               }}
             />
