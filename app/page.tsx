@@ -7,7 +7,7 @@ import CTAAndFooter from "../components/sections/CTAAndFooter";
 
 export default function Home() {
   return (
-    <div style={{ background: "#1a1a1a", minHeight: "100vh", padding: "24px", fontFamily: "'Inter', sans-serif" }}>
+    <div className="mesh-bg" style={{ minHeight: "100vh", padding: "24px", fontFamily: "'Inter', sans-serif" }}>
       <style dangerouslySetInnerHTML={{ __html: `
         /* Hide original hero nav to replace with Rave glass header */
         #hero nav { display: none !important; }
@@ -20,15 +20,36 @@ export default function Home() {
         .rave-btn-icon:hover { background: rgba(0,0,0,0.05) !important; }
         .rave-btn-solid { transition: transform 0.2s; display: inline-block; }
         .rave-btn-solid:hover { transform: scale(1.05); }
+        /* 3D Mesh Gradient Animation */
+        .mesh-bg {
+          background-color: #0f172a;
+          background-image: 
+            radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.6) 0px, transparent 50%),
+            radial-gradient(at 80% 0%, rgba(236, 72, 153, 0.6) 0px, transparent 50%),
+            radial-gradient(at 0% 50%, rgba(59, 130, 246, 0.6) 0px, transparent 50%),
+            radial-gradient(at 80% 50%, rgba(139, 92, 246, 0.6) 0px, transparent 50%),
+            radial-gradient(at 0% 100%, rgba(244, 63, 94, 0.6) 0px, transparent 50%),
+            radial-gradient(at 80% 100%, rgba(56, 189, 248, 0.6) 0px, transparent 50%),
+            radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.6) 0px, transparent 50%);
+          background-size: 200% 200%;
+          animation: meshAnimation 12s ease infinite;
+        }
+        @keyframes meshAnimation {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
       `}} />
       
       {/* Rave inspired outer wrapper */}
       <div style={{ 
         position: "relative",
-        background: "#f8f9fa",
+        background: "rgba(248, 249, 250, 0.65)",
+        backdropFilter: "blur(40px)",
+        WebkitBackdropFilter: "blur(40px)",
         borderRadius: "32px",
         overflow: "hidden",
-        boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.4), 0 24px 48px rgba(0,0,0,0.5)",
+        boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.6), 0 24px 48px rgba(0,0,0,0.5)",
         minHeight: "calc(100vh - 48px)"
       }}>
         
