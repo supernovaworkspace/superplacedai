@@ -93,7 +93,7 @@ export default function SignInPage() {
       >
         {/* Logo */}
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
-          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 80, objectFit: "contain", filter: "invert(1) brightness(0)" }} />
+          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 200, objectFit: "contain", filter: "invert(1) brightness(0)" }} />
         </div>
 
         {/* Heading */}
