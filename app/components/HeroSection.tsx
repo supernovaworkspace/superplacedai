@@ -378,7 +378,7 @@ export default function HeroSection() {
   const fadeUp = (delay: number) => ({
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as const },
   });
 
   return (
@@ -434,7 +434,7 @@ export default function HeroSection() {
             gap: 8,
           }}
         >
-          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 120, filter: "invert(1) brightness(0)" }} />
+          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 240, filter: "invert(1) brightness(0)" }} />
         </div>
         <div
           style={{

@@ -27,9 +27,9 @@ export default function AnimateOnScroll({
       ? {
           ...selectedVariant,
           visible: {
-            ...visibleState,
+            ...(visibleState as any),
             transition: {
-              ...(visibleState.transition ?? {}),
+              ...((visibleState as any).transition ?? {}),
               delay,
             },
           },

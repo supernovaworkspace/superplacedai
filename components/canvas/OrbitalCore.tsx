@@ -127,7 +127,7 @@ function SatellitesAndLines() {
         return (
           <group key={agent.name}>
             <line
-              ref={(line) => {
+              ref={(line: any) => {
                 lineRefs.current[index] = line;
               }}
             >

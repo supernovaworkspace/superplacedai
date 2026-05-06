@@ -59,7 +59,7 @@ const AGENTS = [
   },
 ];
 
-const COMPANIES = [
+const COMPANIES: any[] = [
 ];
 
 /* ─────────────────────────────────────────────

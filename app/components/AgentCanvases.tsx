@@ -111,7 +111,7 @@ export function SkillGapCanvas() {
     // nodes
     const layers = [[0.12, [0.2,0.4,0.6,0.8]], [0.38, [0.13,0.28,0.43,0.58,0.73,0.88]], [0.65, [0.2,0.4,0.6,0.8]], [0.88, [0.35,0.65]]];
     const nodes: { x:number; y:number; gap:boolean; phase:number }[] = [];
-    layers.forEach(([xr, ys]) => (ys as number[]).forEach(yr => nodes.push({ x:W*xr, y:H*yr, gap:Math.random()<0.35, phase:Math.random()*Math.PI*2 })));
+    layers.forEach(([xr, ys]) => (ys as number[]).forEach(yr => nodes.push({ x:W*(xr as number), y:H*(yr as number), gap:Math.random()<0.35, phase:Math.random()*Math.PI*2 })));
     const edges: [number,number][] = [];
     for (let a=0;a<nodes.length;a++) for (let b=a+1;b<nodes.length;b++) {
       const la = layers.findIndex(l => Math.abs(nodes[a].x - W*(l[0] as number)) < 5);

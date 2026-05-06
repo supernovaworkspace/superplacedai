@@ -236,7 +236,7 @@ export default function CTAAndFooter() {
                       lineHeight: 1.1,
                     }}
                   >
-                    <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 160 }} />
+                    <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 240 }} />
                   </div>
                   <p
                     style={{

@@ -226,6 +226,7 @@ const FeatureCard = ({ title, graphicType }: { title: string, graphicType: numbe
 }
 
 export default function ResumeAnalyzerMarketingPage() {
+  const [activeView, setActiveView] = useState<"hero" | "upload" | "templates">("hero");
   const [activeTemplateColors, setActiveTemplateColors] = useState({
     multicolumn: "#000000",
     classic: "#000000",
@@ -233,12 +234,227 @@ export default function ResumeAnalyzerMarketingPage() {
     quotation: "#000000"
   });
 
-  const handleAction = (message: string) => {
-    alert(message);
+  // Upload state
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [analysis, setAnalysis] = useState<{ ats_score: number; strengths: string[]; weaknesses: string[]; extracted_skills: string[]; experience_summary: string; recommendations: string[] } | null>(null);
+  const [dragOver, setDragOver] = useState(false);
+
+  const handleUpload = async (file: File) => {
+    setUploadFile(file);
+    setUploading(true);
+    setUploadProgress(0);
+    setAnalysis(null);
+
+    // Simulate progress
+    const interval = setInterval(() => {
+      setUploadProgress(p => { if (p >= 90) { clearInterval(interval); return 90; } return p + 10; });
+    }, 300);
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+      const res = await fetch(`${apiUrl}/api/agents/resume/analyze`, { method: "POST", body: formData });
+      const data = await res.json();
+      clearInterval(interval);
+      setUploadProgress(100);
+      if (data.success && data.analysis) {
+        setAnalysis(data.analysis);
+      }
+    } catch (err) {
+      console.error(err);
+      clearInterval(interval);
+    }
+    setUploading(false);
+  };
+
+  const handleAction = (action: "optimize" | "create") => {
+    if (action === "optimize") {
+      setActiveView("upload");
+      setAnalysis(null);
+      setUploadFile(null);
+      setUploadProgress(0);
+    } else if (action === "create") {
+      setActiveView("templates");
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOver(false);
+    const file = e.dataTransfer.files[0];
+    if (file && (file.name.endsWith(".pdf") || file.name.endsWith(".docx"))) handleUpload(file);
   };
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
+
+      {/* ═══ RESUME UPLOAD & ANALYSIS SECTION ═══ */}
+      {activeView === "upload" && (
+      <section style={{ background: "linear-gradient(180deg, #f8f9fa 0%, #fff 100%)", padding: "80px 20px", borderBottom: "1px solid #e6e9ed" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
+          <button 
+            onClick={() => setActiveView("hero")}
+            style={{ display: "inline-flex", alignItems: "center", gap: 8, textDecoration: "none", color: "#9ea5ad", fontSize: 14, fontWeight: 500, marginBottom: 32, background: "none", border: "none", cursor: "pointer", font: "inherit" }}
+          >
+            ← Back to Dashboard
+          </button>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 42, fontWeight: 600, color: "#1a1c1e", letterSpacing: "-0.02em", marginBottom: 12 }}>
+            AI Resume <span style={{ color: "#d4af37" }}>Analyzer</span>
+          </h2>
+          <p style={{ fontSize: 16, color: "#687078", marginBottom: 40 }}>Upload your resume to get an instant ATS score and detailed AI analysis.</p>
+
+          {/* Dropzone */}
+          <div
+            onDrop={handleDrop}
+            onDragOver={e => { e.preventDefault(); setDragOver(true); }}
+            onDragLeave={() => setDragOver(false)}
+            style={{
+              border: `2px dashed ${dragOver ? "#d4af37" : "#d3d7dc"}`,
+              borderRadius: 20,
+              padding: "48px 32px",
+              background: dragOver ? "rgba(212,175,55,0.05)" : "#fff",
+              transition: "all 0.2s",
+              cursor: "pointer",
+              marginBottom: 32,
+            }}
+            onClick={() => document.getElementById("resume-file-input")?.click()}
+          >
+            <input
+              id="resume-file-input"
+              type="file"
+              accept=".pdf,.docx"
+              style={{ display: "none" }}
+              onChange={e => { const f = e.target.files?.[0]; if (f) handleUpload(f); }}
+            />
+            <div style={{ fontSize: 40, marginBottom: 12 }}>📄</div>
+            <p style={{ fontSize: 16, fontWeight: 600, color: "#1a1c1e", marginBottom: 4 }}>
+              {uploadFile ? uploadFile.name : "Drop your resume here or click to browse"}
+            </p>
+            <p style={{ fontSize: 13, color: "#9ea5ad" }}>Supports PDF and DOCX files</p>
+          </div>
+
+          {/* Progress */}
+          {uploading && (
+            <div style={{ marginBottom: 32 }}>
+              <div style={{ height: 6, borderRadius: 3, background: "#e6e9ed", overflow: "hidden" }}>
+                <div style={{ height: "100%", width: `${uploadProgress}%`, background: "linear-gradient(90deg, #d4af37, #b87333)", borderRadius: 3, transition: "width 0.3s" }} />
+              </div>
+              <p style={{ fontSize: 13, color: "#687078", marginTop: 8 }}>
+                {uploadProgress < 90 ? "Analyzing your resume with AI..." : uploadProgress < 100 ? "Almost done..." : "Complete!"}
+              </p>
+            </div>
+          )}
+
+          {/* Results */}
+          {analysis && (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} style={{ textAlign: "left" }}>
+              {/* ATS Score */}
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: 40 }}>
+                <div style={{ width: 160, height: 160, borderRadius: "50%", background: `conic-gradient(${analysis.ats_score >= 70 ? "#d4af37" : "#b87333"} ${analysis.ats_score * 3.6}deg, #e6e9ed 0deg)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ width: 130, height: 130, borderRadius: "50%", background: "#fff", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 42, fontWeight: 700, color: "#1a1c1e" }}>{analysis.ats_score}</span>
+                    <span style={{ fontSize: 12, color: "#687078", fontWeight: 500 }}>ATS Score</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Skills */}
+              <div style={{ background: "#f8f9fa", borderRadius: 16, padding: 28, marginBottom: 20 }}>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, color: "#1a1c1e", marginBottom: 12 }}>Extracted Skills</h3>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {analysis.extracted_skills.map(skill => (
+                    <span key={skill} style={{ padding: "4px 14px", borderRadius: 20, background: "rgba(212,175,55,0.1)", border: "1px solid rgba(212,175,55,0.2)", fontSize: 13, fontWeight: 500, color: "#d4af37" }}>{skill}</span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Strengths & Weaknesses */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}>
+                <div style={{ background: "rgba(22,163,106,0.05)", borderRadius: 16, padding: 24, border: "1px solid rgba(22,163,106,0.15)" }}>
+                  <h4 style={{ fontSize: 16, fontWeight: 600, color: "#16a34a", marginBottom: 12 }}>✅ Strengths</h4>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                    {analysis.strengths.map((s, i) => <li key={i} style={{ fontSize: 13, color: "#333", marginBottom: 8, paddingLeft: 16, position: "relative" }}><span style={{ position: "absolute", left: 0 }}>•</span> {s}</li>)}
+                  </ul>
+                </div>
+                <div style={{ background: "rgba(239,68,68,0.05)", borderRadius: 16, padding: 24, border: "1px solid rgba(239,68,68,0.15)" }}>
+                  <h4 style={{ fontSize: 16, fontWeight: 600, color: "#ef4444", marginBottom: 12 }}>⚠️ Weaknesses</h4>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                    {analysis.weaknesses.map((w, i) => <li key={i} style={{ fontSize: 13, color: "#333", marginBottom: 8, paddingLeft: 16, position: "relative" }}><span style={{ position: "absolute", left: 0 }}>•</span> {w}</li>)}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Recommendations */}
+              <div style={{ background: "#fff", borderRadius: 16, padding: 24, border: "1px solid #d3d7dc" }}>
+                <h4 style={{ fontSize: 16, fontWeight: 600, color: "#1a1c1e", marginBottom: 12 }}>💡 Recommendations</h4>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {analysis.recommendations.map((r, i) => <li key={i} style={{ fontSize: 13, color: "#333", marginBottom: 8, paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: "#d4af37" }}>{i+1}.</span> {r}</li>)}
+                </ul>
+              </div>
+            </motion.div>
+          )}
+        </div>
+      </section>
+      )}
+
+      {/* Templates View */}
+      {activeView === "templates" && (
+      <section className="bg-white py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <button 
+            onClick={() => setActiveView("hero")}
+            className="mb-12 inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 font-semibold transition-colors"
+          >
+            ← Back
+          </button>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-4 text-black">
+            Choose Your Resume Template
+          </h2>
+          <p className="text-center text-gray-600 mb-16 text-lg">
+            Select a template and customize it with your own content
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+            <TemplateCard 
+              name="Multicolumn" 
+              activeColor={activeTemplateColors.multicolumn}
+              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, multicolumn: c}))}
+            />
+            <TemplateCard 
+              name="Classic" 
+              activeColor={activeTemplateColors.classic}
+              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, classic: c}))}
+            />
+            <TemplateCard 
+              name="Modern" 
+              activeColor={activeTemplateColors.modern}
+              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, modern: c}))}
+              isDark
+            />
+            <TemplateCard 
+              name="Quotation" 
+              activeColor={activeTemplateColors.quotation}
+              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, quotation: c}))}
+            />
+          </div>
+          <div className="mt-16 text-center">
+            <button 
+              onClick={() => handleAction("create")}
+              className="text-[#3b66ff] font-bold text-xl inline-flex items-center gap-2 hover:gap-3 transition-all"
+            >
+              Get Started <ArrowRight size={20} strokeWidth={2.5} />
+            </button>
+          </div>
+        </div>
+      </section>
+      )}
+
+      {/* Hero View */}
+      {activeView === "hero" && (
+      <>
       
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-24 pb-20 grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -255,13 +471,13 @@ export default function ResumeAnalyzerMarketingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
             <button 
-              onClick={() => handleAction("Opening create new resume flow...")}
+              onClick={() => handleAction("create")}
               className="bg-[#3b66ff] hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-blue-500/30 active:scale-95"
             >
               Create new resume
             </button>
             <button 
-              onClick={() => handleAction("Opening optimize resume flow...")}
+              onClick={() => handleAction("optimize")}
               className="bg-white border-2 border-gray-900 hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-full font-bold text-lg transition-all active:scale-95"
             >
               Optimize my resume
@@ -302,7 +518,7 @@ export default function ResumeAnalyzerMarketingPage() {
               {/* Enhance with AI Tooltip */}
               <motion.button 
                 whileHover={{ scale: 1.05, y: -2 }}
-                onClick={() => handleAction("AI Enhancement feature triggered")}
+                onClick={() => handleAction("optimize")}
                 className="absolute top-6 right-6 bg-[#ffb84d] text-orange-950 px-5 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-xl border border-orange-300 z-20 cursor-pointer"
               >
                 <Wand2 size={16} /> Enhance with AI
@@ -343,7 +559,7 @@ export default function ResumeAnalyzerMarketingPage() {
                </svg>
             </div>
             <button 
-              onClick={() => handleAction("Scrolling to templates...")}
+              onClick={() => handleAction("create")}
               className="bg-[#3b66ff] hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-bold text-lg transition-all shadow-md active:scale-95 z-10"
             >
               Choose a template
@@ -405,7 +621,7 @@ export default function ResumeAnalyzerMarketingPage() {
           </div>
           <div className="mt-16 text-center">
             <button 
-              onClick={() => handleAction("Navigating to template gallery...")}
+              onClick={() => handleAction("create")}
               className="text-[#3b66ff] font-bold text-xl inline-flex items-center gap-2 hover:gap-3 transition-all"
             >
               View all templates <ArrowRight size={20} strokeWidth={2.5} />
@@ -430,6 +646,8 @@ export default function ResumeAnalyzerMarketingPage() {
           </div>
         </div>
       </section>
+      </>
+      )}
 
     </div>
   );

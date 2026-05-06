@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { createClient } from "@/lib/supabase/client";
 
 export default function SignInPage() {
   const router = useRouter();
@@ -11,17 +12,31 @@ export default function SignInPage() {
   const [hoveredGithub, setHoveredGithub] = useState(false);
   const [loading, setLoading] = useState<string | null>(null);
 
+  const supabase = createClient();
+
   const handleGuest = () => {
     setLoading("guest");
-    // Store guest flag in sessionStorage
     sessionStorage.setItem("superplaced_guest", "true");
     setTimeout(() => router.push("/dashboard"), 600);
   };
 
-  const handleOAuth = (provider: string) => {
+  const handleOAuth = async (provider: "google" | "github") => {
     setLoading(provider);
-    // Placeholder — wire up real OAuth here
-    setTimeout(() => router.push("/dashboard"), 800);
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: { redirectTo: `${window.location.origin}/auth/callback` },
+      });
+      if (error) {
+        console.error("OAuth error:", error);
+        setLoading(null);
+        // Fallback: go to dashboard anyway for demo
+        setTimeout(() => router.push("/dashboard"), 800);
+      }
+    } catch {
+      setLoading(null);
+      setTimeout(() => router.push("/dashboard"), 800);
+    }
   };
 
   return (
@@ -50,34 +65,8 @@ export default function SignInPage() {
       />
 
       {/* Decorative warm orb */}
-      <div
-        style={{
-          position: "absolute",
-          top: "-120px",
-          right: "-80px",
-          width: "480px",
-          height: "480px",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%)",
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "-100px",
-          left: "-60px",
-          width: "360px",
-          height: "360px",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%)",
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      />
+      <div style={{ position: "absolute", top: "-120px", right: "-80px", width: "480px", height: "480px", borderRadius: "50%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
+      <div style={{ position: "absolute", bottom: "-100px", left: "-60px", width: "360px", height: "360px", borderRadius: "50%", background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
 
       {/* Back to home */}
       <motion.a
@@ -85,30 +74,11 @@ export default function SignInPage() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        style={{
-          position: "absolute",
-          top: 28,
-          left: 40,
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: 14,
-          color: "#9ea5ad",
-          textDecoration: "none",
-          zIndex: 10,
-          transition: "color 0.2s",
-        }}
-        onMouseEnter={(e) =>
-          ((e.currentTarget as HTMLAnchorElement).style.color = "#1a1c1e")
-        }
-        onMouseLeave={(e) =>
-          ((e.currentTarget as HTMLAnchorElement).style.color = "#9ea5ad")
-        }
+        style={{ position: "absolute", top: 28, left: 40, display: "flex", alignItems: "center", gap: 8, fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#9ea5ad", textDecoration: "none", zIndex: 10, transition: "color 0.2s" }}
+        onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#1a1c1e")}
+        onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#9ea5ad")}
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
         Back
       </motion.a>
 
@@ -117,56 +87,16 @@ export default function SignInPage() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        style={{
-          position: "relative",
-          zIndex: 1,
-          background: "#ffffff",
-          border: "1px solid #d3d7dc",
-          borderRadius: 24,
-          padding: "48px 44px",
-          width: "100%",
-          maxWidth: 440,
-          boxShadow:
-            "0 4px 24px rgba(28,27,24,0.06), 0 1px 4px rgba(28,27,24,0.04)",
-        }}
+        style={{ position: "relative", zIndex: 1, background: "#ffffff", border: "1px solid #d3d7dc", borderRadius: 24, padding: "48px 44px", width: "100%", maxWidth: 440, boxShadow: "0 4px 24px rgba(28,27,24,0.06), 0 1px 4px rgba(28,27,24,0.04)" }}
       >
         {/* Logo */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            marginBottom: 32,
-          }}
-        >
-          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 150, filter: "invert(1) brightness(0)" }} />
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 32 }}>
+          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 240, filter: "invert(1) brightness(0)" }} />
         </div>
 
         {/* Heading */}
-        <h1
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 32,
-            fontWeight: 500,
-            color: "#1a1c1e",
-            letterSpacing: "-0.02em",
-            lineHeight: 1.15,
-            marginBottom: 8,
-          }}
-        >
-          Welcome back
-        </h1>
-        <p
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 14,
-            color: "#9ea5ad",
-            marginBottom: 32,
-            lineHeight: 1.5,
-          }}
-        >
-          Sign in to continue your career journey.
-        </p>
+        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 500, color: "#1a1c1e", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 8 }}>Welcome back</h1>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#9ea5ad", marginBottom: 32, lineHeight: 1.5 }}>Sign in to continue your career journey.</p>
 
         {/* OAuth buttons */}
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -177,29 +107,9 @@ export default function SignInPage() {
             disabled={!!loading}
             onMouseEnter={() => setHoveredGoogle(true)}
             onMouseLeave={() => setHoveredGoogle(false)}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 10,
-              padding: "13px 20px",
-              borderRadius: 12,
-              border: "1px solid #d3d7dc",
-              background: hoveredGoogle ? "#f8f9fa" : "#ffffff",
-              cursor: loading ? "not-allowed" : "pointer",
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 14,
-              fontWeight: 500,
-              color: "#1a1c1e",
-              transition: "all 0.2s ease",
-              opacity: loading && loading !== "google" ? 0.5 : 1,
-            }}
+            style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "13px 20px", borderRadius: 12, border: "1px solid #d3d7dc", background: hoveredGoogle ? "#f8f9fa" : "#ffffff", cursor: loading ? "not-allowed" : "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500, color: "#1a1c1e", transition: "all 0.2s ease", opacity: loading && loading !== "google" ? 0.5 : 1 }}
           >
-            {loading === "google" ? (
-              <Spinner />
-            ) : (
-              <GoogleIcon />
-            )}
+            {loading === "google" ? <Spinner /> : <GoogleIcon />}
             Continue with Google
           </button>
 
@@ -210,53 +120,17 @@ export default function SignInPage() {
             disabled={!!loading}
             onMouseEnter={() => setHoveredGithub(true)}
             onMouseLeave={() => setHoveredGithub(false)}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 10,
-              padding: "13px 20px",
-              borderRadius: 12,
-              border: "1px solid #d3d7dc",
-              background: hoveredGithub ? "#f8f9fa" : "#ffffff",
-              cursor: loading ? "not-allowed" : "pointer",
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 14,
-              fontWeight: 500,
-              color: "#1a1c1e",
-              transition: "all 0.2s ease",
-              opacity: loading && loading !== "github" ? 0.5 : 1,
-            }}
+            style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "13px 20px", borderRadius: 12, border: "1px solid #d3d7dc", background: hoveredGithub ? "#f8f9fa" : "#ffffff", cursor: loading ? "not-allowed" : "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500, color: "#1a1c1e", transition: "all 0.2s ease", opacity: loading && loading !== "github" ? 0.5 : 1 }}
           >
-            {loading === "github" ? (
-              <Spinner />
-            ) : (
-              <GitHubIcon />
-            )}
+            {loading === "github" ? <Spinner /> : <GitHubIcon />}
             Continue with GitHub
           </button>
         </div>
 
         {/* Divider */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
-            margin: "24px 0",
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "24px 0" }}>
           <div style={{ flex: 1, height: 1, background: "#e6e9ed" }} />
-          <span
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 12,
-              color: "#b3b1a8",
-              flexShrink: 0,
-            }}
-          >
-            or
-          </span>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#b3b1a8", flexShrink: 0 }}>or</span>
           <div style={{ flex: 1, height: 1, background: "#e6e9ed" }} />
         </div>
 
@@ -267,73 +141,20 @@ export default function SignInPage() {
           disabled={!!loading}
           onMouseEnter={() => setHoveredGuest(true)}
           onMouseLeave={() => setHoveredGuest(false)}
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 8,
-            padding: "14px 20px",
-            borderRadius: 12,
-            border: "1.5px dashed #d4af37",
-            background: hoveredGuest
-              ? "rgba(212,175,55,0.06)"
-              : "rgba(212,175,55,0.03)",
-            cursor: loading ? "not-allowed" : "pointer",
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 14,
-            fontWeight: 500,
-            color: "#d4af37",
-            transition: "all 0.22s ease",
-            transform: hoveredGuest ? "translateY(-1px)" : "translateY(0)",
-            boxShadow: hoveredGuest
-              ? "0 6px 18px rgba(212,175,55,0.15)"
-              : "none",
-            opacity: loading && loading !== "guest" ? 0.5 : 1,
-          }}
+          style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "14px 20px", borderRadius: 12, border: "1.5px dashed #d4af37", background: hoveredGuest ? "rgba(212,175,55,0.06)" : "rgba(212,175,55,0.03)", cursor: loading ? "not-allowed" : "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500, color: "#d4af37", transition: "all 0.22s ease", transform: hoveredGuest ? "translateY(-1px)" : "translateY(0)", boxShadow: hoveredGuest ? "0 6px 18px rgba(212,175,55,0.15)" : "none", opacity: loading && loading !== "guest" ? 0.5 : 1 }}
         >
-          {loading === "guest" ? (
-            <Spinner color="#d4af37" />
-          ) : (
-            <GuestIcon />
-          )}
+          {loading === "guest" ? <Spinner color="#d4af37" /> : <GuestIcon />}
           Continue as Guest
         </button>
 
-        <p
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 12,
-            color: "#b3b1a8",
-            textAlign: "center",
-            marginTop: 12,
-            lineHeight: 1.5,
-          }}
-        >
-          Guest mode gives full access without an account.
-          <br />
-          Progress won&apos;t be saved.
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#b3b1a8", textAlign: "center", marginTop: 12, lineHeight: 1.5 }}>
+          Guest mode gives full access without an account.<br />Progress won&apos;t be saved.
         </p>
 
-        {/* Terms */}
-        <p
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 12,
-            color: "#b3b1a8",
-            textAlign: "center",
-            marginTop: 24,
-          }}
-        >
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#b3b1a8", textAlign: "center", marginTop: 24 }}>
           By continuing, you agree to our{" "}
-          <a href="#" style={{ color: "#9ea5ad", textDecoration: "underline" }}>
-            Terms
-          </a>{" "}
-          &amp;{" "}
-          <a href="#" style={{ color: "#9ea5ad", textDecoration: "underline" }}>
-            Privacy Policy
-          </a>
-          .
+          <a href="#" style={{ color: "#9ea5ad", textDecoration: "underline" }}>Terms</a>{" "}&amp;{" "}
+          <a href="#" style={{ color: "#9ea5ad", textDecoration: "underline" }}>Privacy Policy</a>.
         </p>
       </motion.div>
     </div>
@@ -371,16 +192,7 @@ function GuestIcon() {
 
 function Spinner({ color = "#9ea5ad" }: { color?: string }) {
   return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke={color}
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      style={{ animation: "spin 0.7s linear infinite" }}
-    >
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" style={{ animation: "spin 0.7s linear infinite" }}>
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
     </svg>

@@ -60,7 +60,7 @@ function PartnerCard({
   partner: (typeof partners)[number];
   index: number;
 }) {
-  const isDashed = Boolean(partner.isDashed);
+  const isDashed = "isDashed" in partner && Boolean(partner.isDashed);
 
   return (
     <AnimateOnScroll variant="fadeInUp" delay={index * 0.12}>

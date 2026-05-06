@@ -196,9 +196,13 @@ export default function DashboardPage() {
         }}
       >
         <a href="/" style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none", fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, color: "#1a1c1e" }}>
-          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 120, filter: "invert(1) brightness(0)" }} />
+          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 240, filter: "invert(1) brightness(0)" }} />
         </a>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <a href="/profile" style={{ fontSize: 13, color: "#687078", textDecoration: "none", fontWeight: 500, transition: "color 0.2s" }} onMouseEnter={e => e.currentTarget.style.color = "#d4af37"} onMouseLeave={e => e.currentTarget.style.color = "#687078"}>Profile</a>
+          <a href="/jobs" style={{ fontSize: 13, color: "#687078", textDecoration: "none", fontWeight: 500, transition: "color 0.2s" }} onMouseEnter={e => e.currentTarget.style.color = "#d4af37"} onMouseLeave={e => e.currentTarget.style.color = "#687078"}>Jobs</a>
+          <a href="/settings" style={{ fontSize: 13, color: "#687078", textDecoration: "none", fontWeight: 500, transition: "color 0.2s" }} onMouseEnter={e => e.currentTarget.style.color = "#d4af37"} onMouseLeave={e => e.currentTarget.style.color = "#687078"}>Settings</a>
+          <div style={{ width: 1, height: 20, background: "#d3d7dc" }} />
           {isGuest && (
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
               style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 14px", borderRadius: 20, background: "rgba(212,175,55,0.1)", border: "1px solid rgba(212,175,55,0.2)", fontSize: 12, fontWeight: 500, color: "#d4af37" }}>
