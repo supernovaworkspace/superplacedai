@@ -20,68 +20,166 @@ import {
 
 const colorOptions = ["#f8fafc", "#1e293b", "#0ea5e9", "#2563eb", "#0d9488", "#d97706", "#dc2626", "#475569"];
 
-const TemplateCard = ({ name, activeColor, onColorChange, isDark = false }: { name: string, activeColor: string, onColorChange: (c:string) => void, isDark?: boolean }) => {
-  const isDefaultColor = activeColor === '#f8fafc' || activeColor === '#1e293b';
+type TemplateLayout = 'two-column' | 'left-sidebar' | 'single-column' | 'minimal' | 'header-centric' | 'creative';
+
+const TemplateCard = ({ name, activeColor, onColorChange, layout, isDark = false }: { name: string, activeColor: string, onColorChange: (c:string) => void, layout: TemplateLayout, isDark?: boolean }) => {
+  const isDefaultColor = activeColor === '#f8fafc' || activeColor === '#1e293b' || activeColor === '#000000';
+  const themeColor = isDefaultColor ? '#4b5563' : activeColor;
+  
   return (
     <div className="flex flex-col items-center">
       <div 
-        className="w-full aspect-[1/1.4] bg-white rounded-xl shadow-md border border-gray-200 mb-6 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+        className="w-full aspect-[1/1.4] bg-white rounded-xl shadow-md border border-gray-200 mb-4 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer group"
         style={{ borderColor: !isDefaultColor ? activeColor : undefined }}
       >
-         {/* CSS Layout of the template matching its name */}
-         <div className="absolute inset-0 p-5 flex flex-col gap-3">
-            {isDark && <div className="absolute top-0 left-0 w-1/3 h-full opacity-[0.15]" style={{ backgroundColor: activeColor }}></div>}
-            
-            {/* Header part */}
-            <div className="flex justify-between items-end pb-2 border-b border-gray-100 z-10">
-              <div className="h-5 w-1/2 rounded" style={{ backgroundColor: isDefaultColor ? '#1f2937' : activeColor }}></div>
-              <div className="space-y-1">
-                <div className="h-1.5 w-12 bg-gray-200 rounded"></div>
-                <div className="h-1.5 w-16 bg-gray-200 rounded"></div>
-              </div>
-            </div>
-
-            {/* Body */}
-            <div className="flex-1 flex gap-4 z-10">
-               {/* Left Column */}
-               <div className="w-[30%] space-y-4">
-                 <div className="space-y-1">
-                   <div className="h-2 w-full rounded" style={{ backgroundColor: isDefaultColor ? '#4b5563' : activeColor }}></div>
-                   {[1,2,3].map(i => <div key={i} className="h-1.5 w-full bg-gray-100 rounded"></div>)}
-                 </div>
-                 <div className="space-y-1">
-                   <div className="h-2 w-full rounded" style={{ backgroundColor: isDefaultColor ? '#4b5563' : activeColor }}></div>
-                   {[1,2,3,4].map(i => <div key={i} className="h-1.5 w-full bg-gray-100 rounded"></div>)}
-                 </div>
-               </div>
-               {/* Right Column */}
-               <div className="w-[70%] space-y-4">
-                 {[1,2].map(section => (
-                    <div key={section} className="space-y-2">
-                      <div className="h-2.5 w-1/3 rounded" style={{ backgroundColor: isDefaultColor ? '#4b5563' : activeColor }}></div>
-                      <div className="space-y-1.5">
-                        <div className="flex justify-between">
-                          <div className="h-1.5 w-1/2 bg-gray-300 rounded"></div>
-                          <div className="h-1.5 w-1/4 bg-gray-200 rounded"></div>
+         <div className="absolute inset-0 w-full h-full">
+            {/* Different layouts */}
+            {layout === 'two-column' && (
+              <div className="flex flex-col h-full p-4 gap-3">
+                {isDark && <div className="absolute top-0 left-0 w-1/3 h-full opacity-[0.15]" style={{ backgroundColor: themeColor }}></div>}
+                <div className="flex justify-between items-end pb-2 border-b border-gray-100 z-10">
+                  <div className="h-5 w-1/2 rounded" style={{ backgroundColor: themeColor }}></div>
+                  <div className="space-y-1">
+                    <div className="h-1.5 w-12 bg-gray-200 rounded"></div>
+                    <div className="h-1.5 w-16 bg-gray-200 rounded"></div>
+                  </div>
+                </div>
+                <div className="flex-1 flex gap-4 z-10">
+                   <div className="w-[30%] space-y-4">
+                     <div className="space-y-1"><div className="h-2 w-full rounded" style={{ backgroundColor: themeColor }}></div>{[1,2,3].map(i => <div key={i} className="h-1.5 w-full bg-gray-100 rounded"></div>)}</div>
+                     <div className="space-y-1"><div className="h-2 w-full rounded" style={{ backgroundColor: themeColor }}></div>{[1,2,3,4].map(i => <div key={i} className="h-1.5 w-full bg-gray-100 rounded"></div>)}</div>
+                   </div>
+                   <div className="w-[70%] space-y-4">
+                     {[1,2].map(section => (
+                        <div key={section} className="space-y-2">
+                          <div className="h-2.5 w-1/3 rounded" style={{ backgroundColor: themeColor }}></div>
+                          <div className="space-y-1.5"><div className="flex justify-between"><div className="h-1.5 w-1/2 bg-gray-300 rounded"></div><div className="h-1.5 w-1/4 bg-gray-200 rounded"></div></div><div className="h-1.5 w-full bg-gray-100 rounded"></div><div className="h-1.5 w-[90%] bg-gray-100 rounded"></div></div>
                         </div>
-                        <div className="h-1.5 w-full bg-gray-100 rounded"></div>
-                        <div className="h-1.5 w-[90%] bg-gray-100 rounded"></div>
-                        <div className="h-1.5 w-[95%] bg-gray-100 rounded"></div>
+                     ))}
+                   </div>
+                </div>
+              </div>
+            )}
+
+            {layout === 'left-sidebar' && (
+              <div className="flex h-full w-full">
+                <div className="w-[35%] h-full p-3 space-y-4 flex flex-col items-center" style={{ backgroundColor: themeColor }}>
+                  <div className="h-10 w-10 rounded-full bg-white/30 mb-2"></div>
+                  <div className="space-y-1.5 w-full"><div className="h-1.5 w-full bg-white/50 rounded"></div><div className="h-1.5 w-3/4 bg-white/50 rounded mx-auto"></div></div>
+                  <div className="space-y-1.5 w-full pt-2 border-t border-white/20"><div className="h-2 w-1/2 bg-white/80 rounded mb-1"></div><div className="h-1 w-full bg-white/40 rounded"></div><div className="h-1 w-5/6 bg-white/40 rounded"></div></div>
+                </div>
+                <div className="w-[65%] h-full p-4 flex flex-col gap-3 bg-white">
+                  <div className="h-5 w-3/4 bg-gray-800 rounded"></div>
+                  <div className="h-1.5 w-1/2 bg-gray-400 rounded"></div>
+                  <div className="mt-2 space-y-3">
+                    <div className="space-y-1.5"><div className="h-2 w-1/3 bg-gray-800 rounded"></div><div className="h-1 w-full bg-gray-200 rounded"></div><div className="h-1 w-full bg-gray-200 rounded"></div></div>
+                    <div className="space-y-1.5"><div className="h-2 w-1/3 bg-gray-800 rounded"></div><div className="h-1 w-full bg-gray-200 rounded"></div><div className="h-1 w-4/5 bg-gray-200 rounded"></div></div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {layout === 'single-column' && (
+              <div className="flex flex-col h-full p-5 gap-3 bg-white">
+                <div className="flex flex-col items-center border-b-[1.5px] pb-3" style={{ borderColor: themeColor }}>
+                  <div className="h-4 w-2/3 bg-gray-900 rounded mb-2"></div>
+                  <div className="flex gap-2 w-full justify-center"><div className="h-1 w-1/4 bg-gray-400 rounded"></div><div className="h-1 w-1/4 bg-gray-400 rounded"></div></div>
+                </div>
+                <div className="flex-1 space-y-4 mt-2">
+                   {[1,2,3].map(section => (
+                     <div key={section} className="space-y-1.5">
+                       <div className="h-2 w-1/4 rounded mb-1" style={{ backgroundColor: themeColor }}></div>
+                       <div className="h-1 w-full bg-gray-100 rounded"></div>
+                       <div className="h-1 w-[95%] bg-gray-100 rounded"></div>
+                       {section !== 3 && <div className="h-1 w-[85%] bg-gray-100 rounded"></div>}
+                     </div>
+                   ))}
+                </div>
+              </div>
+            )}
+
+            {layout === 'header-centric' && (
+              <div className="flex flex-col h-full bg-white">
+                <div className="h-[25%] w-full p-4 flex flex-col justify-end" style={{ backgroundColor: themeColor }}>
+                  <div className="h-4 w-3/4 bg-white/90 rounded mb-1.5"></div>
+                  <div className="h-1.5 w-1/2 bg-white/60 rounded"></div>
+                </div>
+                <div className="flex h-[75%] p-4 gap-4">
+                  <div className="w-1/2 space-y-3">
+                     <div className="space-y-1.5"><div className="h-2 w-1/2 bg-gray-800 rounded"></div><div className="h-1 w-full bg-gray-200 rounded"></div><div className="h-1 w-[90%] bg-gray-200 rounded"></div></div>
+                     <div className="space-y-1.5"><div className="h-2 w-1/2 bg-gray-800 rounded"></div><div className="h-1 w-full bg-gray-200 rounded"></div></div>
+                  </div>
+                  <div className="w-1/2 space-y-3">
+                     <div className="space-y-1.5"><div className="h-2 w-1/2 bg-gray-800 rounded"></div><div className="h-1 w-full bg-gray-200 rounded"></div><div className="h-1 w-[80%] bg-gray-200 rounded"></div></div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {layout === 'minimal' && (
+              <div className="flex flex-col h-full p-5 gap-4 bg-white">
+                <div>
+                  <div className="h-3 w-1/2 bg-gray-800 rounded mb-2"></div>
+                  <div className="flex gap-3"><div className="h-1 w-1/5 bg-gray-300 rounded"></div><div className="h-1 w-1/5 bg-gray-300 rounded"></div></div>
+                </div>
+                <div className="w-full h-[1px] bg-gray-100"></div>
+                <div className="flex gap-4">
+                  <div className="w-1/4 h-1.5 rounded opacity-70 mt-1" style={{ backgroundColor: themeColor }}></div>
+                  <div className="w-3/4 space-y-2"><div className="h-1 w-full bg-gray-200 rounded"></div><div className="h-1 w-5/6 bg-gray-200 rounded"></div></div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-1/4 h-1.5 rounded opacity-70 mt-1" style={{ backgroundColor: themeColor }}></div>
+                  <div className="w-3/4 space-y-2"><div className="h-1 w-full bg-gray-200 rounded"></div><div className="h-1 w-4/5 bg-gray-200 rounded"></div><div className="h-1 w-[90%] bg-gray-200 rounded"></div></div>
+                </div>
+              </div>
+            )}
+
+            {layout === 'creative' && (
+              <div className="flex flex-col h-full bg-white relative overflow-hidden">
+                <div className="absolute top-[-20%] right-[-20%] w-[60%] aspect-square rounded-full opacity-10" style={{ backgroundColor: themeColor }}></div>
+                <div className="absolute bottom-[-10%] left-[-10%] w-[40%] aspect-square rounded-full opacity-10" style={{ backgroundColor: themeColor }}></div>
+                <div className="flex flex-col h-full p-4 z-10">
+                  <div className="flex gap-3 items-center mb-4">
+                    <div className="w-8 h-8 rounded-full bg-gray-200 border-[1.5px]" style={{ borderColor: themeColor }}></div>
+                    <div><div className="h-3 w-20 bg-gray-800 rounded mb-1"></div><div className="h-1 w-12 bg-gray-400 rounded"></div></div>
+                  </div>
+                  <div className="flex gap-3 h-full">
+                    <div className="w-[40%] space-y-3">
+                      <div className="h-1.5 w-full rounded" style={{ backgroundColor: themeColor }}></div>
+                      <div className="space-y-1"><div className="h-1 w-full bg-gray-200 rounded"></div><div className="h-1 w-3/4 bg-gray-200 rounded"></div></div>
+                    </div>
+                    <div className="w-[60%] space-y-3">
+                      <div className="space-y-1.5 border-l-[1.5px] pl-2" style={{ borderColor: themeColor }}>
+                        <div className="h-1.5 w-1/2 bg-gray-700 rounded"></div>
+                        <div className="h-1 w-full bg-gray-100 rounded"></div>
+                        <div className="h-1 w-[90%] bg-gray-100 rounded"></div>
+                      </div>
+                      <div className="space-y-1.5 border-l-[1.5px] pl-2" style={{ borderColor: themeColor }}>
+                        <div className="h-1.5 w-1/2 bg-gray-700 rounded"></div>
+                        <div className="h-1 w-full bg-gray-100 rounded"></div>
                       </div>
                     </div>
-                 ))}
-               </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            {/* Hover overlay */}
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center">
+              <div className="opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <button className="bg-white/90 backdrop-blur-sm text-[#3b66ff] text-sm font-bold px-4 py-2 rounded-full shadow-lg border border-gray-100 hover:bg-[#3b66ff] hover:text-white transition-colors">Use Template</button>
+              </div>
             </div>
          </div>
       </div>
-      <div className="flex gap-2 mb-4 justify-center flex-wrap px-2">
+      <div className="flex gap-1.5 mb-2 justify-center flex-wrap px-1">
         {colorOptions.map(color => (
           <button
             key={color}
-            onClick={() => onColorChange(color)}
-            className={`w-5 h-5 rounded-full border shadow-sm transition-all ${
+            onClick={(e) => { e.stopPropagation(); onColorChange(color); }}
+            className={`w-4 h-4 rounded-full border shadow-sm transition-all ${
               activeColor === color 
-                ? 'ring-2 ring-offset-2 ring-gray-400 scale-110 border-gray-400' 
+                ? 'ring-[1.5px] ring-offset-[1.5px] ring-gray-400 scale-110 border-gray-400' 
                 : 'border-gray-200 hover:scale-110'
             }`}
             style={{ backgroundColor: color }}
@@ -89,10 +187,31 @@ const TemplateCard = ({ name, activeColor, onColorChange, isDark = false }: { na
           />
         ))}
       </div>
-      <h4 className="font-bold text-lg text-gray-900">{name}</h4>
+      <h4 className="font-semibold text-sm text-gray-800 text-center">{name}</h4>
     </div>
   )
 }
+
+const ALL_TEMPLATES: { id: string; name: string; category: string; layout: TemplateLayout; isDark?: boolean }[] = [
+  { id: 't1', name: 'Standard Professional', category: 'Professional', layout: 'single-column' },
+  { id: 't2', name: 'Executive Clean', category: 'Professional', layout: 'two-column' },
+  { id: 't3', name: 'Corporate Standard', category: 'Professional', layout: 'header-centric' },
+  { id: 't4', name: 'Modern Impact', category: 'Modern', layout: 'two-column', isDark: true },
+  { id: 't5', name: 'Tech Innovator', category: 'Modern', layout: 'left-sidebar' },
+  { id: 't6', name: 'Sleek Developer', category: 'Modern', layout: 'single-column' },
+  { id: 't7', name: 'Minimalist Blank', category: 'Minimalist', layout: 'minimal' },
+  { id: 't8', name: 'Clean Typography', category: 'Minimalist', layout: 'minimal' },
+  { id: 't9', name: 'Essential Structure', category: 'Minimalist', layout: 'two-column' },
+  { id: 't10', name: 'Creative Portfolio', category: 'Creative', layout: 'creative' },
+  { id: 't11', name: 'Designer Bold', category: 'Creative', layout: 'left-sidebar' },
+  { id: 't12', name: 'Marketing Pro', category: 'Creative', layout: 'header-centric' },
+  { id: 't13', name: 'Academic CV', category: 'Professional', layout: 'single-column' },
+  { id: 't14', name: 'Startup Founder', category: 'Modern', layout: 'creative' },
+  { id: 't15', name: 'Elegant Edge', category: 'Minimalist', layout: 'left-sidebar' },
+  { id: 't16', name: 'The Standout', category: 'Creative', layout: 'two-column', isDark: true },
+];
+
+const CATEGORIES = ['All', 'Professional', 'Modern', 'Minimalist', 'Creative'];
 
 const FeatureCard = ({ title, graphicType }: { title: string, graphicType: number }) => {
   return (
@@ -227,12 +346,14 @@ const FeatureCard = ({ title, graphicType }: { title: string, graphicType: numbe
 
 export default function ResumeAnalyzerMarketingPage() {
   const [activeView, setActiveView] = useState<"hero" | "upload" | "templates">("hero");
-  const [activeTemplateColors, setActiveTemplateColors] = useState({
-    multicolumn: "#000000",
-    classic: "#000000",
-    modern: "#2563eb",
-    quotation: "#000000"
-  });
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [templateColors, setTemplateColors] = useState<Record<string, string>>(
+    ALL_TEMPLATES.reduce((acc, t) => ({...acc, [t.id]: '#1e293b'}), {})
+  );
+
+  const filteredTemplates = activeCategory === 'All' 
+    ? ALL_TEMPLATES 
+    : ALL_TEMPLATES.filter(t => t.category === activeCategory);
 
   // Upload state
   const [uploadFile, setUploadFile] = useState<File | null>(null);
@@ -417,28 +538,33 @@ export default function ResumeAnalyzerMarketingPage() {
           <p className="text-center text-gray-600 mb-16 text-lg">
             Select a template and customize it with your own content
           </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-            <TemplateCard 
-              name="Multicolumn" 
-              activeColor={activeTemplateColors.multicolumn}
-              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, multicolumn: c}))}
-            />
-            <TemplateCard 
-              name="Classic" 
-              activeColor={activeTemplateColors.classic}
-              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, classic: c}))}
-            />
-            <TemplateCard 
-              name="Modern" 
-              activeColor={activeTemplateColors.modern}
-              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, modern: c}))}
-              isDark
-            />
-            <TemplateCard 
-              name="Quotation" 
-              activeColor={activeTemplateColors.quotation}
-              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, quotation: c}))}
-            />
+          <div className="flex justify-center gap-2 md:gap-4 mb-10 overflow-x-auto pb-4 hide-scrollbar">
+            {CATEGORIES.map(category => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-5 py-2 rounded-full font-medium text-sm transition-all whitespace-nowrap ${
+                  activeCategory === category
+                    ? 'bg-gray-900 text-white shadow-md'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10">
+            {filteredTemplates.map((template) => (
+              <TemplateCard 
+                key={template.id}
+                name={template.name} 
+                layout={template.layout}
+                isDark={template.isDark}
+                activeColor={templateColors[template.id]}
+                onColorChange={(c) => setTemplateColors(prev => ({...prev, [template.id]: c}))}
+              />
+            ))}
           </div>
           <div className="mt-16 text-center">
             <button 
@@ -596,28 +722,17 @@ export default function ResumeAnalyzerMarketingPage() {
       {/* Templates Section */}
       <section className="bg-gray-50 py-24 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-            <TemplateCard 
-              name="Multicolumn" 
-              activeColor={activeTemplateColors.multicolumn}
-              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, multicolumn: c}))}
-            />
-            <TemplateCard 
-              name="Classic" 
-              activeColor={activeTemplateColors.classic}
-              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, classic: c}))}
-            />
-            <TemplateCard 
-              name="Modern" 
-              activeColor={activeTemplateColors.modern}
-              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, modern: c}))}
-              isDark
-            />
-            <TemplateCard 
-              name="Quotation" 
-              activeColor={activeTemplateColors.quotation}
-              onColorChange={(c) => setActiveTemplateColors(prev => ({...prev, quotation: c}))}
-            />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {ALL_TEMPLATES.slice(0, 4).map((template) => (
+              <TemplateCard 
+                key={template.id}
+                name={template.name} 
+                layout={template.layout}
+                isDark={template.isDark}
+                activeColor={templateColors[template.id]}
+                onColorChange={(c) => setTemplateColors(prev => ({...prev, [template.id]: c}))}
+              />
+            ))}
           </div>
           <div className="mt-16 text-center">
             <button 
