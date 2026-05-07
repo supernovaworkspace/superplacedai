@@ -373,6 +373,23 @@ export default function JobConnectorPage() {
           );
         })}
       </div>
+
+      {/* ── Bottom text section ── */}
+      <div style={{
+        padding: "48px 40px 56px 40px",
+        borderTop: "1px solid #dedad2",
+        marginTop: 32,
+        textAlign: "center",
+      }}>
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: 18, color: "#555555",
+          lineHeight: 1.65, margin: "0 auto",
+          maxWidth: 520,
+        }}>
+          AI-ranked opportunities tailored to your unique profile — matched, filtered, and ready to apply.
+        </p>
+      </div>
     </div>
   );
 }
