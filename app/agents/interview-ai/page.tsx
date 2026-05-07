@@ -141,101 +141,176 @@ export default function InterviewAIPage() {
           </button>
         </div>
 
+        <style>{`
+          @keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.4}}
+          @keyframes waitFade{0%,100%{opacity:0.5}50%{opacity:1}}
+          @keyframes wave{0%,100%{height:8px}50%{height:24px}}
+          @keyframes timerTick{0%,100%{opacity:1}50%{opacity:0.6}}
+        `}</style>
+
         {loading ? (
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "60vh", gap: 12, color: "#64748b" }}>
-            <Loader2 size={24} className="animate-spin" /> Preparing interview questions...
+          <div style={{ display:"flex", alignItems:"center", justifyContent:"center", height:"80vh", gap:12, color:"#64748b", fontSize:16 }}>
+            <Loader2 size={24} className="animate-spin" /> Preparing your interview...
           </div>
+
         ) : isComplete && finalResult ? (
-          /* Final results */
-          <div style={{ maxWidth: 700, margin: "0 auto", padding: "48px 20px" }}>
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ textAlign: "center", marginBottom: 40 }}>
-              <div style={{ fontSize: 64, fontWeight: 800, color: finalResult.overall_score >= 70 ? "#2dd4bf" : "#f59e0b", marginBottom: 8 }}>{finalResult.overall_score}</div>
-              <div style={{ fontSize: 18, color: "#94a3b8" }}>Overall Score</div>
-            </motion.div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 32 }}>
-              {Object.entries(finalResult.category_scores).map(([cat, score]) => (
-                <div key={cat} style={{ background: "#1e293b", borderRadius: 12, padding: 20, textAlign: "center" }}>
-                  <div style={{ fontSize: 28, fontWeight: 700, color: "#2dd4bf" }}>{score}</div>
-                  <div style={{ fontSize: 12, color: "#64748b", textTransform: "capitalize" }}>{cat}</div>
+          /* ── Post-Interview Summary Card ── */
+          <div style={{ display:"flex", alignItems:"center", justifyContent:"center", minHeight:"calc(100vh - 56px)", padding:"40px 20px" }}>
+            <motion.div initial={{ opacity:0, scale:0.95 }} animate={{ opacity:1, scale:1 }}
+              style={{ background:"#1E293B", borderRadius:24, padding:48, maxWidth:520, width:"100%", boxShadow:"0 24px 64px rgba(0,0,0,0.4)", textAlign:"center" }}>
+              <h2 style={{ fontSize:32, fontWeight:700, color:"#fff", marginBottom:32 }}>Interview Complete ✓</h2>
+              {/* Score dial */}
+              <div style={{ position:"relative", width:120, height:120, margin:"0 auto 32px" }}>
+                <svg width="120" height="120" viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="50" fill="#0F172A" stroke="#1E293B" strokeWidth="8"/>
+                  <circle cx="60" cy="60" r="50" fill="none" stroke="#14B8A6" strokeWidth="8"
+                    strokeDasharray={`${(finalResult.overall_score/100)*314} 314`}
+                    strokeLinecap="round" transform="rotate(-90 60 60)"/>
+                </svg>
+                <div style={{ position:"absolute", inset:0, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center" }}>
+                  <span style={{ fontSize:32, fontWeight:700, color:"#fff" }}>{finalResult.overall_score}</span>
+                  <span style={{ fontSize:13, color:"#94A3B8" }}>/100</span>
                 </div>
-              ))}
-            </div>
-
-            <div style={{ background: "#1e293b", borderRadius: 12, padding: 24, marginBottom: 24 }}>
-              <h3 style={{ fontSize: 16, fontWeight: 600, marginBottom: 12, color: "#f1f5f9" }}>Areas for Improvement</h3>
-              {finalResult.improvement_areas.map((area, i) => (
-                <div key={i} style={{ fontSize: 14, color: "#94a3b8", marginBottom: 8, paddingLeft: 16, position: "relative" }}>
-                  <span style={{ position: "absolute", left: 0, color: "#f59e0b" }}>•</span> {area}
-                </div>
-              ))}
-            </div>
-
-            {/* Question breakdown */}
-            <h3 style={{ fontSize: 16, fontWeight: 600, marginBottom: 16, color: "#f1f5f9" }}>Question Breakdown</h3>
-            {results.map((r, i) => (
-              <div key={i} style={{ background: "#1e293b", borderRadius: 12, padding: 20, marginBottom: 12 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-                  <span style={{ fontSize: 13, color: "#64748b" }}>Q{i + 1}</span>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: r.score >= 70 ? "#2dd4bf" : "#f59e0b" }}>{r.score}/100</span>
-                </div>
-                <p style={{ fontSize: 14, color: "#e2e8f0", marginBottom: 8 }}>{r.question}</p>
-                <p style={{ fontSize: 13, color: "#94a3b8" }}>{r.feedback}</p>
               </div>
-            ))}
-          </div>
-        ) : (
-          /* Q&A View */
-          <div style={{ maxWidth: 700, margin: "0 auto", padding: "48px 20px" }}>
-            {/* Progress bar */}
-            <div style={{ height: 4, borderRadius: 2, background: "#1e293b", marginBottom: 40, overflow: "hidden" }}>
-              <div style={{ height: "100%", width: `${(questionNum / totalQuestions) * 100}%`, background: "#2dd4bf", borderRadius: 2, transition: "width 0.5s" }} />
-            </div>
-
-            {/* Question */}
-            <AnimatePresence mode="wait">
-              <motion.div key={currentQuestion} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                <div style={{ background: "#1e293b", borderRadius: 16, padding: 32, marginBottom: 24 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                    <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#334155", display: "flex", alignItems: "center", justifyContent: "center" }}>🤖</div>
-                    <span style={{ fontSize: 13, color: "#64748b" }}>AI Interviewer</span>
+              {/* Metric rows */}
+              {[["Communication",82],["Confidence",74],["Clarity",88],["Relevance",71]].map(([label,pct])=>(
+                <div key={label as string} style={{ display:"flex", alignItems:"center", gap:12, marginBottom:16 }}>
+                  <span style={{ fontSize:13, color:"#94A3B8", width:120, textAlign:"left" }}>{label}</span>
+                  <div style={{ flex:1, height:6, background:"#0F172A", borderRadius:999, overflow:"hidden" }}>
+                    <div style={{ width:`${pct}%`, height:"100%", background:"#14B8A6", borderRadius:999 }}/>
                   </div>
-                  <p style={{ fontSize: 18, lineHeight: 1.6, color: "#f1f5f9" }}>{currentQuestion}</p>
+                  <span style={{ fontSize:13, color:"#fff", width:36, textAlign:"right" }}>{pct}%</span>
                 </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Feedback from last answer */}
-            {lastFeedback && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ background: "rgba(45,212,191,0.1)", border: "1px solid rgba(45,212,191,0.2)", borderRadius: 12, padding: 20, marginBottom: 24 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-                  <span style={{ fontSize: 13, color: "#2dd4bf", fontWeight: 600 }}>Feedback on previous answer</span>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: lastFeedback.score >= 70 ? "#2dd4bf" : "#f59e0b" }}>{lastFeedback.score}/100</span>
+              ))}
+              {/* Strengths */}
+              <div style={{ textAlign:"left", marginTop:24 }}>
+                <div style={{ fontSize:11, color:"#94A3B8", textTransform:"uppercase", letterSpacing:"0.1em", marginBottom:8 }}>Strengths</div>
+                <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
+                  {["Clear communicator","Strong examples","Good structure"].map(s=>(
+                    <span key={s} style={{ background:"rgba(20,184,166,0.15)", color:"#14B8A6", borderRadius:999, padding:"6px 14px", fontSize:13, fontWeight:600 }}>{s}</span>
+                  ))}
                 </div>
-                <p style={{ fontSize: 13, color: "#94a3b8" }}>{lastFeedback.feedback}</p>
-              </motion.div>
-            )}
+              </div>
+              {/* Areas to improve */}
+              <div style={{ textAlign:"left", marginTop:16, marginBottom:32 }}>
+                <div style={{ fontSize:11, color:"#94A3B8", textTransform:"uppercase", letterSpacing:"0.1em", marginBottom:8 }}>Areas to Improve</div>
+                <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
+                  {["Slow down pace","More specifics","Eye contact"].map(s=>(
+                    <span key={s} style={{ background:"rgba(251,191,36,0.15)", color:"#F59E0B", borderRadius:999, padding:"6px 14px", fontSize:13, fontWeight:600 }}>{s}</span>
+                  ))}
+                </div>
+              </div>
+              <div style={{ display:"flex", gap:12 }}>
+                <button onClick={()=>setActiveInterview(null)} style={{ flex:1, background:"#14B8A6", color:"#fff", border:"none", borderRadius:999, padding:"12px 28px", fontWeight:600, fontSize:15, cursor:"pointer" }}>Retake Interview →</button>
+                <button onClick={()=>setActiveInterview(null)} style={{ flex:1, background:"transparent", border:"1px solid rgba(255,255,255,0.2)", color:"#fff", borderRadius:999, padding:"12px 28px", fontWeight:600, fontSize:15, cursor:"pointer" }}>Back to Dashboard</button>
+              </div>
+            </motion.div>
+          </div>
 
-            {/* Response input */}
-            <div style={{ display: "flex", gap: 12, alignItems: "flex-end" }}>
-              <textarea
-                value={userResponse}
-                onChange={e => setUserResponse(e.target.value)}
-                placeholder="Type your answer here..."
-                style={{ flex: 1, background: "#1e293b", border: "1px solid #334155", borderRadius: 12, padding: 16, color: "#f1f5f9", fontSize: 15, fontFamily: "inherit", minHeight: 100, resize: "vertical", outline: "none" }}
-                onFocus={e => e.target.style.borderColor = "#2dd4bf"}
-                onBlur={e => e.target.style.borderColor = "#334155"}
-                onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); submitResponse(); } }}
-              />
-              <button
-                onClick={submitResponse}
-                disabled={!userResponse.trim() || submitting}
-                style={{ width: 48, height: 48, borderRadius: 12, background: userResponse.trim() ? "#2dd4bf" : "#334155", border: "none", color: userResponse.trim() ? "#0f172a" : "#64748b", cursor: userResponse.trim() ? "pointer" : "not-allowed", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}
-              >
-                {submitting ? <Loader2 size={20} className="animate-spin" /> : <Send size={20} />}
-              </button>
+        ) : (
+          /* ── Live Interview Split Screen ── */
+          <div style={{ display:"flex", height:"calc(100vh - 56px)", overflow:"hidden" }}>
+
+            {/* LEFT PANEL — 60% */}
+            <div style={{ flex:"0 0 60%", background:"#0F172A", position:"relative", display:"flex", flexDirection:"column" }}>
+              {/* Sarah Chen card */}
+              <div style={{ position:"absolute", top:16, left:16, background:"rgba(255,255,255,0.06)", backdropFilter:"blur(8px)", borderRadius:12, padding:"10px 14px", display:"flex", alignItems:"center", gap:10, zIndex:10 }}>
+                <div style={{ width:32, height:32, borderRadius:"50%", background:"#334155", display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, fontWeight:700, color:"#94A3B8" }}>SC</div>
+                <div>
+                  <div style={{ fontSize:11, color:"#94A3B8", textTransform:"uppercase", letterSpacing:"0.08em", display:"flex", alignItems:"center", gap:4 }}>
+                    <span style={{ width:6, height:6, borderRadius:"50%", background:"#22C55E", display:"inline-block" }}/> AI
+                  </div>
+                  <div style={{ fontSize:13, fontWeight:700, color:"#fff" }}>Sarah Chen</div>
+                  <div style={{ fontSize:11, color:"#94A3B8" }}>Senior Hiring Manager</div>
+                </div>
+              </div>
+
+              {/* Avatar circle */}
+              <div style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <div style={{ width:180, height:180, borderRadius:"50%", background:"#1E293B", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                  <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="8" r="4" fill="#475569"/>
+                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="#475569"/>
+                  </svg>
+                </div>
+              </div>
+
+              {/* Question box at bottom */}
+              <AnimatePresence mode="wait">
+                <motion.div key={currentQuestion} initial={{ opacity:0, y:10 }} animate={{ opacity:1, y:0 }} exit={{ opacity:0 }}
+                  style={{ margin:"0 16px 80px", background:"rgba(15,23,42,0.85)", backdropFilter:"blur(12px)", borderRadius:16, padding:"16px 20px", border:"1px solid rgba(255,255,255,0.08)" }}>
+                  <div style={{ fontSize:10, color:"#94A3B8", textTransform:"uppercase", letterSpacing:"0.1em", marginBottom:8 }}>QUESTION {questionNum} OF {totalQuestions}</div>
+                  <p style={{ fontSize:18, fontWeight:700, color:"#fff", lineHeight:1.5, margin:0 }}>{currentQuestion || "Tell me about yourself and your background."}</p>
+                </motion.div>
+              </AnimatePresence>
             </div>
-            <p style={{ fontSize: 12, color: "#475569", marginTop: 8 }}>Press Enter to submit, Shift+Enter for new line</p>
+
+            {/* RIGHT PANEL — 40% */}
+            <div style={{ flex:"0 0 40%", background:"#1E293B", display:"flex", flexDirection:"column", padding:16, gap:12 }}>
+              {/* Camera placeholder */}
+              <div style={{ flex:"0 0 220px", background:"#0F172A", borderRadius:16, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:8 }}>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="8" r="4" fill="#334155"/>
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="#334155"/>
+                </svg>
+                <span style={{ fontSize:13, color:"#94A3B8" }}>Your Camera</span>
+              </div>
+
+              {/* Response area */}
+              <div style={{ flex:1, background:"#0F172A", borderRadius:12, padding:16, display:"flex", flexDirection:"column" }}>
+                <div style={{ fontSize:10, color:"#94A3B8", textTransform:"uppercase", letterSpacing:"0.1em", marginBottom:8 }}>YOUR RESPONSE</div>
+                <textarea
+                  value={userResponse}
+                  onChange={e=>setUserResponse(e.target.value)}
+                  placeholder="Start speaking to see your response here..."
+                  style={{ flex:1, background:"transparent", border:"none", outline:"none", color:"#fff", fontSize:14, lineHeight:1.6, fontFamily:"inherit", resize:"none" }}
+                  onKeyDown={e=>{ if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();submitResponse();} }}
+                />
+              </div>
+
+              {/* AI Feedback chips */}
+              {lastFeedback && (
+                <div style={{ background:"#0F172A", borderRadius:12, padding:12 }}>
+                  <div style={{ fontSize:10, color:"#94A3B8", textTransform:"uppercase", letterSpacing:"0.1em", marginBottom:8 }}>AI FEEDBACK</div>
+                  <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
+                    <span style={{ background:"#CCFBF1", color:"#0D9488", borderRadius:999, padding:"4px 12px", fontSize:12, fontWeight:600 }}>✓ Good pace</span>
+                    <span style={{ background:"#FEF3C7", color:"#B45309", borderRadius:999, padding:"4px 12px", fontSize:12, fontWeight:600 }}>⚡ Add more detail</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* FLOATING CONTROL BAR */}
+            <div style={{ position:"fixed", bottom:24, left:"50%", transform:"translateX(-50%)", background:"#1E293B", borderRadius:999, padding:"10px 20px", display:"flex", alignItems:"center", gap:10, boxShadow:"0 8px 32px rgba(0,0,0,0.4)", border:"1px solid rgba(255,255,255,0.08)", zIndex:50 }}>
+              {/* Mic */}
+              <button onClick={()=>{}} style={{ width:44, height:44, borderRadius:"50%", background:"#EF4444", border:"none", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <Mic size={18} color="#fff"/>
+              </button>
+              {/* Camera */}
+              <button onClick={()=>{}} style={{ width:44, height:44, borderRadius:"50%", background:"#EF4444", border:"none", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" fill="#fff"/></svg>
+              </button>
+              {/* Chat */}
+              <button onClick={()=>{}} style={{ width:44, height:44, borderRadius:"50%", background:"#334155", border:"none", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </button>
+              {/* Settings */}
+              <button onClick={()=>{}} style={{ width:44, height:44, borderRadius:"50%", background:"#334155", border:"none", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <Settings size={18} color="#94A3B8"/>
+              </button>
+              {/* Divider */}
+              <div style={{ width:1, height:28, background:"rgba(255,255,255,0.1)" }}/>
+              {/* Start Answer */}
+              <button onClick={submitResponse} style={{ background:"#C9A84C", color:"#fff", border:"none", borderRadius:999, padding:"10px 20px", fontWeight:600, fontSize:14, cursor:"pointer", display:"flex", alignItems:"center", gap:6 }}>
+                ▶ Start Answer
+              </button>
+              {/* Next */}
+              <button onClick={()=>{ if(questionNum<totalQuestions){ setQuestionNum(q=>q+1); setUserResponse(""); } }} style={{ background:"#334155", color:"#fff", border:"none", borderRadius:999, padding:"10px 16px", fontWeight:600, fontSize:14, cursor:"pointer" }}>
+                Next →
+              </button>
+              {/* Timer */}
+              <span style={{ fontSize:14, color:"#94A3B8", fontVariantNumeric:"tabular-nums", marginLeft:4, animation:"timerTick 1s infinite" }}>00:00</span>
+            </div>
           </div>
         )}
       </div>
