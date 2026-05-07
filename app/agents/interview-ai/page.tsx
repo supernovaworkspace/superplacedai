@@ -127,17 +127,16 @@ export default function InterviewAIPage() {
   // Active interview view
   if (activeInterview) {
     return (
-      <div style={{ minHeight: "100vh", background: "#0f172a", color: "#fff", fontFamily: "'DM Sans', sans-serif" }}>
-        {/* Top bar */}
-        <div style={{ padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid #1e293b" }}>
+      <div style={{ minHeight: "100vh", background: "#0F172A", color: "#fff", fontFamily: "'DM Sans', sans-serif" }}>
+        {/* Header bar */}
+        <div style={{ padding: "14px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", background: "#020617" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <span style={{ fontSize: 18, fontWeight: 600 }}>Mock Interview: {activeInterview}</span>
-            <span style={{ padding: "4px 12px", background: isComplete ? "rgba(239,68,68,0.2)" : "rgba(45,212,191,0.2)", color: isComplete ? "#f87171" : "#2dd4bf", borderRadius: 12, fontSize: 12, fontWeight: 600 }}>
-              {isComplete ? "COMPLETED" : "LIVE"}
-            </span>
-            {!isComplete && <span style={{ fontSize: 13, color: "#64748b" }}>Q{questionNum}/{totalQuestions} • {currentCategory}</span>}
+            <span style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>Mock Interview</span>
+            <span style={{ fontSize: 14, color: "#94A3B8" }}>{activeInterview}</span>
+            <span style={{ fontSize: 11, color: "#22C55E", textTransform: "uppercase", fontWeight: 600, animation: "livePulse 1.5s ease infinite" }}>● {isComplete ? "COMPLETE" : "LIVE"}</span>
+            {!isComplete && <span style={{ fontSize: 13, color: "#94A3B8" }}>Q {questionNum}/{totalQuestions}</span>}
           </div>
-          <button onClick={() => setActiveInterview(null)} style={{ background: "#334155", color: "#fff", border: "none", padding: "8px 16px", borderRadius: 8, cursor: "pointer", fontWeight: 500 }}>
+          <button onClick={() => setActiveInterview(null)} style={{ background: "rgba(239,68,68,0.15)", border: "1px solid rgba(239,68,68,0.3)", color: "#fff", borderRadius: 999, padding: "8px 20px", fontSize: 13, cursor: "pointer" }}>
             {isComplete ? "Back to Roles" : "End Session"}
           </button>
         </div>
@@ -245,115 +244,87 @@ export default function InterviewAIPage() {
 
   // Landing page view (preserved exactly)
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ minHeight: "100vh", background: "#ffffff", fontFamily: "'DM Sans', sans-serif", color: "#0f172a", paddingBottom: 100 }}>
-      {/* Top Navigation */}
-      <div style={{ padding: "24px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid #f1f5f9" }}>
-        <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 12 }}>
-          <img src="/logo.png" alt="Logo" style={{ height: 120, filter: "invert(1) brightness(0)" }} />
-          <span style={{ fontSize: 20, fontWeight: 700, letterSpacing: "-0.5px" }}>Interview AI</span>
-        </a>
-        <button onClick={() => router.push("/dashboard")} style={{ background: "transparent", border: "none", color: "#64748b", fontWeight: 600, cursor: "pointer" }}>
-          Back to Dashboard
-        </button>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ minHeight: "100vh", background: "#ffffff", fontFamily: "'DM Sans', sans-serif", color: "#0F172A", paddingBottom: 100 }}>
+      <style>{`@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.4}}@keyframes waitFade{0%,100%{opacity:0.5}50%{opacity:1}}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}@keyframes wave{0%,100%{height:8px}50%{height:24px}}`}</style>
+      {/* Nav */}
+      <div style={{ padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", background: "transparent" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <span style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", letterSpacing: "-0.3px" }}>SUPERPLACED AI</span>
+          <span style={{ fontSize: 16, color: "#6B7280" }}>· Interview AI</span>
+        </div>
+        <button onClick={() => router.push("/dashboard")} style={{ background: "transparent", border: "none", color: "#6B7280", fontSize: 14, cursor: "pointer" }}>← Back to Dashboard</button>
       </div>
 
-      {/* Hero Section */}
-      <div style={{ background: "#f8fafc", padding: "100px 20px", textAlign: "center", marginBottom: 60 }}>
-        <h1 style={{ fontSize: "clamp(36px, 5vw, 56px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, margin: "0 auto 32px", maxWidth: 800 }}>
-          Ready to start<br/>
-          <span style={{ background: "rgba(45, 212, 191, 0.15)", padding: "4px 12px" }}>mastering your interview skills?</span>
+      {/* Hero */}
+      <div style={{ padding: "80px 40px", textAlign: "center" }}>
+        <div style={{ display: "inline-block", background: "#CCFBF1", color: "#0D9488", borderRadius: 999, padding: "5px 14px", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 24 }}>PRACTICE AGENT</div>
+        <h1 style={{ fontSize: "clamp(36px,5vw,48px)", fontWeight: 700, color: "#0F172A", lineHeight: 1.2, margin: "0 auto 32px", maxWidth: 700 }}>
+          Ready to start mastering your{" "}<span style={{ background: "#CCFBF1", color: "#0D9488", borderRadius: 6, padding: "2px 8px" }}>interview skills?</span>
         </h1>
-        <button
-          onClick={() => startInterview("General Interview")}
-          style={{ background: "#334155", color: "#fff", border: "none", borderRadius: 30, padding: "16px 36px", fontSize: 18, fontWeight: 500, display: "inline-flex", alignItems: "center", gap: 8, cursor: "pointer", transition: "transform 0.2s" }}
-          onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
-          onMouseLeave={(e) => e.currentTarget.style.transform = "none"}
-        >
-          Try now for free <ArrowRight size={20} />
-        </button>
+        <button onClick={() => startInterview("General Interview")}
+          style={{ background: "#0F172A", color: "#fff", border: "none", borderRadius: 999, padding: "14px 32px", fontSize: 15, fontWeight: 600, cursor: "pointer", marginTop: 32 }}
+          onMouseEnter={e => e.currentTarget.style.opacity="0.85"} onMouseLeave={e => e.currentTarget.style.opacity="1"}
+        >Start an Interview →</button>
       </div>
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 20px" }}>
 
         {/* Roles Grid */}
-        <div style={{ textAlign: "center", marginBottom: 80 }}>
-          <div style={{ display: "inline-block", background: "rgba(45,212,191,0.1)", color: "#0d9488", padding: "4px 16px", borderRadius: 20, fontSize: 14, fontWeight: 500, marginBottom: 24 }}>Quick start</div>
-          <h2 style={{ fontSize: 36, fontWeight: 700, marginBottom: 12, letterSpacing: "-0.02em" }}>Works for every type of job interview and role</h2>
-          <p style={{ color: "#64748b", fontSize: 18, marginBottom: 48 }}>Provide your own job description or choose from our sample roles.</p>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 16, textAlign: "left" }}>
+        <div style={{ textAlign: "center", marginBottom: 80, maxWidth: 900, margin: "0 auto 80px", padding: "0 40px" }}>
+          <div style={{ display: "inline-block", background: "#CCFBF1", color: "#0D9488", borderRadius: 999, padding: "5px 14px", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 24 }}>Quick start</div>
+          <h2 style={{ fontSize: 32, fontWeight: 700, color: "#0F172A", marginBottom: 12 }}>Works for every type of job interview and role</h2>
+          <p style={{ color: "#6B7280", fontSize: 16, marginBottom: 36 }}>Provide your own job description or choose from our sample roles.</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, textAlign: "left" }}>
             {ROLES.map((role) => (
-              <button
-                key={role}
-                onClick={() => startInterview(role)}
-                style={{ background: "#ffffff", border: "1px solid #e2e8f0", padding: "24px", borderRadius: 12, fontSize: 18, fontWeight: 500, color: "#0f172a", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", transition: "all 0.2s", boxShadow: "0 2px 4px rgba(0,0,0,0.02)" }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#cbd5e1"; e.currentTarget.style.boxShadow = "0 8px 16px rgba(0,0,0,0.04)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.boxShadow = "0 2px 4px rgba(0,0,0,0.02)"; e.currentTarget.style.transform = "none"; }}
-              >
-                {role} <ArrowRight size={18} color="#94a3b8" />
-              </button>
+              <button key={role} onClick={() => startInterview(role)}
+                style={{ background: "#fff", border: "1px solid #E5E7EB", padding: "20px", borderRadius: 12, fontSize: 15, fontWeight: 600, color: "#0F172A", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", transition: "all 0.2s ease" }}
+                onMouseEnter={e => { e.currentTarget.style.boxShadow="0 4px 16px rgba(0,0,0,0.08)"; e.currentTarget.style.transform="translateY(-2px)"; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow="none"; e.currentTarget.style.transform="none"; }}
+              >{role} <span style={{ color: "#14B8A6", fontSize: 18 }}>→</span></button>
             ))}
           </div>
         </div>
 
         {/* Success Stories */}
-        <div style={{ textAlign: "center", marginBottom: 100 }}>
-          <div style={{ display: "inline-block", background: "rgba(45,212,191,0.1)", color: "#0d9488", padding: "4px 16px", borderRadius: 20, fontSize: 14, fontWeight: 500, marginBottom: 24 }}>Success stories</div>
-          <h2 style={{ fontSize: 36, fontWeight: 700, marginBottom: 12, letterSpacing: "-0.02em" }}>
-            Interviews by AI helped these job seekers and <span style={{ color: "#0d9488" }}>50,000+</span> more
-          </h2>
-          <p style={{ color: "#64748b", fontSize: 18, marginBottom: 48 }}>You&apos;re a mock interview away from your dream job.</p>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
-            {TESTIMONIALS.map((t, i) => (
-              <div key={i} style={{ background: "#f8fafc", padding: "40px 32px", borderRadius: 16, display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#e2e8f0", marginBottom: 16, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24 }}>👤</div>
-                <div style={{ fontSize: 15, color: "#64748b", marginBottom: 24 }}>{t.name} &bull; {t.role}</div>
-                <p style={{ fontSize: 18, fontStyle: "italic", lineHeight: 1.6, marginBottom: 32, color: "#334155" }}>
-                  &quot;{t.quote}
-                  <span style={{ color: "#0d9488" }}>{t.highlight}</span>
-                  {t.quoteEnd}&quot;
-                </p>
-                <div style={{ display: "flex", gap: 4, color: "#2dd4bf", marginTop: "auto" }}>
-                  {[1,2,3,4,5].map(n => <Star key={n} fill="currentColor" size={24} />)}
+        <div style={{ textAlign: "center", marginBottom: 80, maxWidth: 900, margin: "0 auto 80px", padding: "0 40px" }}>
+          <div style={{ display: "inline-block", background: "#CCFBF1", color: "#0D9488", borderRadius: 999, padding: "5px 14px", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 24 }}>Success stories</div>
+          <h2 style={{ fontSize: 32, fontWeight: 700, color: "#0F172A", marginBottom: 12 }}>Interviews by AI helped these job seekers and <span style={{ color: "#14B8A6", fontWeight: 700 }}>500+</span> more</h2>
+          <p style={{ color: "#6B7280", fontSize: 16, marginBottom: 36 }}>You&apos;re a mock interview away from your dream job.</p>
+          <div style={{ display: "flex", gap: 20 }}>
+            {[
+              { initials: "RS", bg: "#7C3AED", name: "Rahul Sharma", role: "Software Engineer", quote: "I used this for an Infosys interview and sure enough one of the AI questions came up ", highlight: "word for word", end: "." },
+              { initials: "PN", bg: "#EA580C", name: "Priya Nair", role: "Data Analyst", quote: "Perfect tool for anyone preparing for tech roles in India, helped me ", highlight: "crack my TCS interview", end: "!" },
+              { initials: "AM", bg: "#14B8A6", name: "Arjun Mehta", role: "Product Manager", quote: "Saved me so much prep time before my ", highlight: "Wipro round", end: ". Highly recommend." },
+            ].map((t, i) => (
+              <div key={i} style={{ flex: 1, background: "#fff", border: "1px solid #E5E7EB", borderRadius: 12, padding: 24, textAlign: "left" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+                  <div style={{ width: 40, height: 40, borderRadius: "50%", background: t.bg, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 13 }}>{t.initials}</div>
+                  <div><div style={{ fontWeight: 600, color: "#0F172A", fontSize: 14 }}>{t.name}</div><div style={{ color: "#6B7280", fontSize: 12 }}>{t.role}</div></div>
                 </div>
+                <p style={{ fontSize: 14, color: "#334155", lineHeight: 1.6, marginBottom: 12 }}>&quot;{t.quote}<span style={{ background: "#CCFBF1", color: "#0D9488", borderRadius: 4, padding: "1px 4px" }}>{t.highlight}</span>{t.end}&quot;</p>
+                <div style={{ color: "#14B8A6", letterSpacing: 2 }}>★★★★★</div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Comparison Section */}
-        <div style={{ background: "#f8fafc", borderRadius: 24, padding: "80px 60px", display: "flex", alignItems: "center", gap: 60, marginBottom: 100, flexWrap: "wrap" }}>
-          <div style={{ flex: "1 1 400px" }}>
-            <h2 style={{ fontSize: "clamp(32px, 4vw, 44px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}>
-              Make your next job interview<br/>
-              <span style={{ background: "rgba(45, 212, 191, 0.15)", padding: "0 8px" }}>stress-free thanks to AI</span>
-            </h2>
-          </div>
-
-          <div style={{ flex: "1 1 400px", display: "flex", gap: 24 }}>
-            <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
-              <div style={{ fontSize: 14, fontWeight: 600, color: "#1e293b", textAlign: "center", marginBottom: 8 }}>Without Interviews by AI</div>
-              {["Unprepared", "Nervous", "Ghosted"].map((text) => (
-                <div key={text} style={{ background: "#fee2e2", color: "#b91c1c", padding: "16px", borderRadius: 8, display: "flex", alignItems: "center", gap: 12, fontWeight: 500, fontSize: 18 }}>
-                  <XCircle size={20} /> {text}
-                </div>
-              ))}
+        <div style={{ background: "#F9FAFB", padding: "80px 40px", maxWidth: 1000, margin: "0 auto 80px" }}>
+          <div style={{ display: "flex", gap: 60, alignItems: "center", flexWrap: "wrap" }}>
+            <div style={{ flex: "1 1 300px" }}>
+              <h2 style={{ fontSize: 36, fontWeight: 700, color: "#0F172A", lineHeight: 1.2 }}>Make your next job interview <span style={{ background: "#CCFBF1", color: "#0D9488", borderRadius: 6, padding: "2px 8px" }}>stress-free thanks to AI</span></h2>
+              <button onClick={() => startInterview("General Interview")} style={{ background: "#0F172A", color: "#fff", border: "none", borderRadius: 999, padding: "12px 28px", fontWeight: 600, fontSize: 15, cursor: "pointer", marginTop: 32 }}>Start an interview →</button>
             </div>
-
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 44, color: "#94a3b8", paddingTop: 40 }}>
-              <ArrowRight size={20} />
-              <ArrowRight size={20} />
-              <ArrowRight size={20} />
-            </div>
-
-            <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
-              <div style={{ fontSize: 14, fontWeight: 600, color: "#1e293b", textAlign: "center", marginBottom: 8 }}>With Interviews by AI</div>
-              {["Organized and ready", "Confident answers", "Hired!"].map((text) => (
-                <div key={text} style={{ background: "#2dd4bf", color: "#ffffff", padding: "16px", borderRadius: 8, display: "flex", alignItems: "center", gap: 12, fontWeight: 600, fontSize: 18 }}>
-                  <CheckCircle size={20} /> {text}
-                </div>
-              ))}
+            <div style={{ flex: "1 1 300px", display: "flex", gap: 12, alignItems: "flex-start" }}>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 12, fontWeight: 600, color: "#EF4444", textTransform: "uppercase", marginBottom: 12 }}>Without Interviews by AI</div>
+                {["Unprepared","Nervous","Ghosted"].map(t => <div key={t} style={{ background: "#FEF2F2", border: "1px solid #FECACA", borderRadius: 10, padding: "14px 16px", marginBottom: 12, display: "flex", alignItems: "center", gap: 8, color: "#991B1B", fontWeight: 600 }}><span style={{ color: "#EF4444" }}>✗</span>{t}</div>)}
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 28, paddingTop: 40, color: "#14B8A6", fontSize: 20 }}>→→→</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 12, fontWeight: 600, color: "#0D9488", textTransform: "uppercase", marginBottom: 12 }}>With Interviews by AI</div>
+                {["Organized and ready","Confident answers","Hired!"].map(t => <div key={t} style={{ background: "#14B8A6", borderRadius: 10, padding: "14px 16px", marginBottom: 12, display: "flex", alignItems: "center", gap: 8, color: "#fff", fontWeight: 600 }}><span>✓</span>{t}</div>)}
+              </div>
             </div>
           </div>
         </div>
@@ -361,18 +332,12 @@ export default function InterviewAIPage() {
       </div>
 
       {/* Floating CTA */}
-      <motion.div
-        initial={{ y: 100 }} animate={{ y: 0 }} transition={{ delay: 0.5, type: "spring" }}
-        style={{ position: "fixed", bottom: 32, left: "50%", transform: "translateX(-50%)", zIndex: 50 }}
-      >
-        <button
-          onClick={() => startInterview("Custom Role")}
-          style={{ background: "#334155", color: "#fff", border: "none", borderRadius: 30, padding: "16px 36px", fontSize: 18, fontWeight: 500, display: "flex", alignItems: "center", gap: 8, cursor: "pointer", boxShadow: "0 12px 24px rgba(15,23,42,0.25)", transition: "transform 0.2s" }}
-          onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-4px)"}
-          onMouseLeave={(e) => e.currentTarget.style.transform = "none"}
-        >
-          Start an interview <ArrowRight size={20} />
-        </button>
+      <motion.div initial={{ y: 100 }} animate={{ y: 0 }} transition={{ delay: 0.5, type: "spring" }}
+        style={{ position: "fixed", bottom: 32, left: "50%", transform: "translateX(-50%)", zIndex: 50 }}>
+        <button onClick={() => startInterview("Custom Role")}
+          style={{ background: "#0F172A", color: "#fff", border: "none", borderRadius: 999, padding: "14px 32px", fontSize: 15, fontWeight: 600, cursor: "pointer", boxShadow: "0 8px 32px rgba(0,0,0,0.3)", display: "flex", alignItems: "center", gap: 8 }}
+          onMouseEnter={e => e.currentTarget.style.opacity="0.85"} onMouseLeave={e => e.currentTarget.style.opacity="1"}
+        >Start an Interview →</button>
       </motion.div>
     </motion.div>
   );
