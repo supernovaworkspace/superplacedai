@@ -415,7 +415,25 @@ export default function ResumeAnalyzerMarketingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
+    <div className="min-h-screen font-sans text-gray-900 overflow-x-hidden" style={{ background: "#f0f0ed", fontFamily: "'DM Sans', sans-serif" }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap');
+        .resume-page * { font-family: 'DM Sans', sans-serif; }
+        .resume-serif { font-family: 'DM Serif Display', serif !important; }
+      `}</style>
+
+      {/* ─── TOP NAVIGATION ─── */}
+      <header style={{ background: "#f0f0ed", padding: "16px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <button
+          onClick={() => setActiveView("hero")}
+          style={{ background: "transparent", border: "none", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 14, color: "#1a1a1a", display: "flex", alignItems: "center", gap: 6 }}
+        >
+          ← Dashboard
+        </button>
+        <div style={{ background: "#ffffff", border: "1px solid #e0e0e0", borderRadius: 999, padding: "6px 16px", fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#1a1a1a", display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ color: "#c9a84c" }}>●</span> SUPERNOVA AI
+        </div>
+      </header>
 
       {/* ═══ RESUME UPLOAD & ANALYSIS SECTION ═══ */}
       {activeView === "upload" && (
@@ -593,53 +611,55 @@ export default function ResumeAnalyzerMarketingPage() {
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-24 pb-20 grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
         <div className="space-y-8 z-10">
-          <h1 className="text-5xl md:text-6xl font-extrabold leading-[1.1] tracking-tight text-black">
-            Job-Winning<br />
-            <span className="relative inline-block mt-2">
-              Resume Templates
-              <div className="absolute bottom-0 left-0 w-full h-3 bg-green-300 opacity-60 rounded-full -z-10 transform -rotate-1"></div>
+          {/* Overline */}
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: "#c9a84c", fontWeight: 500 }}>
+            ——&nbsp;&nbsp;AI-POWERED CAREER ACCELERATION
+          </p>
+
+          {/* Headline */}
+          <h1 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(42px, 5vw, 58px)", color: "#1a1a1a", lineHeight: 1.1, margin: 0 }}>
+            AI-Powered<br />
+            Resume{" "}
+            <span style={{ position: "relative", display: "inline-block" }}>
+              Analyzer
+              <span style={{ position: "absolute", bottom: 4, left: 0, width: "100%", height: 3, background: "#c9a84c", borderRadius: 2 }}></span>
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed">
-            Get the job 2x as fast. Use recruiter-approved templates and step-by-step content recommendations to create a new resume or optimize your current one.
+
+          {/* Subtext */}
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 18, color: "#555555", lineHeight: 1.65, maxWidth: 480, margin: 0 }}>
+            Upload your resume and get instant AI feedback on formatting, keywords, ATS compatibility, and overall strength — in seconds.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 pt-2">
-            <button 
-              onClick={() => handleAction("create")}
-              className="bg-[#3b66ff] hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-blue-500/30 active:scale-95"
-            >
-              Create new resume
-            </button>
+
+          {/* CTA Buttons */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 16, paddingTop: 8 }}>
             <button 
               onClick={() => handleAction("optimize")}
-              className="bg-white border-2 border-gray-900 hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-full font-bold text-lg transition-all active:scale-95"
+              style={{ background: "#c9a84c", color: "#ffffff", borderRadius: 999, padding: "14px 28px", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 600, border: "none", cursor: "pointer", transition: "opacity 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = "0.88")}
+              onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
             >
-              Optimize my resume
+              Analyze My Resume →
             </button>
-          </div>
-          
-          <div className="inline-flex items-center gap-3 bg-gray-50 px-4 py-2.5 rounded-lg border border-gray-200 mt-4 shadow-sm">
-            <span className="font-bold text-xs tracking-widest text-gray-800">EXCELLENT</span>
-            <div className="flex text-[#00b67a]">
-              {[1,2,3,4,5].map(i => <Star key={i} fill="currentColor" stroke="none" className="w-4 h-4 mr-0.5" />)}
-            </div>
-            <span className="text-sm font-medium text-gray-600">4.5 out of 5 based on 17,236 reviews</span>
-            <div className="flex items-center gap-1 font-bold text-sm text-gray-800 ml-2">
-              <Star className="text-[#00b67a] w-5 h-5" fill="currentColor" stroke="none" /> Trustpilot
-            </div>
+            <button 
+              onClick={() => handleAction("create")}
+              style={{ background: "#ffffff", border: "2px solid #1a1a1a", color: "#1a1a1a", borderRadius: 999, padding: "14px 28px", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 400, cursor: "pointer", transition: "background 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "#f5f5f5")}
+              onMouseLeave={e => (e.currentTarget.style.background = "#ffffff")}
+            >
+              See How It Works
+            </button>
           </div>
         </div>
 
-        {/* Hero Interactive Graphic */}
+        {/* Hero Right Side — Resume Preview */}
         <div className="relative h-[500px] md:h-[600px] w-full flex items-center justify-center lg:justify-end mt-12 lg:mt-0">
-           {/* Abstract Background styling */}
-           <div className="absolute inset-0 right-0 bg-gradient-to-tr from-green-50 to-blue-50 opacity-50 rounded-full blur-3xl transform translate-x-1/4"></div>
-           
            <motion.div 
              initial={{ opacity: 0, y: 30 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.8, ease: "easeOut" }}
-             className="relative w-[380px] md:w-[420px] h-[520px] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-200 overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500"
+             style={{ borderRadius: 20, boxShadow: "0 8px 40px rgba(0,0,0,0.10)", overflow: "hidden" }}
+             className="relative w-[380px] md:w-[420px] h-[520px] border border-gray-200 transform rotate-2 hover:rotate-0 transition-transform duration-500"
            >
               <Image
                 src="/resume_hero_mockup.png"
@@ -653,30 +673,17 @@ export default function ResumeAnalyzerMarketingPage() {
               <motion.button 
                 whileHover={{ scale: 1.05, y: -2 }}
                 onClick={() => handleAction("optimize")}
-                className="absolute top-6 right-6 bg-[#ffb84d] text-orange-950 px-5 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-xl border border-orange-300 z-20 cursor-pointer"
+                style={{ background: "#c9a84c", color: "#fff" }}
+                className="absolute top-6 right-6 px-5 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-xl z-20 cursor-pointer border-0"
               >
-                <Wand2 size={16} /> Enhance with AI
+                <Wand2 size={16} /> Analyze with AI
               </motion.button>
            </motion.div>
         </div>
       </section>
 
-      {/* Trusted By & Features Section */}
+      {/* Features Section — no logos */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-gray-100">
-        {/* Logos */}
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 mb-24">
-          <p className="text-sm font-bold text-gray-900 whitespace-nowrap">Our customers have been hired by</p>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-12 items-center opacity-80">
-            {/* Logos text representations */}
-            <span className="text-2xl font-black tracking-tighter text-gray-800">TATA</span>
-            <span className="text-2xl font-sans tracking-tight text-gray-800">Google</span>
-            <span className="text-2xl font-serif italic text-gray-800">Apple</span>
-            <span className="text-2xl font-black italic text-gray-800">NIKE</span>
-            <span className="text-2xl font-semibold text-gray-800 flex items-center gap-2">
-              <div className="grid grid-cols-2 gap-0.5 w-5 h-5"><div className="bg-gray-800"></div><div className="bg-gray-800"></div><div className="bg-gray-800"></div><div className="bg-gray-800"></div></div> Microsoft
-            </span>
-          </div>
-        </div>
 
         {/* 3 Features Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20 relative">
@@ -694,7 +701,8 @@ export default function ResumeAnalyzerMarketingPage() {
             </div>
             <button 
               onClick={() => handleAction("create")}
-              className="bg-[#3b66ff] hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-bold text-lg transition-all shadow-md active:scale-95 z-10"
+              style={{ background: "#c9a84c", color: "#ffffff", padding: "14px 28px", borderRadius: 999, fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 600, border: "none", cursor: "pointer" }}
+              className="active:scale-95 z-10"
             >
               Choose a template
             </button>
@@ -728,7 +736,7 @@ export default function ResumeAnalyzerMarketingPage() {
       </section>
 
       {/* Templates Section */}
-      <section className="bg-gray-50 py-24 border-t border-gray-100">
+      <section style={{ background: "#f0f0ed" }} className="py-24 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {ALL_TEMPLATES.slice(0, 4).map((template) => (
@@ -749,7 +757,7 @@ export default function ResumeAnalyzerMarketingPage() {
           <div className="mt-16 text-center">
             <button 
               onClick={() => handleAction("create")}
-              className="text-[#3b66ff] font-bold text-xl inline-flex items-center gap-2 hover:gap-3 transition-all"
+              style={{ color: "#c9a84c", fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 18, background: "none", border: "none", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 8 }}
             >
               View all templates <ArrowRight size={20} strokeWidth={2.5} />
             </button>
@@ -757,19 +765,25 @@ export default function ResumeAnalyzerMarketingPage() {
         </div>
       </section>
 
-      {/* 6 Features Grid Section */}
-      <section className="bg-[#f2f8fc] py-24 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-black text-center mb-16 tracking-tight">
-            6 features to boost your job search
+      {/* What Our Resume Analyzer Does — 4 cards */}
+      <section style={{ background: "#ffffff", padding: "80px 40px", textAlign: "center" }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 42, color: "#1a1a1a", marginBottom: 48, lineHeight: 1.15 }}>
+            What Our Resume Analyzer Does
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-12">
-            <FeatureCard title="35+ Template Designs" graphicType={1} />
-            <FeatureCard title="Enhance with AI" graphicType={2} />
-            <FeatureCard title="Resume Review" graphicType={3} />
-            <FeatureCard title="AI Cover Letter Builder" graphicType={4} />
-            <FeatureCard title="Resume Website" graphicType={5} />
-            <FeatureCard title="Resume Tracking" graphicType={6} />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
+            {[
+              { emoji: "🎯", title: "ATS Score Analysis", desc: "Instantly checks if your resume passes Applicant Tracking Systems used by top companies." },
+              { emoji: "🔍", title: "Keyword Optimization", desc: "Identifies missing industry keywords and suggests additions to match your target job roles." },
+              { emoji: "✍️", title: "Formatting Feedback", desc: "Detects layout issues, font inconsistencies, and structure problems that hurt readability." },
+              { emoji: "📈", title: "Strength Score", desc: "Gives you an overall resume strength score with a clear breakdown of what to improve." },
+            ].map((card) => (
+              <div key={card.title} style={{ background: "#f9f8f5", borderRadius: 16, padding: 32, border: "1px solid #eeede8", textAlign: "left" }}>
+                <div style={{ fontSize: 32, marginBottom: 16 }}>{card.emoji}</div>
+                <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 20, color: "#1a1a1a", marginBottom: 12, marginTop: 0 }}>{card.title}</h3>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: "#666666", lineHeight: 1.6, margin: 0 }}>{card.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
