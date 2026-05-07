@@ -69,10 +69,10 @@ export default function Home() {
         </div>
         
         <div style={{ display: "flex", gap: "40px", fontSize: "11px", fontWeight: 700, color: "#111", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-          <a href="#about" className="rave-link" style={{ textDecoration: "none", color: "inherit" }}>About Us</a>
-          <a href="#pricing" className="rave-link" style={{ textDecoration: "none", color: "inherit" }}>Pricing</a>
-          <a href="#blog" className="rave-link" style={{ textDecoration: "none", color: "inherit" }}>Blog</a>
-          <a href="#faq" className="rave-link" style={{ textDecoration: "none", color: "inherit" }}>FAQ</a>
+          <a href="/about" className="rave-link" style={{ textDecoration: "none", color: "inherit" }}>About Us</a>
+          <a href="/pricing" className="rave-link" style={{ textDecoration: "none", color: "inherit" }}>Pricing</a>
+          <a href="/blog" className="rave-link" style={{ textDecoration: "none", color: "inherit" }}>Blog</a>
+          <a href="/faq" className="rave-link" style={{ textDecoration: "none", color: "inherit" }}>FAQ</a>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>

@@ -17,12 +17,13 @@ import {
   PenTool,
   MessageSquare
 } from "lucide-react";
+import ResumeEditor from "../../../components/ResumeEditor";
 
 const colorOptions = ["#f8fafc", "#1e293b", "#0ea5e9", "#2563eb", "#0d9488", "#d97706", "#dc2626", "#475569"];
 
 type TemplateLayout = 'two-column' | 'left-sidebar' | 'single-column' | 'minimal' | 'header-centric' | 'creative';
 
-const TemplateCard = ({ name, activeColor, onColorChange, layout, isDark = false }: { name: string, activeColor: string, onColorChange: (c:string) => void, layout: TemplateLayout, isDark?: boolean }) => {
+const TemplateCard = ({ name, activeColor, onColorChange, layout, isDark = false, onSelect }: { name: string, activeColor: string, onColorChange: (c:string) => void, layout: TemplateLayout, isDark?: boolean, onSelect?: () => void }) => {
   const isDefaultColor = activeColor === '#f8fafc' || activeColor === '#1e293b' || activeColor === '#000000';
   const themeColor = isDefaultColor ? '#4b5563' : activeColor;
   
@@ -167,7 +168,7 @@ const TemplateCard = ({ name, activeColor, onColorChange, layout, isDark = false
             {/* Hover overlay */}
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center">
               <div className="opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                <button className="bg-white/90 backdrop-blur-sm text-[#3b66ff] text-sm font-bold px-4 py-2 rounded-full shadow-lg border border-gray-100 hover:bg-[#3b66ff] hover:text-white transition-colors">Use Template</button>
+                <button onClick={(e) => { e.stopPropagation(); onSelect && onSelect(); }} className="bg-white/90 backdrop-blur-sm text-[#3b66ff] text-sm font-bold px-4 py-2 rounded-full shadow-lg border border-gray-100 hover:bg-[#3b66ff] hover:text-white transition-colors">Use Template</button>
               </div>
             </div>
          </div>
@@ -345,7 +346,8 @@ const FeatureCard = ({ title, graphicType }: { title: string, graphicType: numbe
 }
 
 export default function ResumeAnalyzerMarketingPage() {
-  const [activeView, setActiveView] = useState<"hero" | "upload" | "templates">("hero");
+  const [activeView, setActiveView] = useState<"hero" | "upload" | "templates" | "editor">("hero");
+  const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState('All');
   const [templateColors, setTemplateColors] = useState<Record<string, string>>(
     ALL_TEMPLATES.reduce((acc, t) => ({...acc, [t.id]: '#1e293b'}), {})
@@ -377,8 +379,9 @@ export default function ResumeAnalyzerMarketingPage() {
     formData.append("file", file);
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
-      const res = await fetch(`${apiUrl}/api/agents/resume/analyze`, { method: "POST", body: formData });
+      const apiBase = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3001";
+      const endpoint = apiBase + "/api/agents/resume/analyze";
+      const res = await fetch(endpoint, { method: "POST", body: formData });
       const data = await res.json();
       clearInterval(interval);
       setUploadProgress(100);
@@ -386,8 +389,9 @@ export default function ResumeAnalyzerMarketingPage() {
         setAnalysis(data.analysis);
       }
     } catch (err) {
-      console.error(err);
+      console.error("Resume analysis failed:", err);
       clearInterval(interval);
+      setUploadProgress(0);
     }
     setUploading(false);
   };
@@ -563,6 +567,10 @@ export default function ResumeAnalyzerMarketingPage() {
                 isDark={template.isDark}
                 activeColor={templateColors[template.id]}
                 onColorChange={(c) => setTemplateColors(prev => ({...prev, [template.id]: c}))}
+                onSelect={() => {
+                  setSelectedTemplateId(template.id);
+                  setActiveView("editor");
+                }}
               />
             ))}
           </div>
@@ -731,6 +739,10 @@ export default function ResumeAnalyzerMarketingPage() {
                 isDark={template.isDark}
                 activeColor={templateColors[template.id]}
                 onColorChange={(c) => setTemplateColors(prev => ({...prev, [template.id]: c}))}
+                onSelect={() => {
+                  setSelectedTemplateId(template.id);
+                  setActiveView("editor");
+                }}
               />
             ))}
           </div>
@@ -762,6 +774,15 @@ export default function ResumeAnalyzerMarketingPage() {
         </div>
       </section>
       </>
+      )}
+
+      {/* Editor View */}
+      {activeView === "editor" && selectedTemplateId && (
+        <ResumeEditor 
+          template={ALL_TEMPLATES.find(t => t.id === selectedTemplateId)!} 
+          color={templateColors[selectedTemplateId]} 
+          onBack={() => setActiveView("templates")} 
+        />
       )}
 
     </div>

@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import Button from "@/components/ui/Button";
@@ -75,12 +76,24 @@ function SocialIcon({ label, href }: { label: string; href: string }) {
 
 export default function CTAAndFooter() {
   const sectionRef = useRef<HTMLElement>(null);
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
   const bgY = useTransform(scrollYProgress, [0, 1], [0, -30]);
+
+  const handleTryNow = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      router.push(`/signup?email=${encodeURIComponent(email)}`);
+    } else {
+      router.push(`/signup`);
+    }
+  };
 
   return (
     <section id="waitlist" ref={sectionRef} style={{ position: "relative" }}>
@@ -150,13 +163,13 @@ export default function CTAAndFooter() {
                   lineHeight: 1.5,
                 }}
               >
-                Join the waitlist. Be first when SuperPlaced AI launches.
+                Try Superplaced Ai Now !
               </p>
             </AnimateOnScroll>
 
             <AnimateOnScroll variant="fadeInUp" delay={0.5}>
               <form
-                onSubmit={(event) => event.preventDefault()}
+                onSubmit={handleTryNow}
                 style={{
                   marginTop: 40,
                   maxWidth: 480,
@@ -171,6 +184,8 @@ export default function CTAAndFooter() {
                   type="email"
                   placeholder="your@email.com"
                   aria-label="Email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   style={{
                     flex: 1,
                     background: "#faf9f5",
@@ -184,7 +199,7 @@ export default function CTAAndFooter() {
                   }}
                 />
                 <Button variant="dark" size="md" className="cta-submit-button">
-                  Join Waitlist
+                  Try now
                 </Button>
               </form>
             </AnimateOnScroll>
@@ -198,7 +213,7 @@ export default function CTAAndFooter() {
                   marginTop: 16,
                 }}
               >
-                ↑ <CountUp end={400} suffix="+" /> students already waiting
+                ↑ <CountUp end={400} suffix="+" /> students already joined
               </p>
             </AnimateOnScroll>
           </div>

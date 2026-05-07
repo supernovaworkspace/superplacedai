@@ -63,14 +63,16 @@ export default function IntelligenceCore() {
           zIndex: 1,
         }}
       >
-        {/* Local Video Embed */}
-        <video 
-          src="/Video Project 1 (4).mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          controls
+        {/* YouTube Video Embed */}
+        <iframe
+          width="951"
+          height="535"
+          src="https://www.youtube.com/embed/yUJXXVER1rs"
+          title="Getting Started With Superplaced AI"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
           style={{ 
             width: "100%", 
             height: "100%", 

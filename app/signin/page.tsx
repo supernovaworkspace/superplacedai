@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client";
 
 export default function SignInPage() {
   const router = useRouter();
+  const [isSignUp, setIsSignUp] = useState(false);
   const [hoveredGoogle, setHoveredGoogle] = useState(false);
   const [hoveredLinkedin, setHoveredLinkedin] = useState(false);
   const [hoveredLogin, setHoveredLogin] = useState(false);
@@ -52,7 +53,7 @@ export default function SignInPage() {
         width: "100vw",
         position: "relative",
         overflow: "hidden",
-        background: "#000",
+        background: "#ffffff",
       }}
     >
       {/* Background Image */}
@@ -60,8 +61,8 @@ export default function SignInPage() {
         style={{
           position: "absolute",
           inset: 0,
-          background: "#0d0d0d",
-          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px)`,
+          background: "#f8f9fa",
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
           zIndex: 0,
         }}
@@ -123,7 +124,7 @@ export default function SignInPage() {
                 marginBottom: "8px",
               }}
             >
-              Welcome Back!
+              {isSignUp ? "Create an Account" : "Welcome Back!"}
             </h2>
             <p
               style={{
@@ -132,7 +133,7 @@ export default function SignInPage() {
                 color: "#687078",
               }}
             >
-              Please login to your account
+              {isSignUp ? "Sign up to get started" : "Please login to your account"}
             </p>
           </div>
 
@@ -227,7 +228,7 @@ export default function SignInPage() {
               </div>
             </div>
 
-            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "24px" }}>
+            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "24px", visibility: isSignUp ? 'hidden' : 'visible' }}>
               <a
                 href="#"
                 style={{
@@ -268,7 +269,7 @@ export default function SignInPage() {
               }}
             >
               {loading === "email" ? <Spinner color="#fff" /> : null}
-              Log In
+              {isSignUp ? "Sign Up" : "Log In"}
             </button>
           </form>
 
@@ -339,10 +340,14 @@ export default function SignInPage() {
 
           <div style={{ textAlign: "center", marginTop: "24px" }}>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "14px", color: "#687078" }}>
-              Don't have an account?{" "}
-              <a href="#" style={{ color: "#1a1c1e", fontWeight: 700, textDecoration: "none" }}>
-                Register now
-              </a>
+              {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+              <button 
+                onClick={() => setIsSignUp(!isSignUp)}
+                type="button"
+                style={{ color: "#1a1c1e", fontWeight: 700, textDecoration: "none", background: "none", border: "none", padding: 0, cursor: "pointer", fontFamily: "inherit", fontSize: "inherit" }}
+              >
+                {isSignUp ? "Log in" : "Register now"}
+              </button>
             </p>
           </div>
         </motion.div>

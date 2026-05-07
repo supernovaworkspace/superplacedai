@@ -41,8 +41,8 @@ function Dropdown({ options, value, onChange, placeholder }: { options: string[]
           <motion.div
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
             style={{
-              position: "absolute", top: "100%", left: 0, marginTop: 8, background: "#111", 
-              borderRadius: 16, border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 12px 32px rgba(240, 90, 40, 0.15)", 
+              position: "absolute", top: "100%", left: 0, marginTop: 8, background: "#fff", 
+              borderRadius: 16, border: "1px solid rgba(0,0,0,0.1)", boxShadow: "0 12px 32px rgba(240, 90, 40, 0.15)", 
               zIndex: 50, minWidth: 160, overflow: "hidden"
             }}
           >
@@ -51,10 +51,10 @@ function Dropdown({ options, value, onChange, placeholder }: { options: string[]
                 key={opt}
                 onClick={() => { onChange(opt); setIsOpen(false); }}
                 style={{ 
-                  padding: "10px 16px", cursor: "pointer", fontSize: 14, color: value === opt ? "#f05a28" : "#9ea5ad", 
+                  padding: "10px 16px", cursor: "pointer", fontSize: 14, color: value === opt ? "#f05a28" : "#687078", 
                   background: value === opt ? "rgba(240, 90, 40, 0.15)" : "transparent", fontWeight: value === opt ? 600 : 400
                 }}
-                onMouseEnter={(e) => { if(value !== opt) e.currentTarget.style.background = "rgba(255,255,255,0.05)"; }}
+                onMouseEnter={(e) => { if(value !== opt) e.currentTarget.style.background = "rgba(0,0,0,0.03)"; }}
                 onMouseLeave={(e) => { if(value !== opt) e.currentTarget.style.background = "transparent"; }}
               >
                 {opt}
@@ -89,26 +89,27 @@ export default function SkillGapPage() {
   const handleGenerate = async () => {
     if (!jobTitle) return;
     setIsGenerating(true);
+    setShowResults(false);
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
-      const res = await fetch(`${apiUrl}/api/agents/skillgap/analyze`, {
+      const res = await fetch("/api/agents/skill-gap", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           target_job_title: jobTitle,
-          industry: industry,
+          industry,
           experience_level: experience,
           current_skills: currentSkill ? currentSkill.split(",").map((s: string) => s.trim()) : [],
           instructions: instructions || undefined,
-          resume_id: "demo", // Pass a demo resume ID for testing since we aren't uploading here
         }),
       });
       const data = await res.json();
       if (data.success && data.skill_gap) {
         setAnalysisResult(data.skill_gap);
+      } else {
+        console.error("Skill gap error:", data.error);
       }
       setShowResults(true);
-      setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }), 100);
+      setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" }), 100);
     } catch (error) {
       console.error("Analysis error:", error);
       setShowResults(true);
@@ -124,17 +125,17 @@ export default function SkillGapPage() {
   return (
     <div style={{ 
       minHeight: "100vh", 
-      backgroundColor: "#0d0d0d", 
-      backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px)`,
+      backgroundColor: "#ffffff", 
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px)`,
       backgroundSize: "60px 60px",
       fontFamily: "'DM Sans', sans-serif",
       position: "relative",
-      color: "#ffffff"
+      color: "#1a1c1e"
     }}>
       {/* Top Navigation */}
       <div style={{ padding: "24px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <a href="/" style={{ textDecoration: "none" }}>
-          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 160, filter: "invert(1) brightness(0)" }} />
+          <img src="/logo.png" alt="SuperPlaced AI Logo" style={{ height: 160 }} />
         </a>
         <button 
           onClick={() => router.push("/dashboard")}
@@ -204,8 +205,8 @@ export default function SkillGapPage() {
                   placeholder="E.g., I want to transition into a startup environment focusing on GenAI..."
                   style={{
                     width: "100%", padding: 16, borderRadius: 16, border: "1px solid rgba(240, 90, 40, 0.3)", 
-                    outline: "none", fontSize: 15, fontFamily: "inherit", color: "#fff",
-                    background: "rgba(255,255,255,0.05)", minHeight: 80, resize: "vertical", boxShadow: "0 4px 12px rgba(240, 90, 40, 0.05)"
+                    outline: "none", fontSize: 15, fontFamily: "inherit", color: "#1a1c1e",
+                    background: "rgba(0,0,0,0.02)", minHeight: 80, resize: "vertical", boxShadow: "0 4px 12px rgba(240, 90, 40, 0.05)"
                   }}
                 />
               </motion.div>
@@ -214,8 +215,8 @@ export default function SkillGapPage() {
 
           {/* Main Input Pill */}
           <div style={{ 
-            display: "flex", alignItems: "center", background: "rgba(255,255,255,0.05)", border: "1px solid #f05a28", 
-            borderRadius: 40, padding: "8px 8px 8px 32px", boxShadow: "0 8px 24px rgba(240, 90, 40, 0.08)",
+            display: "flex", alignItems: "center", background: "#fff", border: "1px solid #f05a28", 
+            borderRadius: 40, padding: "8px 8px 8px 32px", boxShadow: "0 8px 24px rgba(240, 90, 40, 0.1)",
             opacity: isGenerating ? 0.7 : 1, pointerEvents: isGenerating ? "none" : "auto", transition: "all 0.3s"
           }}>
             <input 
@@ -223,15 +224,15 @@ export default function SkillGapPage() {
               value={jobTitle}
               onChange={(e) => setJobTitle(e.target.value)}
               placeholder="Job Title (e.g. AI Intern)" 
-              style={{ flex: 1, border: "none", outline: "none", fontSize: 16, color: "#fff", background: "transparent" }}
+              style={{ flex: 1, border: "none", outline: "none", fontSize: 16, color: "#1a1c1e", background: "transparent" }}
             />
-            <div style={{ width: 1, height: 24, background: "rgba(255,255,255,0.1)", margin: "0 24px" }} />
+            <div style={{ width: 1, height: 24, background: "rgba(0,0,0,0.1)", margin: "0 24px" }} />
             <input 
               type="text" 
               value={currentSkill}
               onChange={(e) => setCurrentSkill(e.target.value)}
               placeholder="Current Skill (e.g. Python)" 
-              style={{ flex: 1, border: "none", outline: "none", fontSize: 16, color: "#fff", background: "transparent" }}
+              style={{ flex: 1, border: "none", outline: "none", fontSize: 16, color: "#1a1c1e", background: "transparent" }}
             />
             <button 
               onClick={handleGenerate}
@@ -281,7 +282,7 @@ export default function SkillGapPage() {
             >
               {/* Results Header */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
-                <h2 style={{ fontSize: 24, fontWeight: 500, color: "#fff", margin: 0 }}>AI Skill Gap Result</h2>
+                <h2 style={{ fontSize: 24, fontWeight: 500, color: "#1a1c1e", margin: 0 }}>AI Skill Gap Result</h2>
                 <div style={{ display: "flex", gap: 12 }}>
                   <button style={{ padding: "8px 20px", background: "rgba(240, 90, 40, 0.1)", border: "none", borderRadius: 20, color: "#f05a28", fontSize: 14, fontWeight: 500, cursor: "pointer", transition: "background 0.2s" }} onMouseEnter={(e)=>e.currentTarget.style.background="rgba(240, 90, 40, 0.2)"} onMouseLeave={(e)=>e.currentTarget.style.background="rgba(240, 90, 40, 0.1)"}>Edit</button>
                   <button onClick={handleCopy} style={{ padding: "8px 20px", background: "rgba(240, 90, 40, 0.1)", border: "none", borderRadius: 20, color: "#f05a28", fontSize: 14, fontWeight: 500, cursor: "pointer", display: "flex", alignItems: "center", gap: 6, transition: "background 0.2s" }} onMouseEnter={(e)=>e.currentTarget.style.background="rgba(240, 90, 40, 0.2)"} onMouseLeave={(e)=>e.currentTarget.style.background="rgba(240, 90, 40, 0.1)"}>
@@ -295,19 +296,19 @@ export default function SkillGapPage() {
               </div>
 
               {/* Results Card */}
-              <div style={{ background: "rgba(255,255,255,0.05)", borderRadius: 16, padding: "40px", color: "#e5e7eb", fontSize: 15, lineHeight: 1.6, border: "1px solid rgba(240, 90, 40, 0.1)" }}>
+              <div style={{ background: "#fff", borderRadius: 16, padding: "40px", color: "#3d3d3a", fontSize: 15, lineHeight: 1.6, border: "1px solid rgba(240, 90, 40, 0.2)", boxShadow: "0 12px 32px rgba(0,0,0,0.05)" }}>
                 {analysisResult ? (
                   <>
-                    <p style={{ fontWeight: 600, color: "#fff", marginBottom: 12, fontSize: 16 }}>Summary ({analysisResult.current_match}% current match):</p>
+                    <p style={{ fontWeight: 600, color: "#1a1c1e", marginBottom: 12, fontSize: 16 }}>Summary ({analysisResult.current_match}% current match):</p>
                     <p style={{ marginBottom: 24 }}>{analysisResult.summary}</p>
 
-                    <p style={{ fontWeight: 600, color: "#fff", marginBottom: 16, fontSize: 16 }}>Skill Gaps ({analysisResult.missing_skills.length} identified):</p>
+                    <p style={{ fontWeight: 600, color: "#1a1c1e", marginBottom: 16, fontSize: 16 }}>Skill Gaps ({analysisResult.missing_skills.length} identified):</p>
                     <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 32 }}>
                       {analysisResult.missing_skills.map((skill: any, i: number) => (
                         <div key={i} style={{ display: "flex", gap: 8 }}>
-                          <span style={{ fontWeight: 600, color: "#fff" }}>{i + 1}.</span>
+                          <span style={{ fontWeight: 600, color: "#1a1c1e" }}>{i + 1}.</span>
                           <span>
-                            <span style={{ fontWeight: 600, color: "#fff" }}>{skill.skill}</span>
+                            <span style={{ fontWeight: 600, color: "#1a1c1e" }}>{skill.skill}</span>
                             <span style={{ padding: "2px 8px", borderRadius: 8, fontSize: 11, fontWeight: 600, marginLeft: 8, background: skill.priority === "high" ? "rgba(239,68,68,0.1)" : skill.priority === "medium" ? "rgba(245,158,11,0.1)" : "rgba(34,197,94,0.1)", color: skill.priority === "high" ? "#ef4444" : skill.priority === "medium" ? "#f59e0b" : "#22c55e" }}>{skill.priority}</span>
                             <br />{skill.description}
                           </span>
@@ -315,26 +316,26 @@ export default function SkillGapPage() {
                       ))}
                     </div>
 
-                    <p style={{ fontWeight: 600, color: "#fff", marginBottom: 16, fontSize: 16 }}>30-Day Learning Roadmap:</p>
+                    <p style={{ fontWeight: 600, color: "#1a1c1e", marginBottom: 16, fontSize: 16 }}>30-Day Learning Roadmap:</p>
                     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                       {analysisResult.roadmap.map((week: any) => (
-                        <div key={week.week} style={{ padding: 20, borderRadius: 12, border: "1px solid rgba(240,90,40,0.1)", background: "rgba(255,255,255,0.03)" }}>
+                        <div key={week.week} style={{ padding: 20, borderRadius: 12, border: "1px solid rgba(240,90,40,0.1)", background: "rgba(240,90,40,0.03)" }}>
                           <div style={{ fontWeight: 600, color: "#f05a28", fontSize: 14, marginBottom: 8 }}>Week {week.week}: {week.focus}</div>
                           <ul style={{ margin: "0 0 8px 16px", fontSize: 14 }}>
                             {week.tasks.map((task: any, i: number) => <li key={i}>{task}</li>)}
                           </ul>
-                          <div style={{ fontSize: 12, color: "#9ea5ad" }}>Resources: {week.resources.join(" • ")}</div>
+                          <div style={{ fontSize: 12, color: "#687078" }}>Resources: {week.resources.join(" • ")}</div>
                         </div>
                       ))}
                     </div>
                   </>
                 ) : (
                   <>
-                    <p style={{ fontWeight: 600, color: "#fff", marginBottom: 12, fontSize: 16 }}>Summary of Current Skills:</p>
+                    <p style={{ fontWeight: 600, color: "#1a1c1e", marginBottom: 12, fontSize: 16 }}>Summary of Current Skills:</p>
                     <p style={{ marginBottom: 24 }}>
                       As a {experience} professional with expertise in {currentSkill || "Python"}, you have a solid foundation. Your proficiency sets a strong base for transitioning into {jobTitle || "AI"} roles.
                     </p>
-                    <p style={{ fontWeight: 600, color: "#fff", marginBottom: 12, fontSize: 16 }}>Analysis:</p>
+                    <p style={{ fontWeight: 600, color: "#1a1c1e", marginBottom: 12, fontSize: 16 }}>Analysis:</p>
                     <p>Connect your OpenAI API key in .env.local for AI-powered analysis results.</p>
                   </>
                 )}

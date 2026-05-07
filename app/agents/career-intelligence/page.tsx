@@ -88,21 +88,32 @@ export default function CareerIntelligencePage() {
   const handleGenerate = async () => {
     if (!targetRole) return;
     setIsGenerating(true);
-    
-    // Simulate API delay for mock data
-    setTimeout(() => {
-      setAnalysisResult({
-        role: targetRole,
-        salaryRange: "$110k - $160k",
-        marketDemand: "High Growth (+14% YoY)",
-        topCompanies: ["OpenAI", "Google", "Scale AI", "Anthropic", "Mercor"],
-        futureOutlook: "The demand for " + targetRole + " professionals is rapidly expanding due to the mainstream adoption of generative models. Key focus areas are transitioning from pure research to applied product engineering.",
-        keySkills: ["Large Language Models (LLMs)", "Prompt Engineering", "Python", "Cloud Architecture"],
+    setShowResults(false);
+    try {
+      const res = await fetch("/api/agents/career-intelligence", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          target_role: targetRole,
+          industry,
+          experience,
+          region,
+          instructions: instructions || undefined,
+        }),
       });
-      setShowResults(true);
-      setIsGenerating(false);
-      setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }), 100);
-    }, 1500);
+      const data = await res.json();
+      if (data.success && data.report) {
+        setAnalysisResult(data.report);
+        setShowResults(true);
+        setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" }), 100);
+      } else {
+        console.error("Career intel error:", data.error);
+        setShowResults(false);
+      }
+    } catch (error) {
+      console.error("Analysis error:", error);
+    }
+    setIsGenerating(false);
   };
 
   const handleCopy = () => {
@@ -274,13 +285,19 @@ export default function CareerIntelligencePage() {
               <div style={{ background: "#fcfcff", borderRadius: 16, padding: "40px", color: "#333", fontSize: 15, lineHeight: 1.6, border: "1px solid rgba(139, 92, 246, 0.1)" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px", marginBottom: "32px" }}>
                   <div style={{ padding: 20, borderRadius: 12, border: "1px solid rgba(139,92,246,0.1)", background: "#fff" }}>
-                     <div style={{ fontSize: 13, color: "#9ea5ad", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600, marginBottom: 8 }}>Target Role</div>
-                     <div style={{ fontSize: 20, fontWeight: 600, color: "#1a1c1e" }}>{analysisResult.role}</div>
+                    <div style={{ fontSize: 13, color: "#9ea5ad", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600, marginBottom: 8 }}>Target Role</div>
+                    <div style={{ fontSize: 20, fontWeight: 600, color: "#1a1c1e" }}>{analysisResult.role}</div>
                   </div>
                   <div style={{ padding: 20, borderRadius: 12, border: "1px solid rgba(139,92,246,0.1)", background: "#fff" }}>
-                     <div style={{ fontSize: 13, color: "#9ea5ad", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600, marginBottom: 8 }}>Estimated Comp Range</div>
-                     <div style={{ fontSize: 20, fontWeight: 600, color: "#8b5cf6" }}>{analysisResult.salaryRange}</div>
+                    <div style={{ fontSize: 13, color: "#9ea5ad", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600, marginBottom: 8 }}>Estimated Comp Range</div>
+                    <div style={{ fontSize: 20, fontWeight: 600, color: "#8b5cf6" }}>{analysisResult.salaryRange}</div>
                   </div>
+                  {analysisResult.remoteOpportunities && (
+                    <div style={{ padding: 20, borderRadius: 12, border: "1px solid rgba(139,92,246,0.1)", background: "#fff" }}>
+                      <div style={{ fontSize: 13, color: "#9ea5ad", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600, marginBottom: 8 }}>Remote Opportunities</div>
+                      <div style={{ fontSize: 16, fontWeight: 600, color: "#1a1c1e" }}>{analysisResult.remoteOpportunities}</div>
+                    </div>
+                  )}
                 </div>
 
                 <p style={{ fontWeight: 600, color: "#1a1c1e", marginBottom: 12, fontSize: 16 }}>Market Demand & Outlook:</p>
@@ -293,7 +310,7 @@ export default function CareerIntelligencePage() {
 
                 <p style={{ fontWeight: 600, color: "#1a1c1e", marginBottom: 12, fontSize: 16 }}>Top Hiring Companies:</p>
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 32 }}>
-                  {analysisResult.topCompanies.map((company: string) => (
+                  {analysisResult.topCompanies?.map((company: string) => (
                     <span key={company} style={{ padding: "6px 16px", background: "#f5f3ff", color: "#6d28d9", borderRadius: 20, fontSize: 14, fontWeight: 500, border: "1px solid #ede9fe" }}>
                       {company}
                     </span>
@@ -301,11 +318,54 @@ export default function CareerIntelligencePage() {
                 </div>
 
                 <p style={{ fontWeight: 600, color: "#1a1c1e", marginBottom: 12, fontSize: 16 }}>Key Skills Driving Premium Pay:</p>
-                <ul style={{ margin: "0 0 0 16px", color: "#5d6571" }}>
-                  {analysisResult.keySkills.map((skill: string) => (
-                    <li key={skill} style={{ marginBottom: 8 }}>{skill}</li>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
+                  {analysisResult.keySkills?.map((skill: string) => (
+                    <span key={skill} style={{ padding: "6px 14px", background: "rgba(139,92,246,0.08)", color: "#7c3aed", borderRadius: 20, fontSize: 13, fontWeight: 500, border: "1px solid rgba(139,92,246,0.15)" }}>
+                      {skill}
+                    </span>
                   ))}
-                </ul>
+                </div>
+
+                {analysisResult.careerPaths && analysisResult.careerPaths.length > 0 && (
+                  <>
+                    <p style={{ fontWeight: 600, color: "#1a1c1e", marginBottom: 12, fontSize: 16 }}>Career Progression Paths:</p>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 32 }}>
+                      {analysisResult.careerPaths.map((path: { title: string; timeline: string; salaryIncrease: string }, i: number) => (
+                        <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 20px", borderRadius: 12, border: "1px solid rgba(139,92,246,0.1)", background: "#fff" }}>
+                          <span style={{ fontWeight: 600, color: "#1a1c1e", fontSize: 14 }}>{path.title}</span>
+                          <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                            <span style={{ fontSize: 12, color: "#9ea5ad" }}>{path.timeline}</span>
+                            <span style={{ padding: "3px 10px", background: "rgba(34,197,94,0.1)", color: "#16a34a", borderRadius: 8, fontWeight: 600, fontSize: 12 }}>{path.salaryIncrease}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+
+                {analysisResult.marketInsights && analysisResult.marketInsights.length > 0 && (
+                  <>
+                    <p style={{ fontWeight: 600, color: "#1a1c1e", marginBottom: 12, fontSize: 16 }}>Market Insights:</p>
+                    <ul style={{ margin: "0 0 32px 16px", color: "#5d6571" }}>
+                      {analysisResult.marketInsights.map((insight: string, i: number) => (
+                        <li key={i} style={{ marginBottom: 8 }}>{insight}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+
+                {analysisResult.certifications && analysisResult.certifications.length > 0 && (
+                  <>
+                    <p style={{ fontWeight: 600, color: "#1a1c1e", marginBottom: 12, fontSize: 16 }}>Recommended Certifications:</p>
+                    <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                      {analysisResult.certifications.map((cert: string, i: number) => (
+                        <span key={i} style={{ padding: "6px 14px", background: "rgba(245,158,11,0.08)", color: "#b45309", borderRadius: 20, fontSize: 13, fontWeight: 500, border: "1px solid rgba(245,158,11,0.2)" }}>
+                          {cert}
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </motion.div>
           )}
