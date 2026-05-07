@@ -82,22 +82,10 @@ export default function DashboardPage() {
   return (
     <div style={{
       minHeight: "100vh", width: "100%",
-      background: "#f8f9fa",
+      background: "#f0f0ec",
       fontFamily: "'DM Sans', sans-serif",
       overflow: "hidden", position: "relative",
     }}>
-      {/* Subtle light grid */}
-      <div style={{
-        position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none",
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)`,
-        backgroundSize: "44px 44px",
-      }} />
-      {/* Soft gold ambient glow */}
-      <div style={{
-        position: "fixed", top: -200, left: "50%", transform: "translateX(-50%)",
-        width: 900, height: 500, zIndex: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse, rgba(212,175,55,0.08) 0%, transparent 65%)",
-      }} />
 
       <AnimatePresence mode="wait" custom={direction}>
         {currentWindow === "welcome" && (
@@ -143,7 +131,7 @@ export default function DashboardPage() {
       </AnimatePresence>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
       `}</style>
     </div>
   );
