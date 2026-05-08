@@ -1,0 +1,1890 @@
+[
+  {
+    "id": "job-1",
+    "job_title": "Staff Applied Scientist, Marketplace",
+    "company_name": "ThredUp Inc.",
+    "location": "CA",
+    "job_type": "Full-time",
+    "salary_range": "$171k - $209k",
+    "monthly_earnings": "$15,833/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Aws",
+      "Sql"
+    ],
+    "match_score": 82,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Aws"
+    ],
+    "missing_skills": [
+      "Sql"
+    ],
+    "hired_count": 8,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-2",
+    "job_title": "Prompt Engineer for Generative AI (chatbot and image)",
+    "company_name": "Vicarious Talent Agency",
+    "location": "WA",
+    "job_type": "Full-time",
+    "salary_range": "$63k - $77k",
+    "monthly_earnings": "$5,833/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "Aws",
+      "Etl"
+    ],
+    "match_score": 86,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "missing_skills": [
+      "Aws",
+      "Etl"
+    ],
+    "hired_count": 9,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-3",
+    "job_title": "Data Systems Analyst/Architect",
+    "company_name": "General Dynamics Information Technology",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$93k - $114k",
+    "monthly_earnings": "$8,666/mo",
+    "required_skills": [
+      "Machine Learning",
+      "Aws",
+      "Azure",
+      "Nosql",
+      "Etl"
+    ],
+    "match_score": 87,
+    "skill_overlap": [
+      "Machine Learning",
+      "Aws",
+      "Azure"
+    ],
+    "missing_skills": [
+      "Nosql",
+      "Etl"
+    ],
+    "hired_count": 10,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-4",
+    "job_title": "AIOps Principle Data Scientist",
+    "company_name": "CVS Health",
+    "location": "CT",
+    "job_type": "Full-time",
+    "salary_range": "$126k - $154k",
+    "monthly_earnings": "$11,666/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Aws",
+      "Gcp"
+    ],
+    "match_score": 85,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Aws"
+    ],
+    "missing_skills": [
+      "Gcp"
+    ],
+    "hired_count": 11,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-5",
+    "job_title": "Sr. Data Scientist",
+    "company_name": "Altak Group",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$122k - $149k",
+    "monthly_earnings": "$11,333/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Tableau",
+      "Aws",
+      "Sql",
+      "Hadoop"
+    ],
+    "match_score": 92,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Tableau"
+    ],
+    "missing_skills": [
+      "Aws",
+      "Sql"
+    ],
+    "hired_count": 12,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-6",
+    "job_title": "LTD Data Scientist - Returnship",
+    "company_name": "INTEL",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$46k - $57k",
+    "monthly_earnings": "$4,333/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Pytorch",
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "Sql"
+    ],
+    "match_score": 93,
+    "skill_overlap": [
+      "Tensorflow",
+      "Pytorch",
+      "Python"
+    ],
+    "missing_skills": [
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "hired_count": 13,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-7",
+    "job_title": "SAP Data Management Interface Control Functional Lead",
+    "company_name": "IBM",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$113k - $138k",
+    "monthly_earnings": "$10,500/mo",
+    "required_skills": [],
+    "match_score": 76,
+    "skill_overlap": [],
+    "missing_skills": [],
+    "hired_count": 14,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-8",
+    "job_title": "Sr Data Analyst - 2200310",
+    "company_name": "Optum",
+    "location": "MN",
+    "job_type": "Full-time",
+    "salary_range": "$86k - $105k",
+    "monthly_earnings": "$8,023/mo",
+    "required_skills": [
+      "Azure",
+      "Sql",
+      "Airflow",
+      "Hadoop",
+      "Pyspark"
+    ],
+    "match_score": 92,
+    "skill_overlap": [
+      "Azure",
+      "Sql",
+      "Airflow"
+    ],
+    "missing_skills": [
+      "Hadoop",
+      "Pyspark"
+    ],
+    "hired_count": 15,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-9",
+    "job_title": "Senior Data Analyst, Data Analytics",
+    "company_name": "Cardinal Health",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$91k - $112k",
+    "monthly_earnings": "$8,500/mo",
+    "required_skills": [
+      "Tableau",
+      "Sql"
+    ],
+    "match_score": 84,
+    "skill_overlap": [
+      "Tableau",
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 16,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-10",
+    "job_title": "Data Scientist, ML Platform",
+    "company_name": "CVS Health",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$72k - $88k",
+    "monthly_earnings": "$6,708/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Pytorch",
+      "Python",
+      "Machine Learning",
+      "Aws",
+      "Azure",
+      "Docker",
+      "Gcp",
+      "Sql",
+      "Git"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Tensorflow",
+      "Pytorch",
+      "Python"
+    ],
+    "missing_skills": [
+      "Machine Learning",
+      "Aws"
+    ],
+    "hired_count": 17,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-11",
+    "job_title": "Statistician (Direct Hire Authority)",
+    "company_name": "US Food and Nutrition Service",
+    "location": "CA",
+    "job_type": "Full-time",
+    "salary_range": "$109k - $134k",
+    "monthly_earnings": "$10,156/mo",
+    "required_skills": [],
+    "match_score": 80,
+    "skill_overlap": [],
+    "missing_skills": [],
+    "hired_count": 18,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-12",
+    "job_title": "Data Science, Lead Associate",
+    "company_name": "Peraton",
+    "location": "MD",
+    "job_type": "Full-time",
+    "salary_range": "$100k - $123k",
+    "monthly_earnings": "$9,333/mo",
+    "required_skills": [
+      "Etl",
+      "Sql"
+    ],
+    "match_score": 87,
+    "skill_overlap": [
+      "Etl",
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 19,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-13",
+    "job_title": "Senior Data Scientist, 5+ Years of Experience",
+    "company_name": "Snapchat",
+    "location": "CA",
+    "job_type": "Full-time",
+    "salary_range": "$156k - $191k",
+    "monthly_earnings": "$14,500/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "match_score": 91,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 20,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-14",
+    "job_title": "Software Engineering - Data Structures",
+    "company_name": "JPMorgan Chase & Co",
+    "location": "NJ",
+    "job_type": "Full-time",
+    "salary_range": "$115k - $141k",
+    "monthly_earnings": "$10,687/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Aws",
+      "Nosql",
+      "Sql"
+    ],
+    "match_score": 98,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Aws"
+    ],
+    "missing_skills": [
+      "Nosql",
+      "Sql"
+    ],
+    "hired_count": 21,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-15",
+    "job_title": "Data Scientist",
+    "company_name": "Genworth",
+    "location": "VA",
+    "job_type": "Full-time",
+    "salary_range": "$81k - $99k",
+    "monthly_earnings": "$7,500/mo",
+    "required_skills": [
+      "Python",
+      "Tableau",
+      "Aws",
+      "Azure",
+      "Etl",
+      "Sql",
+      "Hadoop"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Python",
+      "Tableau",
+      "Aws"
+    ],
+    "missing_skills": [
+      "Azure",
+      "Etl"
+    ],
+    "hired_count": 22,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-16",
+    "job_title": "Sr. Risk Adjustment Data Analyst, Medicare Advantage",
+    "company_name": "UCLA Health",
+    "location": "CA",
+    "job_type": "Full-time",
+    "salary_range": "$70k - $86k",
+    "monthly_earnings": "$6,566/mo",
+    "required_skills": [
+      "Python",
+      "Tableau",
+      "Sql"
+    ],
+    "match_score": 94,
+    "skill_overlap": [
+      "Python",
+      "Tableau",
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 23,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-17",
+    "job_title": "Senior Principal Data Scientist (Melbourne FL)",
+    "company_name": "Northrop Grumman",
+    "location": "FL",
+    "job_type": "Full-time",
+    "salary_range": "$111k - $135k",
+    "monthly_earnings": "$10,283/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Tableau",
+      "Nosql",
+      "Etl",
+      "Sql",
+      "Hadoop"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Tableau"
+    ],
+    "missing_skills": [
+      "Nosql",
+      "Etl"
+    ],
+    "hired_count": 24,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-18",
+    "job_title": "Principal Statistician - Remote",
+    "company_name": "Mayo Clinic",
+    "location": "MN",
+    "job_type": "Full-time",
+    "salary_range": "$124k - $152k",
+    "monthly_earnings": "$11,519/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning"
+    ],
+    "match_score": 93,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 25,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-19",
+    "job_title": "Staff AI and Radar Software Engineer",
+    "company_name": "Northrop Grumman",
+    "location": "MD",
+    "job_type": "Full-time",
+    "salary_range": "$167k - $204k",
+    "monthly_earnings": "$15,491/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Python",
+      "Machine Learning"
+    ],
+    "match_score": 97,
+    "skill_overlap": [
+      "Tensorflow",
+      "Python",
+      "Machine Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 26,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-20",
+    "job_title": "Sr. Director, Data Science and Machine Learning",
+    "company_name": "Centerfield",
+    "location": "CA",
+    "job_type": "Full-time",
+    "salary_range": "$112k - $137k",
+    "monthly_earnings": "$10,416/mo",
+    "required_skills": [
+      "Machine Learning",
+      "Tableau"
+    ],
+    "match_score": 95,
+    "skill_overlap": [
+      "Machine Learning",
+      "Tableau"
+    ],
+    "missing_skills": [],
+    "hired_count": 27,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-21",
+    "job_title": "Data Entry Specialist II-Cardiology-ISM-FT-Day",
+    "company_name": "Mount Sinai",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$36k - $45k",
+    "monthly_earnings": "$3,410/mo",
+    "required_skills": [],
+    "match_score": 70,
+    "skill_overlap": [],
+    "missing_skills": [],
+    "hired_count": 28,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-22",
+    "job_title": "Artificial Intelligence Engineer",
+    "company_name": "KLA",
+    "location": "CA",
+    "job_type": "Full-time",
+    "salary_range": "$127k - $156k",
+    "monthly_earnings": "$11,833/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Python"
+    ],
+    "match_score": 77,
+    "skill_overlap": [
+      "Tensorflow",
+      "Python"
+    ],
+    "missing_skills": [],
+    "hired_count": 29,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-23",
+    "job_title": "Full Stack Data Engineer",
+    "company_name": "IBM",
+    "location": "DC",
+    "job_type": "Full-time",
+    "salary_range": "$88k - $107k",
+    "monthly_earnings": "$8,166/mo",
+    "required_skills": [
+      "Python",
+      "Numpy",
+      "Pandas",
+      "Sql",
+      "Kafka",
+      "Hadoop",
+      "Apache Spark"
+    ],
+    "match_score": 93,
+    "skill_overlap": [
+      "Python",
+      "Numpy",
+      "Pandas"
+    ],
+    "missing_skills": [
+      "Sql",
+      "Kafka"
+    ],
+    "hired_count": 30,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-24",
+    "job_title": "Lead Director, Data Science - Retail Pharmacy",
+    "company_name": "CVS Health",
+    "location": "MA",
+    "job_type": "Full-time",
+    "salary_range": "$126k - $154k",
+    "monthly_earnings": "$11,666/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "match_score": 82,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 31,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-25",
+    "job_title": "Associate Director, MRMG Risk Modeling",
+    "company_name": "Santander US",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$134k - $164k",
+    "monthly_earnings": "$12,443/mo",
+    "required_skills": [],
+    "match_score": 74,
+    "skill_overlap": [],
+    "missing_skills": [],
+    "hired_count": 32,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-26",
+    "job_title": "Principal/Senior Principal AI and Radar Software Engineer",
+    "company_name": "Northrop Grumman",
+    "location": "MD",
+    "job_type": "Full-time",
+    "salary_range": "$108k - $132k",
+    "monthly_earnings": "$10,075/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Python",
+      "Machine Learning"
+    ],
+    "match_score": 84,
+    "skill_overlap": [
+      "Tensorflow",
+      "Python",
+      "Machine Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 33,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-27",
+    "job_title": "Data Scientist",
+    "company_name": "Kaizen Analytix",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$108k - $132k",
+    "monthly_earnings": "$10,000/mo",
+    "required_skills": [
+      "Machine Learning",
+      "Tableau",
+      "Sql",
+      "Hadoop"
+    ],
+    "match_score": 88,
+    "skill_overlap": [
+      "Machine Learning",
+      "Tableau",
+      "Sql"
+    ],
+    "missing_skills": [
+      "Hadoop"
+    ],
+    "hired_count": 34,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-28",
+    "job_title": "Senior Data Scientist, Pricing",
+    "company_name": "Airbnb",
+    "location": "CA",
+    "job_type": "Full-time",
+    "salary_range": "$148k - $181k",
+    "monthly_earnings": "$13,750/mo",
+    "required_skills": [
+      "Python",
+      "Sql"
+    ],
+    "match_score": 83,
+    "skill_overlap": [
+      "Python",
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 35,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-29",
+    "job_title": "Data Scientist (-)",
+    "company_name": "DCI Solutions",
+    "location": "MD",
+    "job_type": "Full-time",
+    "salary_range": "$153k - $187k",
+    "monthly_earnings": "$14,166/mo",
+    "required_skills": [
+      "Python",
+      "Docker",
+      "Nosql",
+      "Sql",
+      "Git"
+    ],
+    "match_score": 93,
+    "skill_overlap": [
+      "Python",
+      "Docker",
+      "Nosql"
+    ],
+    "missing_skills": [
+      "Sql",
+      "Git"
+    ],
+    "hired_count": 36,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-30",
+    "job_title": "AI and Radar Software Engineer",
+    "company_name": "Northrop Grumman",
+    "location": "MD",
+    "job_type": "Full-time",
+    "salary_range": "$88k - $108k",
+    "monthly_earnings": "$8,183/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Python",
+      "Machine Learning"
+    ],
+    "match_score": 88,
+    "skill_overlap": [
+      "Tensorflow",
+      "Python",
+      "Machine Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 37,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-31",
+    "job_title": "Supervisory Biologist/Physical Scientist/Chemist/Statistician (Branch Supervisor)",
+    "company_name": "US Environmental Protection Agency",
+    "location": "DC",
+    "job_type": "Full-time",
+    "salary_range": "$140k - $171k",
+    "monthly_earnings": "$12,975/mo",
+    "required_skills": [],
+    "match_score": 80,
+    "skill_overlap": [],
+    "missing_skills": [],
+    "hired_count": 8,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-32",
+    "job_title": "Senior Manager, Data Science",
+    "company_name": "CVS Health",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$119k - $145k",
+    "monthly_earnings": "$11,020/mo",
+    "required_skills": [
+      "Python",
+      "Aws",
+      "Azure",
+      "Sql"
+    ],
+    "match_score": 93,
+    "skill_overlap": [
+      "Python",
+      "Aws",
+      "Azure"
+    ],
+    "missing_skills": [
+      "Sql"
+    ],
+    "hired_count": 9,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-33",
+    "job_title": "Senior Concept Development Analyst (NLP)",
+    "company_name": "Cotiviti",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$90k - $110k",
+    "monthly_earnings": "$8,333/mo",
+    "required_skills": [
+      "Machine Learning",
+      "Tableau"
+    ],
+    "match_score": 88,
+    "skill_overlap": [
+      "Machine Learning",
+      "Tableau"
+    ],
+    "missing_skills": [],
+    "hired_count": 10,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-34",
+    "job_title": "Consulting AI and Radar Software Engineer",
+    "company_name": "Northrop Grumman",
+    "location": "MD",
+    "job_type": "Full-time",
+    "salary_range": "$206k - $252k",
+    "monthly_earnings": "$19,116/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Python",
+      "Machine Learning"
+    ],
+    "match_score": 92,
+    "skill_overlap": [
+      "Tensorflow",
+      "Python",
+      "Machine Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 11,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-35",
+    "job_title": "Principal AI/ML Engineer",
+    "company_name": "Provoke",
+    "location": "TX",
+    "job_type": "Full-time",
+    "salary_range": "$162k - $198k",
+    "monthly_earnings": "$15,000/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Pytorch",
+      "Machine Learning",
+      "Aws",
+      "Azure"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Tensorflow",
+      "Pytorch",
+      "Machine Learning"
+    ],
+    "missing_skills": [
+      "Aws",
+      "Azure"
+    ],
+    "hired_count": 12,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-36",
+    "job_title": "Staff Machine Learning Engineer - Personalization",
+    "company_name": "DoorDash, Inc.",
+    "location": "CA",
+    "job_type": "Full-time",
+    "salary_range": "$158k - $193k",
+    "monthly_earnings": "$14,666/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Pytorch",
+      "Python",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Tensorflow",
+      "Pytorch",
+      "Python"
+    ],
+    "missing_skills": [
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "hired_count": 13,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-37",
+    "job_title": "Senior Data Scientist",
+    "company_name": "Pluto TV",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$111k - $136k",
+    "monthly_earnings": "$10,333/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Aws",
+      "Gcp",
+      "Sql"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Aws"
+    ],
+    "missing_skills": [
+      "Gcp",
+      "Sql"
+    ],
+    "hired_count": 14,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-38",
+    "job_title": "Senior Data Scientist - 2199648",
+    "company_name": "Optum",
+    "location": "MN",
+    "job_type": "Full-time",
+    "salary_range": "$91k - $111k",
+    "monthly_earnings": "$8,450/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Sql",
+      "Hadoop"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "missing_skills": [
+      "Hadoop"
+    ],
+    "hired_count": 15,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-39",
+    "job_title": "Astrophysicist (Artificial Intelligence)",
+    "company_name": "US Smithsonian Institution",
+    "location": "MA",
+    "job_type": "Full-time",
+    "salary_range": "$117k - $144k",
+    "monthly_earnings": "$10,910/mo",
+    "required_skills": [
+      "Machine Learning"
+    ],
+    "match_score": 91,
+    "skill_overlap": [
+      "Machine Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 16,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-40",
+    "job_title": "Mid-Level Data Scientist",
+    "company_name": "BOEING",
+    "location": "WA",
+    "job_type": "Full-time",
+    "salary_range": "$102k - $125k",
+    "monthly_earnings": "$9,491/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Pytorch",
+      "Python",
+      "Pandas",
+      "Machine Learning",
+      "Deep Learning",
+      "Aws",
+      "Azure",
+      "Sql"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Tensorflow",
+      "Pytorch",
+      "Python"
+    ],
+    "missing_skills": [
+      "Pandas",
+      "Machine Learning"
+    ],
+    "hired_count": 17,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-41",
+    "job_title": "Lead Data Analyst/Senior Data Analyst, Tiktok Ads - USDS",
+    "company_name": "TikTok",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$111k - $135k",
+    "monthly_earnings": "$10,302/mo",
+    "required_skills": [
+      "Python",
+      "Tableau",
+      "Sql",
+      "Hadoop"
+    ],
+    "match_score": 82,
+    "skill_overlap": [
+      "Python",
+      "Tableau",
+      "Sql"
+    ],
+    "missing_skills": [
+      "Hadoop"
+    ],
+    "hired_count": 18,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-42",
+    "job_title": "Evaluation & Data Scientist",
+    "company_name": "University of Oklahoma",
+    "location": "OK",
+    "job_type": "Full-time",
+    "salary_range": "$54k - $66k",
+    "monthly_earnings": "$5,000/mo",
+    "required_skills": [],
+    "match_score": 71,
+    "skill_overlap": [],
+    "missing_skills": [],
+    "hired_count": 19,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-43",
+    "job_title": "Applied Scientist",
+    "company_name": "TikTok",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$129k - $158k",
+    "monthly_earnings": "$12,000/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Pytorch",
+      "Python",
+      "Machine Learning"
+    ],
+    "match_score": 84,
+    "skill_overlap": [
+      "Tensorflow",
+      "Pytorch",
+      "Python"
+    ],
+    "missing_skills": [
+      "Machine Learning"
+    ],
+    "hired_count": 20,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-44",
+    "job_title": "Lead Data Scientist",
+    "company_name": "Opinion Dynamics Corporation",
+    "location": "MA",
+    "job_type": "Full-time",
+    "salary_range": "$121k - $148k",
+    "monthly_earnings": "$11,250/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Git"
+    ],
+    "match_score": 82,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Git"
+    ],
+    "missing_skills": [],
+    "hired_count": 21,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-45",
+    "job_title": "Software Engineer, Machine Learning",
+    "company_name": "Packback Inc",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$76k - $93k",
+    "monthly_earnings": "$7,083/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "match_score": 83,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 22,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-46",
+    "job_title": "Senior Data Analyst",
+    "company_name": "Remitly",
+    "location": "WA",
+    "job_type": "Full-time",
+    "salary_range": "$108k - $132k",
+    "monthly_earnings": "$10,000/mo",
+    "required_skills": [
+      "Python",
+      "Sql"
+    ],
+    "match_score": 81,
+    "skill_overlap": [
+      "Python",
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 23,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-47",
+    "job_title": "Principal Data Scientist",
+    "company_name": "Microsoft",
+    "location": "WA",
+    "job_type": "Full-time",
+    "salary_range": "$120k - $146k",
+    "monthly_earnings": "$11,133/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Aws",
+      "Azure",
+      "Gcp",
+      "Etl"
+    ],
+    "match_score": 94,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Aws"
+    ],
+    "missing_skills": [
+      "Azure",
+      "Gcp"
+    ],
+    "hired_count": 24,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-48",
+    "job_title": "Technology Enabled Analyst",
+    "company_name": "Booz Allen Hamilton",
+    "location": "DC",
+    "job_type": "Full-time",
+    "salary_range": "$52k - $64k",
+    "monthly_earnings": "$4,866/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "match_score": 86,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 25,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-49",
+    "job_title": "Senior Data Analyst - People Analytics - Workday Reporting",
+    "company_name": "kraken",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$71k - $86k",
+    "monthly_earnings": "$6,583/mo",
+    "required_skills": [
+      "Python",
+      "Tableau"
+    ],
+    "match_score": 84,
+    "skill_overlap": [
+      "Python",
+      "Tableau"
+    ],
+    "missing_skills": [],
+    "hired_count": 26,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-50",
+    "job_title": "Health Data Scientist",
+    "company_name": "Booz Allen Hamilton",
+    "location": "MD",
+    "job_type": "Full-time",
+    "salary_range": "$52k - $64k",
+    "monthly_earnings": "$4,866/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "Aws",
+      "Azure",
+      "Gcp",
+      "Mysql",
+      "Nosql",
+      "Sql",
+      "Kafka",
+      "Hadoop"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "missing_skills": [
+      "Aws",
+      "Azure"
+    ],
+    "hired_count": 27,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-51",
+    "job_title": "Data Scientist Consultant (Remote)",
+    "company_name": "DataKind",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$135k - $165k",
+    "monthly_earnings": "$12,500/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "Aws",
+      "Sql"
+    ],
+    "match_score": 95,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "missing_skills": [
+      "Aws",
+      "Sql"
+    ],
+    "hired_count": 28,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-52",
+    "job_title": "Behavioral Health Data Scientist (Human Services Data Scientist)",
+    "company_name": "King County",
+    "location": "WA",
+    "job_type": "Full-time",
+    "salary_range": "$95k - $116k",
+    "monthly_earnings": "$8,859/mo",
+    "required_skills": [
+      "Python",
+      "Tableau",
+      "Sql",
+      "Git"
+    ],
+    "match_score": 93,
+    "skill_overlap": [
+      "Python",
+      "Tableau",
+      "Sql"
+    ],
+    "missing_skills": [
+      "Git"
+    ],
+    "hired_count": 29,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-53",
+    "job_title": "DIRECTOR OF ARTIFICIAL INTELLIGENCE ENABLEMENT",
+    "company_name": "Intero Digital",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$90k - $110k",
+    "monthly_earnings": "$8,333/mo",
+    "required_skills": [
+      "Machine Learning"
+    ],
+    "match_score": 85,
+    "skill_overlap": [
+      "Machine Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 30,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-54",
+    "job_title": "Data Analyst Mid to Senior",
+    "company_name": "Progressive",
+    "location": "OH",
+    "job_type": "Full-time",
+    "salary_range": "$50k - $61k",
+    "monthly_earnings": "$4,691/mo",
+    "required_skills": [
+      "Tableau",
+      "Sql"
+    ],
+    "match_score": 89,
+    "skill_overlap": [
+      "Tableau",
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 31,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-55",
+    "job_title": "Machine Learning Engineer (Entry Level)",
+    "company_name": "SRC, Inc.",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$62k - $75k",
+    "monthly_earnings": "$5,750/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Pytorch",
+      "Python",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Tensorflow",
+      "Pytorch",
+      "Python"
+    ],
+    "missing_skills": [
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "hired_count": 32,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-56",
+    "job_title": "Data Science Director",
+    "company_name": "Jellyfish",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$171k - $209k",
+    "monthly_earnings": "$15,833/mo",
+    "required_skills": [
+      "Python",
+      "Tableau",
+      "Gcp",
+      "Sql"
+    ],
+    "match_score": 97,
+    "skill_overlap": [
+      "Python",
+      "Tableau",
+      "Gcp"
+    ],
+    "missing_skills": [
+      "Sql"
+    ],
+    "hired_count": 33,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-57",
+    "job_title": "AI Technologist",
+    "company_name": "Booz Allen Hamilton",
+    "location": "VA",
+    "job_type": "Full-time",
+    "salary_range": "$52k - $64k",
+    "monthly_earnings": "$4,866/mo",
+    "required_skills": [],
+    "match_score": 86,
+    "skill_overlap": [],
+    "missing_skills": [],
+    "hired_count": 34,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-58",
+    "job_title": "Mathematician I (HYBRID) Chicago, IL",
+    "company_name": "Everi",
+    "location": "IL",
+    "job_type": "Full-time",
+    "salary_range": "$63k - $77k",
+    "monthly_earnings": "$5,833/mo",
+    "required_skills": [
+      "Sql"
+    ],
+    "match_score": 90,
+    "skill_overlap": [
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 35,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-59",
+    "job_title": "Senior Applied Scientist",
+    "company_name": "Microsoft",
+    "location": "WA",
+    "job_type": "Full-time",
+    "salary_range": "$100k - $123k",
+    "monthly_earnings": "$9,333/mo",
+    "required_skills": [
+      "Machine Learning",
+      "Azure"
+    ],
+    "match_score": 94,
+    "skill_overlap": [
+      "Machine Learning",
+      "Azure"
+    ],
+    "missing_skills": [],
+    "hired_count": 36,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-60",
+    "job_title": "Operation Research Analyst (Senior Financial Data Scientist)",
+    "company_name": "US Treasury, Departmental Offices",
+    "location": "VA",
+    "job_type": "Full-time",
+    "salary_range": "$134k - $164k",
+    "monthly_earnings": "$12,478/mo",
+    "required_skills": [
+      "Python"
+    ],
+    "match_score": 92,
+    "skill_overlap": [
+      "Python"
+    ],
+    "missing_skills": [],
+    "hired_count": 37,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-61",
+    "job_title": "Machine Learning Engineer",
+    "company_name": "Booz Allen Hamilton",
+    "location": "VA",
+    "job_type": "Full-time",
+    "salary_range": "$65k - $80k",
+    "monthly_earnings": "$6,091/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "Aws",
+      "Azure",
+      "Docker",
+      "Gcp",
+      "Sql"
+    ],
+    "match_score": 94,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "missing_skills": [
+      "Aws",
+      "Azure"
+    ],
+    "hired_count": 8,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-62",
+    "job_title": "Machine Learning Engineer (Entry Level)",
+    "company_name": "SRC, Inc",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$62k - $75k",
+    "monthly_earnings": "$5,750/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Pytorch",
+      "Python",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "match_score": 86,
+    "skill_overlap": [
+      "Tensorflow",
+      "Pytorch",
+      "Python"
+    ],
+    "missing_skills": [
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "hired_count": 9,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-63",
+    "job_title": "Machine Learning Engineer, Senior",
+    "company_name": "Booz Allen Hamilton",
+    "location": "DC",
+    "job_type": "Full-time",
+    "salary_range": "$83k - $102k",
+    "monthly_earnings": "$7,775/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Aws",
+      "Azure",
+      "Gcp",
+      "Sql"
+    ],
+    "match_score": 90,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Aws"
+    ],
+    "missing_skills": [
+      "Azure",
+      "Gcp"
+    ],
+    "hired_count": 10,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-64",
+    "job_title": "Principal Performance Engineer, AI Applications",
+    "company_name": "NVIDIA",
+    "location": "CA",
+    "job_type": "Full-time",
+    "salary_range": "$241k - $294k",
+    "monthly_earnings": "$22,333/mo",
+    "required_skills": [
+      "Deep Learning"
+    ],
+    "match_score": 76,
+    "skill_overlap": [
+      "Deep Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 11,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-65",
+    "job_title": "Senior Machine Learning Engineer",
+    "company_name": "Forrester",
+    "location": "MA",
+    "job_type": "Full-time",
+    "salary_range": "$135k - $165k",
+    "monthly_earnings": "$12,500/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Sql",
+      "Kafka"
+    ],
+    "match_score": 86,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "missing_skills": [
+      "Kafka"
+    ],
+    "hired_count": 12,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-66",
+    "job_title": "Manager/Sr. Manager, Statistical Programming",
+    "company_name": "BridgeBio",
+    "location": "US",
+    "job_type": "Full-time",
+    "salary_range": "$127k - $156k",
+    "monthly_earnings": "$11,833/mo",
+    "required_skills": [],
+    "match_score": 75,
+    "skill_overlap": [],
+    "missing_skills": [],
+    "hired_count": 13,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-67",
+    "job_title": "Data Scientist",
+    "company_name": "Lendistry",
+    "location": "CA",
+    "job_type": "Full-time",
+    "salary_range": "$72k - $88k",
+    "monthly_earnings": "$6,666/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "match_score": 85,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Sql"
+    ],
+    "missing_skills": [],
+    "hired_count": 14,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-68",
+    "job_title": "Data Scientist",
+    "company_name": "US Department of Veterans Affairs",
+    "location": "DC",
+    "job_type": "Full-time",
+    "salary_range": "$70k - $86k",
+    "monthly_earnings": "$6,549/mo",
+    "required_skills": [
+      "Machine Learning"
+    ],
+    "match_score": 80,
+    "skill_overlap": [
+      "Machine Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 15,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-69",
+    "job_title": "Data Scientist",
+    "company_name": "INFICON",
+    "location": "NY",
+    "job_type": "Full-time",
+    "salary_range": "$99k - $121k",
+    "monthly_earnings": "$9,166/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Pytorch",
+      "Python",
+      "Machine Learning"
+    ],
+    "match_score": 90,
+    "skill_overlap": [
+      "Tensorflow",
+      "Pytorch",
+      "Python"
+    ],
+    "missing_skills": [
+      "Machine Learning"
+    ],
+    "hired_count": 16,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-70",
+    "job_title": "Research Statistician",
+    "company_name": "UC San Diego Health",
+    "location": "CA",
+    "job_type": "Full-time",
+    "salary_range": "$61k - $75k",
+    "monthly_earnings": "$5,686/mo",
+    "required_skills": [
+      "Machine Learning"
+    ],
+    "match_score": 82,
+    "skill_overlap": [
+      "Machine Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 17,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-71",
+    "job_title": "Sr Director, Statistical Programming",
+    "company_name": "Olema Oncology",
+    "location": "MA",
+    "job_type": "Full-time",
+    "salary_range": "$200k - $245k",
+    "monthly_earnings": "$18,583/mo",
+    "required_skills": [
+      "Gcp"
+    ],
+    "match_score": 83,
+    "skill_overlap": [
+      "Gcp"
+    ],
+    "missing_skills": [],
+    "hired_count": 18,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-72",
+    "job_title": "Python Data Scientist",
+    "company_name": "Synovize",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$126k - $154k",
+    "monthly_earnings": "$11,666/mo",
+    "required_skills": [
+      "Tensorflow",
+      "Pytorch",
+      "Python",
+      "Numpy",
+      "Pandas",
+      "Machine Learning",
+      "Deep Learning",
+      "Sql"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Tensorflow",
+      "Pytorch",
+      "Python"
+    ],
+    "missing_skills": [
+      "Numpy",
+      "Pandas"
+    ],
+    "hired_count": 19,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-73",
+    "job_title": "Data Scientist",
+    "company_name": "Hireups",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$126k - $154k",
+    "monthly_earnings": "$11,666/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning"
+    ],
+    "match_score": 88,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 20,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-74",
+    "job_title": "Lead Data Scientist",
+    "company_name": "Opinion Dynamics",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$121k - $148k",
+    "monthly_earnings": "$11,250/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Git"
+    ],
+    "match_score": 92,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Git"
+    ],
+    "missing_skills": [],
+    "hired_count": 21,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-75",
+    "job_title": "Data Scientist with people soft",
+    "company_name": "Spanco Solutions",
+    "location": "IN",
+    "job_type": "Full-time",
+    "salary_range": "$75k - $92k",
+    "monthly_earnings": "$7,000/mo",
+    "required_skills": [],
+    "match_score": 84,
+    "skill_overlap": [],
+    "missing_skills": [],
+    "hired_count": 22,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-76",
+    "job_title": "Artificial Intelligence Engineer(15+ years)",
+    "company_name": "Tech Matrix Software Solutions Pvt. Ltd",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$135k - $165k",
+    "monthly_earnings": "$12,500/mo",
+    "required_skills": [
+      "Python"
+    ],
+    "match_score": 88,
+    "skill_overlap": [
+      "Python"
+    ],
+    "missing_skills": [],
+    "hired_count": 23,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-77",
+    "job_title": "AI Engineering Manager",
+    "company_name": "Agilon Health",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$144k - $176k",
+    "monthly_earnings": "$13,333/mo",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "Aws",
+      "Sql"
+    ],
+    "match_score": 99,
+    "skill_overlap": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "missing_skills": [
+      "Aws",
+      "Sql"
+    ],
+    "hired_count": 24,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-78",
+    "job_title": "Data Management - Big Data/Machine Learning Engineer - Sr Big Data/Machine Learning Engineer - Sr",
+    "company_name": "eTeam Inc.",
+    "location": "VA",
+    "job_type": "Full-time",
+    "salary_range": "$126k - $154k",
+    "monthly_earnings": "$11,666/mo",
+    "required_skills": [
+      "Python",
+      "Aws",
+      "Airflow"
+    ],
+    "match_score": 96,
+    "skill_overlap": [
+      "Python",
+      "Aws",
+      "Airflow"
+    ],
+    "missing_skills": [],
+    "hired_count": 25,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-79",
+    "job_title": "Natural Language Processing (NLP) Researcher",
+    "company_name": "Kitware",
+    "location": "NC",
+    "job_type": "Full-time",
+    "salary_range": "$112k - $137k",
+    "monthly_earnings": "$10,416/mo",
+    "required_skills": [
+      "Machine Learning"
+    ],
+    "match_score": 91,
+    "skill_overlap": [
+      "Machine Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 26,
+    "job_link": "https://www.linkedin.com/jobs/"
+  },
+  {
+    "id": "job-80",
+    "job_title": "Principal Machine Learning Engineer - Motion Planning",
+    "company_name": "Motional",
+    "location": "Remote",
+    "job_type": "Full-time",
+    "salary_range": "$179k - $218k",
+    "monthly_earnings": "$16,583/mo",
+    "required_skills": [
+      "Pytorch",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "match_score": 98,
+    "skill_overlap": [
+      "Pytorch",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "missing_skills": [],
+    "hired_count": 27,
+    "job_link": "https://www.linkedin.com/jobs/"
+  }
+]

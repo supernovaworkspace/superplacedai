@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import Groq from "groq-sdk";
 import * as mammoth from "mammoth";
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-
 function extractJSON(raw: string): string {
   let cleaned = raw.replace(/```json\s*/gi, "").replace(/```\s*/g, "").trim();
   const start = cleaned.indexOf("{");
@@ -14,6 +12,11 @@ function extractJSON(raw: string): string {
 
 export async function POST(request: NextRequest) {
   try {
+    if (!process.env.GROQ_API_KEY) {
+      return NextResponse.json({ success: false, error: "GROQ_API_KEY is not configured" }, { status: 500 });
+    }
+    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
     const formData = await request.formData();
     const file = formData.get("file") as File;
 

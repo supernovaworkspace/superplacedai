@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Groq from "groq-sdk";
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-
 function extractJSON(raw: string): string {
   let cleaned = raw.replace(/```json\s*/gi, "").replace(/```\s*/g, "").trim();
   const start = cleaned.indexOf("{");
@@ -13,6 +11,11 @@ function extractJSON(raw: string): string {
 
 export async function POST(request: NextRequest) {
   try {
+    if (!process.env.GROQ_API_KEY) {
+      return NextResponse.json({ success: false, error: "GROQ_API_KEY is not configured" }, { status: 500 });
+    }
+    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
     const { target_job_title, industry, experience_level, current_skills, instructions } = await request.json();
 
     if (!target_job_title) return NextResponse.json({ error: "target_job_title is required" }, { status: 400 });

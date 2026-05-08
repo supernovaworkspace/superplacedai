@@ -431,7 +431,7 @@ export default function ResumeAnalyzerMarketingPage() {
           ← Dashboard
         </button>
         <div style={{ background: "#ffffff", border: "1px solid #e0e0e0", borderRadius: 999, padding: "6px 16px", fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#1a1a1a", display: "flex", alignItems: "center", gap: 6 }}>
-          <span style={{ color: "#c9a84c" }}>●</span> SUPERNOVA AI
+          <span style={{ color: "#c9a84c" }}>●</span> SUPERPLACED AI
         </div>
       </header>
 
